@@ -56,19 +56,23 @@ jobs:
           gh release delete apk-latest --yes --cleanup-tag || true
           gh release create apk-latest lamma.apk --title "Lamma APK (test build)" --notes "Debug build for testing on a phone. Not for the Play Store." --target "$GITHUB_SHA"
 
-      # The signed bundle for Google Play is built only once the signing key
-      # has been added to the repository secrets (see docs/SIGNING.md).
-      - name: Build signed release bundle
-        if: env.HAS_RELEASE_KEY == 'true'
+      # The bundle for Google Play. It is signed only once the signing key has been
+      # added to the repository secrets (see docs/SIGNING.md); until then this step
+      # just proves that the release build works.
+      - name: Build release bundle
         env:
           LAMMA_KEYSTORE_BASE64: ${{ secrets.LAMMA_KEYSTORE_BASE64 }}
           LAMMA_KEYSTORE_PASSWORD: ${{ secrets.LAMMA_KEYSTORE_PASSWORD }}
           LAMMA_KEY_ALIAS: ${{ secrets.LAMMA_KEY_ALIAS }}
           LAMMA_KEY_PASSWORD: ${{ secrets.LAMMA_KEY_PASSWORD }}
         run: |
-          echo "$LAMMA_KEYSTORE_BASE64" | base64 -d > "$RUNNER_TEMP/lamma.jks"
-          LAMMA_KEYSTORE_FILE="$RUNNER_TEMP/lamma.jks" gradle bundleRelease --no-daemon
+          if [ -n "$LAMMA_KEYSTORE_BASE64" ]; then
+            echo "$LAMMA_KEYSTORE_BASE64" | base64 -d > "$RUNNER_TEMP/lamma.jks"
+            export LAMMA_KEYSTORE_FILE="$RUNNER_TEMP/lamma.jks"
+          fi
+          gradle bundleRelease --no-daemon
           rm -f "$RUNNER_TEMP/lamma.jks"
+          ls -l app/build/outputs/bundle/release/
 
       - uses: actions/upload-artifact@v4
         if: env.HAS_RELEASE_KEY == 'true'
