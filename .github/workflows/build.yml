@@ -4,6 +4,9 @@ on:
   push:
   workflow_dispatch:
 
+permissions:
+  contents: write
+
 jobs:
   build:
     runs-on: ubuntu-latest
@@ -26,3 +29,16 @@ jobs:
         with:
           name: lamma-apk
           path: app/build/outputs/apk/debug/app-debug.apk
+
+      - name: Check the APK contents
+        run: |
+          cp app/build/outputs/apk/debug/app-debug.apk lamma.apk
+          ls -l lamma.apk
+          unzip -l lamma.apk | grep -E "classes.dex|AndroidManifest.xml|assets/index.html|resources.arsc"
+
+      - name: Publish the APK as a direct download
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          gh release delete apk-latest --yes --cleanup-tag || true
+          gh release create apk-latest lamma.apk --title "Lamma APK (test build)" --notes "Debug build for testing on a phone. Not for the Play Store." --target "$GITHUB_SHA"
