@@ -1,0 +1,1040 @@
+<!DOCTYPE html>
+<html lang="ar-DZ" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>لمّة Lamma</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Readex+Pro:wght@300;400;500;600&family=Reem+Kufi:wght@500;700&display=swap" rel="stylesheet">
+<style>
+/* Layout idea: one quiet phone-width column in sand neutrals with a single ochre accent; no borders, icons instead of labels. Faces are plain circles; the only ornament kept from Timimoun is the date palm. */
+:root{
+  --bg:#F6F1EA; --surface:#FCFAF6; --ink:#2E2925; --muted:#756D65; --line:#E7DFD4; --wall:#FCFAF6; --wall-ink:#2E2925;
+  --accent:#9A4A32; --accent-ink:#FFF8F2; --soft:#F0E6DC; --hot:#9A4A32; --sun:#9A4A32;
+  --display:"Reem Kufi","Readex Pro",Tahoma,sans-serif;
+  --body:"Readex Pro",Tahoma,"Segoe UI",sans-serif;
+  --r:10px;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --bg:#171513; --surface:#1F1C19; --ink:#E8E2D9; --muted:#A39A8F; --line:#322D28; --wall:#1F1C19; --wall-ink:#E8E2D9;
+    --accent:#D08A6E; --accent-ink:#1F100A; --soft:#2A2420; --hot:#D08A6E; --sun:#D08A6E; color-scheme:dark;
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#171513; --surface:#1F1C19; --ink:#E8E2D9; --muted:#A39A8F; --line:#322D28; --wall:#1F1C19; --wall-ink:#E8E2D9;
+  --accent:#D08A6E; --accent-ink:#1F100A; --soft:#2A2420; --hot:#D08A6E; --sun:#D08A6E; color-scheme:dark;
+}
+:root.t-light{
+  --bg:#F6F1EA; --surface:#FCFAF6; --ink:#2E2925; --muted:#756D65; --line:#E7DFD4; --wall:#FCFAF6; --wall-ink:#2E2925;
+  --accent:#9A4A32; --accent-ink:#FFF8F2; --soft:#F0E6DC; --hot:#9A4A32; --sun:#9A4A32; color-scheme:light;
+}
+:root.t-dark{
+  --bg:#171513; --surface:#1F1C19; --ink:#E8E2D9; --muted:#A39A8F; --line:#322D28; --wall:#1F1C19; --wall-ink:#E8E2D9;
+  --accent:#D08A6E; --accent-ink:#1F100A; --soft:#2A2420; --hot:#D08A6E; --sun:#D08A6E; color-scheme:dark;
+}
+*{box-sizing:border-box;margin:0}
+html,body{height:100%}
+html{font-size:16px}
+body{background:var(--bg);color:var(--ink);font-family:var(--body);line-height:1.6;-webkit-font-smoothing:antialiased}
+button,input,textarea{font:inherit;color:inherit}
+button{cursor:pointer;background:none;border:0;padding:0}
+:focus-visible{outline:2px solid var(--accent);outline-offset:2px;border-radius:6px}
+.ic{width:1.35rem;height:1.35rem;fill:none;stroke:currentColor;stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round;flex:none}
+[dir="rtl"] .flip{transform:scaleX(-1)}
+
+.app{height:100%;max-width:540px;margin-inline:auto;display:grid;grid-template-rows:auto 1fr auto;background:var(--bg);border-inline:1px solid var(--line);position:relative;overflow:hidden}
+header{background:var(--wall);color:var(--wall-ink)}
+header .iconbtn{color:var(--wall-ink)}
+header .iconbtn:hover{background:var(--soft)}
+.top{display:flex;align-items:center;gap:10px;padding:10px 16px}
+.brand{display:flex;align-items:center;gap:8px;margin-inline-end:auto}
+.brand svg{width:24px;height:24px;fill:none;stroke:var(--sun);stroke-width:2;stroke-linecap:round}
+.brand b{font-family:var(--display);font-weight:500;font-size:1.25rem;line-height:1;letter-spacing:0}
+.iconbtn{position:relative;width:40px;height:40px;display:grid;place-items:center;border-radius:50%;color:var(--ink)}
+.iconbtn:hover{background:var(--soft)}
+.band{height:1px;background:var(--line)}
+
+main{overflow-y:auto;overflow-x:hidden;padding:12px 12px 24px;display:flex;flex-direction:column;gap:12px}
+main>*{flex-shrink:0}
+nav{display:grid;grid-template-columns:repeat(5,1fr);background:var(--surface);border-top:1px solid var(--line)}
+nav button{display:flex;flex-direction:column;align-items:center;gap:2px;padding:8px 2px 9px;font-size:.68rem;color:var(--muted);position:relative}
+nav button[aria-current="page"]{color:var(--accent);font-weight:600}
+nav button[aria-current="page"]::before{content:"";position:absolute;top:0;inset-inline:28%;height:3px;background:var(--accent);border-radius:0 0 3px 3px}
+.dot{position:absolute;top:6px;inset-inline-start:calc(50% + 6px);width:8px;height:8px;border-radius:50%;background:var(--hot)}
+
+.card{background:var(--surface);border-radius:var(--r);padding:14px}
+.note{font-size:.78rem;color:var(--muted);padding:8px 12px;border-inline-start:3px solid var(--sun);background:var(--surface);border-radius:6px}
+h2{font-family:var(--display);font-weight:500;font-size:1.05rem;text-wrap:balance}
+
+/* faces: plain circles */
+.av{--s:42px;width:var(--s);height:var(--s);flex:none;display:grid;place-items:center;background:var(--c,var(--accent));color:#fff;font-family:var(--display);font-weight:700;font-size:calc(var(--s)*.42);border-radius:50%}
+.stories{display:flex;gap:12px;overflow-x:auto;padding:4px 2px 6px;scrollbar-width:none}
+.story{display:flex;flex-direction:column;align-items:center;gap:4px;font-size:.72rem;color:var(--muted);flex:none;max-width:66px}
+.story .ring{padding:2px;border:2px solid var(--sun);border-radius:50%}
+.story.seen .ring{border-color:var(--line)}
+.story .av{--s:52px}
+.story span:last-child{white-space:nowrap;overflow:hidden;text-overflow:ellipsis;max-width:100%}
+
+.composer{display:flex;flex-direction:column;gap:10px}
+.composer .row{display:flex;gap:10px;align-items:flex-start}
+textarea,input[type=text],input[type=search],input[type=number],select{width:100%;background:var(--bg);border:1px solid var(--line);border-radius:12px;padding:10px 12px;resize:none}
+textarea::placeholder,input::placeholder{color:var(--muted)}
+.tools{display:flex;flex-wrap:wrap;gap:8px;align-items:center}
+.chip{display:inline-flex;align-items:center;gap:6px;padding:6px 12px;border:1px solid var(--line);border-radius:99px;font-size:.82rem;color:var(--muted);background:var(--surface)}
+.chip[aria-pressed="true"]{background:var(--soft);color:var(--accent);border-color:var(--accent)}
+.chip .ic{width:1.05rem;height:1.05rem}
+.btn{display:inline-flex;gap:6px;align-items:center;background:var(--accent);color:var(--accent-ink);padding:8px 20px;border-radius:99px;font-weight:600;font-size:.9rem}
+.btn:disabled{opacity:.45;cursor:default}
+.btn.ghost{background:none;color:var(--accent);border:1px solid var(--accent)}
+.btn.sm{padding:5px 14px;font-size:.8rem}
+.push{margin-inline-start:auto}
+.preview{position:relative;align-self:flex-start}
+.preview img{max-width:100%;max-height:180px;border-radius:10px;display:block}
+
+.post{display:flex;flex-direction:column;gap:10px;padding:14px 14px 6px}
+.post .head{display:flex;gap:10px;align-items:center}
+.who{flex:1;min-width:0;line-height:1.35}
+.who b{font-weight:600;display:block;overflow-wrap:anywhere}
+.who small{color:var(--muted);font-size:.76rem}
+.post p{white-space:pre-wrap;overflow-wrap:anywhere;font-size:1rem}
+.media{border-radius:10px;overflow:hidden;background:var(--bg)}
+.media svg,.media img{display:block;width:100%;max-width:100%;height:auto}
+.veil{width:100%;padding:26px 12px;display:flex;gap:8px;justify-content:center;align-items:center;color:var(--muted);font-size:.85rem;border:1px dashed var(--line);border-radius:10px}
+.acts{display:flex;margin-inline:-4px}
+.acts button{flex:1;display:flex;gap:6px;align-items:center;justify-content:center;padding:9px 2px;font-size:.8rem;color:var(--muted);border-radius:8px}
+.acts button:hover{background:var(--bg)}
+.acts .on{color:var(--hot);font-weight:600}
+.acts .on .ic{stroke-width:2.6}
+.acts .on.sv{color:var(--accent)}
+.acts .on.sv .ic{fill:var(--accent)}
+@keyframes pop{0%{transform:scale(.6) rotate(-45deg)}60%{transform:scale(1.3) rotate(10deg)}100%{transform:none}}
+.num{font-variant-numeric:tabular-nums}
+.menu{position:relative}
+.menu .pop{position:absolute;inset-inline-end:0;top:40px;z-index:5;background:var(--surface);border:1px solid var(--line);border-radius:12px;box-shadow:0 8px 24px rgba(0,0,0,.18);min-width:200px;padding:4px}
+.menu .pop button{display:block;width:100%;text-align:start;padding:10px 12px;border-radius:8px;font-size:.88rem}
+.menu .pop button:hover{background:var(--bg)}
+.cmts{display:flex;flex-direction:column;gap:8px;padding-bottom:10px}
+.cm{display:flex;gap:8px;align-items:flex-start}
+.cm .av{--s:28px}
+.cm div{background:var(--bg);border-radius:12px;padding:6px 12px;font-size:.88rem;overflow-wrap:anywhere;min-width:0}
+.cm b{font-weight:600;font-size:.8rem;display:block}
+.inline{display:flex;gap:8px;align-items:center}
+.inline input{flex:1;min-width:0;border-radius:99px}
+.sendbtn{width:40px;height:40px;flex:none;border-radius:50%;background:var(--accent);color:var(--accent-ink);display:grid;place-items:center}
+
+.rowi{display:flex;gap:12px;align-items:center;padding:10px 0;border-bottom:1px solid var(--line);width:100%;text-align:start}
+.rowi:last-child{border-bottom:0}
+.rowi .who small{display:block;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.list{padding:4px 14px}
+.unread{width:9px;height:9px;border-radius:50%;background:var(--hot);flex:none}
+
+.chat{display:flex;flex-direction:column;gap:8px;flex:1}
+.chathead{display:flex;align-items:center;gap:10px}
+.bub{max-width:78%;padding:8px 14px;border-radius:16px;background:var(--surface);border:1px solid var(--line);align-self:flex-start;overflow-wrap:anywhere}
+.bub.me{align-self:flex-end;background:var(--accent);color:var(--accent-ink);border-color:var(--accent)}
+.chatform{position:sticky;bottom:-24px;background:var(--bg);padding:8px 0 12px;margin-top:auto;display:flex;flex-direction:column;gap:8px}
+
+.profile{display:flex;flex-direction:column;align-items:center;text-align:center;gap:8px;padding:22px 16px}
+.profile .av{--s:84px}
+.profile h1{font-family:var(--display);font-weight:700;font-size:1.5rem;overflow-wrap:anywhere}
+.profile p{color:var(--muted);font-size:.9rem;max-width:34ch;overflow-wrap:anywhere}
+.stats{display:flex;gap:28px;font-size:.8rem;color:var(--muted)}
+.stats b{display:block;color:var(--ink);font-size:1.15rem;font-variant-numeric:tabular-nums}
+.seg{display:flex;background:var(--surface);border:1px solid var(--line);border-radius:99px;padding:3px;gap:3px;flex-wrap:wrap}
+.seg button{flex:1;padding:7px 10px;border-radius:99px;font-size:.84rem;color:var(--muted);white-space:nowrap}
+.seg button[aria-pressed="true"]{background:var(--accent);color:var(--accent-ink);font-weight:600}
+.empty{text-align:center;color:var(--muted);padding:28px 12px;font-size:.9rem}
+
+.overlay{position:absolute;inset:0;z-index:20;background:rgba(8,12,26,.55);display:flex;align-items:flex-end}
+.sheet{background:var(--surface);width:100%;max-height:88%;overflow-y:auto;border-radius:22px 22px 0 0;padding:16px 16px 24px;display:flex;flex-direction:column;gap:16px}
+.sheet .bar{display:flex;align-items:center;justify-content:space-between}
+.sheet h2{font-size:1.3rem;font-weight:700}
+.field{display:flex;flex-direction:column;gap:6px}
+.field>label,.field>span{font-size:.82rem;color:var(--muted);font-weight:500}
+.sw{display:flex;align-items:center;gap:12px;width:100%;text-align:start}
+.sw div{flex:1}
+.sw small{display:block;color:var(--muted);font-size:.78rem}
+.sw i{width:46px;height:26px;border-radius:99px;background:var(--line);position:relative;flex:none;transition:background .15s}
+.sw i::after{content:"";position:absolute;top:3px;inset-inline-start:3px;width:20px;height:20px;border-radius:50%;background:var(--surface);transition:inset-inline-start .15s}
+.sw[aria-checked="true"] i{background:var(--accent)}
+.sw[aria-checked="true"] i::after{inset-inline-start:23px}
+.storyview{position:absolute;inset:0;z-index:30;display:flex;flex-direction:column;padding:16px;color:#fff;background:var(--c)}
+.storyview .prog{height:3px;background:rgba(255,255,255,.3);border-radius:3px;overflow:hidden}
+.storyview .prog i{display:block;height:100%;background:#fff;width:100%}
+@media (prefers-reduced-motion:no-preference){ .storyview .prog i{animation:run 6s linear} }
+@keyframes run{from{width:0}}
+.storyview .head{display:flex;align-items:center;gap:10px;padding-top:12px}
+.storyview .head b{flex:1}
+.storyview .av{background:rgba(255,255,255,.22)}
+.storyview .txt{flex:1;display:grid;place-items:center;text-align:center;font-family:var(--display);font-weight:700;font-size:clamp(1.6rem,7vw,2.4rem);line-height:1.5;padding:16px;text-wrap:balance;overflow-wrap:anywhere}
+.storyview .iconbtn{color:#fff}
+.toast{position:absolute;z-index:40;bottom:76px;inset-inline:16px;background:var(--ink);color:var(--bg);padding:10px 16px;border-radius:12px;display:flex;gap:12px;align-items:center;font-size:.88rem;box-shadow:0 8px 24px rgba(0,0,0,.25)}
+.toast button{margin-inline-start:auto;font-weight:600;text-decoration:underline;color:inherit}
+.btn .ic{width:1.1rem;height:1.1rem}
+input[type=range]{width:100%;accent-color:var(--accent)}
+.big{font-family:var(--display);font-size:1.6rem;font-weight:700}
+/* reels */
+main.full{padding:0;gap:0;scroll-snap-type:y mandatory}
+.reel{flex:0 0 100%;height:100%;position:relative;scroll-snap-align:start;overflow:hidden;background:#211A15;color:#fff;display:flex}
+.reel .scene{position:absolute;inset:0}
+.reel .scene svg{width:100%;height:100%;display:block}
+@media (prefers-reduced-motion:no-preference){.reel .scene svg{animation:drift 26s ease-in-out infinite alternate}.steps li{animation:glow 9s infinite}.steps li:nth-child(2){animation-delay:3s}.steps li:nth-child(3){animation-delay:6s}}
+@keyframes drift{to{transform:scale(1.14)}}
+@keyframes glow{0%,100%{opacity:.35}15%,40%{opacity:1}}
+.steps{position:absolute;inset:0;display:flex;flex-direction:column;justify-content:center;gap:18px;padding:24px 56px;font-family:var(--display);font-size:1.45rem;color:#F3E9DC}
+.reel video{position:absolute;inset:0;width:100%;height:100%;object-fit:contain;background:#000}
+.reel .cap{position:relative;margin-top:auto;width:100%;padding:40px 16px 16px;background:linear-gradient(transparent,rgba(0,0,0,.62));display:flex;gap:10px;align-items:flex-end}
+.reel .cap p{flex:1;min-width:0;font-size:.95rem;overflow-wrap:anywhere}
+.reel .cap b{display:block;font-weight:600}
+.rl{width:44px;height:44px;display:grid;place-items:center;border-radius:50%;color:#fff;background:rgba(0,0,0,.3)}
+.rl.on{background:#fff;color:#9A4A32}
+.reel .tag{position:absolute;top:12px;inset-inline-start:12px;font-size:.7rem;background:rgba(0,0,0,.4);padding:3px 10px;border-radius:99px}
+.reeladd{position:absolute;top:10px;inset-inline-end:12px;z-index:2}
+.reel.end{background:var(--bg);color:var(--muted);flex-direction:column;gap:14px;align-items:center;justify-content:center;text-align:center;padding:24px}
+/* souk */
+.stall{background:var(--surface);border-radius:var(--r);overflow:hidden}
+.awn{height:16px;background:radial-gradient(circle at 50% 0,var(--soft) 9px,transparent 9.5px) 0 6px/20px 10px repeat-x,linear-gradient(var(--soft) 6px,transparent 0)}
+.shead{display:flex;gap:10px;align-items:center;padding:6px 14px 2px}
+.shelf{display:flex;gap:12px;overflow-x:auto;padding:8px 14px 14px;scrollbar-width:thin}
+.prod{flex:0 0 132px;min-width:0;display:flex;flex-direction:column;gap:4px;align-items:flex-start;font-size:.88rem}
+.prod b{font-weight:500;overflow-wrap:anywhere}
+.price{color:var(--accent);font-weight:600}
+.pimg{width:132px;height:132px;border-radius:10px;background:var(--bg);display:grid;place-items:center;font-size:2.6rem;overflow:hidden;flex:none}
+.pimg img{width:100%;height:100%;object-fit:cover}
+.pimg.sm{width:52px;height:52px;font-size:1.5rem}
+.ulink{display:flex;gap:10px;align-items:center;flex:1;min-width:0;text-align:start}
+.quote{border:1px solid var(--line);border-radius:10px;padding:10px 12px;display:flex;flex-direction:column;gap:6px;font-size:.92rem;overflow-wrap:anywhere}
+.quote b{font-weight:600;font-size:.82rem}
+.muted{color:var(--muted)}
+.gav{--s:42px;width:var(--s);height:var(--s);flex:none;display:grid;place-items:center;border-radius:24%;background:var(--soft);color:var(--accent);font-family:var(--display);font-weight:700;font-size:calc(var(--s)*.42)}
+.welcome{align-items:center;padding:16px;background:var(--bg)}
+.welcome .sheet{border-radius:22px;max-height:100%}
+.col{display:flex;flex-direction:column;gap:10px}
+.col .btn{justify-content:center;padding:11px 20px}
+.av.ph{padding:0;overflow:hidden}
+.av img{width:100%;height:100%;object-fit:cover;display:block}
+.profile.mine{padding-top:0;overflow:hidden}
+.cover{align-self:stretch;margin:0 -16px;height:112px;background:var(--soft);position:relative;display:block}
+.cover img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.cover .chip{position:absolute;bottom:8px;inset-inline-end:8px}
+.avbtn{margin-top:-46px;position:relative;z-index:1;border-radius:50%}
+.avbtn .av{box-shadow:0 0 0 4px var(--surface)}
+.panel{background:var(--surface);border-radius:14px;padding:10px;display:flex;flex-direction:column;gap:10px;max-height:250px;overflow-y:auto}
+.egrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(40px,1fr));gap:2px}
+.egrid button{font-size:1.4rem;height:42px;border-radius:8px}
+.egrid button:hover{background:var(--bg)}
+.sgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(88px,1fr));gap:8px}
+.stk{display:flex;flex-direction:column;align-items:center;gap:2px;padding:10px 8px;border-radius:16px;background:var(--soft);min-width:88px;align-self:flex-start;text-align:center}
+.stk span{font-size:2.2rem;line-height:1.25}
+.stk b{font-family:var(--display);font-weight:500;font-size:.85rem;color:var(--accent)}
+.anim{font-size:3rem;line-height:1.35;align-self:flex-start;padding:6px 12px}
+.anim span{display:inline-block}
+.sgrid .anim{font-size:2.1rem;background:var(--bg);border-radius:14px;text-align:center}
+.cimg{max-width:70%;max-height:240px;border-radius:14px;align-self:flex-start;display:block}
+.stk.me,.anim.me,.cimg.me{align-self:flex-end}
+@media (prefers-reduced-motion:no-preference){
+.an-bounce{animation:a-bounce .8s ease-in-out infinite alternate}.an-pulse{animation:a-pulse .9s ease-in-out infinite alternate}.an-walk{animation:a-walk 1.6s ease-in-out infinite alternate}.an-shake{animation:a-shake .35s linear infinite alternate}.an-spin{animation:a-spin 2.6s linear infinite}.an-wave{animation:a-wave .5s ease-in-out infinite alternate;transform-origin:70% 80%}}
+@keyframes a-bounce{to{transform:translateY(-12px)}}
+@keyframes a-pulse{to{transform:scale(1.25)}}
+@keyframes a-walk{from{transform:translateX(-10px) rotate(-3deg)}to{transform:translateX(10px) rotate(3deg)}}
+@keyframes a-shake{from{transform:rotate(-8deg)}to{transform:rotate(8deg)}}
+@keyframes a-spin{to{transform:rotate(360deg)}}
+@keyframes a-wave{from{transform:rotate(-14deg)}to{transform:rotate(18deg)}}
+.media video{display:block;width:100%;max-height:420px;background:#000}
+.preview video{max-width:100%;max-height:200px;border-radius:10px;display:block}
+video.cimg{width:70%;background:#000}
+.hrow{display:flex;align-items:center;justify-content:space-between;gap:10px;flex-wrap:wrap}
+/* rooms and games */
+.game{display:flex;flex-direction:column;gap:12px}
+.game>.btn{align-self:center}
+.seats{display:flex;flex-wrap:wrap;justify-content:space-around;gap:6px}
+.seat{display:flex;flex-direction:column;align-items:center;font-size:.72rem;gap:2px;min-width:0;opacity:.55}
+.seat.on{opacity:1}
+.seat.on .av{box-shadow:0 0 0 3px var(--accent)}
+.seat b{font-weight:600;max-width:72px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.seat[style] b{border-bottom:3px solid var(--lc)}
+.seat small{color:var(--muted)}
+.gst{text-align:center;display:flex;flex-direction:column;gap:2px;align-items:center}
+.gst small{color:var(--muted)}
+.ctr{justify-content:center}
+.dchain{display:flex;flex-wrap:wrap;gap:3px;justify-content:center;align-items:center;min-height:64px;background:var(--bg);border-radius:10px;padding:10px}
+.dt{display:inline-flex;background:#FBF7F0;border:1px solid #BFB5A6;border-radius:5px;color:#2E2925;flex:none}
+.dt i{width:20px;height:20px;display:grid;grid-template-columns:repeat(3,1fr);grid-template-rows:repeat(3,1fr);padding:3px;gap:1px}
+.dt i+i{border-left:1px solid #BFB5A6}
+.dt b{border-radius:50%}
+.dt b.on{background:currentColor}
+.dt.dbl{flex-direction:column}
+.dt.dbl i+i{border-left:0;border-top:1px solid #BFB5A6}
+.dhand{display:flex;flex-wrap:wrap;gap:8px;justify-content:center}
+.dbtn{border-radius:7px;padding:2px}
+.dbtn .dt{flex-direction:column}
+.dbtn .dt i{width:28px;height:28px;padding:4px}
+.dbtn .dt i+i{border-left:0;border-top:1px solid #BFB5A6}
+.dbtn:disabled{opacity:.4;cursor:default}
+.dbtn.sel{outline:2px solid var(--accent)}
+.lboard{display:grid;grid-template-columns:repeat(15,1fr);width:100%;max-width:420px;aspect-ratio:1;margin-inline:auto;background:var(--line);gap:1px;border:1px solid var(--line);border-radius:8px;overflow:hidden}
+.lc{background:var(--surface);display:flex;flex-wrap:wrap;align-items:center;justify-content:center;min-width:0;min-height:0;padding:0}
+.lc.bs{background:color-mix(in srgb,var(--lc) 26%,var(--surface))}
+.lc.st,.lc.hc{background:color-mix(in srgb,var(--lc) 55%,var(--surface))}
+.lc.hm{background:var(--lc)}
+.lc.mid{background:var(--soft)}
+.tk{width:66%;aspect-ratio:1;border-radius:50%;background:var(--c);border:2px solid #fff;box-shadow:0 1px 2px rgba(0,0,0,.45)}
+.lc.multi .tk{width:42%;border-width:1px}
+.lc.mv{outline:2px solid var(--ink);outline-offset:-2px;cursor:pointer;position:relative;z-index:1}
+@media (prefers-reduced-motion:no-preference){.lc.mv .tk{animation:a-pulse .6s ease-in-out infinite alternate}}
+.die{font-size:2rem;line-height:1}
+.rchat{display:flex;flex-direction:column;gap:6px;max-height:160px;overflow-y:auto}
+.rchat:empty{display:none}
+.rctl select{width:auto;flex:1;min-width:120px;padding:6px 10px;border-radius:99px}
+.iconbtn.rec{background:var(--accent);color:var(--accent-ink)}
+.seat.dead b{text-decoration:line-through}
+.cd{display:inline-flex;flex-direction:column;align-items:center;justify-content:center;width:40px;height:56px;background:#FBF7F0;border:1px solid #BFB5A6;border-radius:6px;color:#2E2925;font-size:.95rem;line-height:1.1;flex:none}
+.cd b{font-weight:600}
+.cd i{font-style:normal;font-size:1.1rem}
+.cd.red,.csb.red{color:#B8322A}
+.csuit.red{color:#D9534A}
+.cd.back{background:var(--accent);color:var(--accent-ink);border-color:var(--accent)}
+.ctable{display:flex;gap:14px;justify-content:center;align-items:center;background:var(--bg);border-radius:10px;padding:14px}
+.ctable .big .cd{width:56px;height:78px;font-size:1.3rem}
+.csuit{font-size:2rem;line-height:1}
+.chand{display:flex;flex-wrap:wrap;gap:6px;justify-content:center}
+.cbtn{border-radius:8px;padding:2px}
+.cbtn:disabled{opacity:.4;cursor:default}
+.cbtn.sel{outline:2px solid var(--accent)}
+.csb{font-size:1.2rem;padding:4px 14px}
+.tboard{display:grid;grid-template-columns:repeat(6,1fr);grid-template-rows:repeat(6,1fr);gap:2px;aspect-ratio:1;max-width:440px;width:100%;margin-inline:auto}
+.tq{background:var(--bg);border-radius:6px;padding:2px;display:flex;flex-direction:column;align-items:center;justify-content:space-between;font-size:.56rem;line-height:1.15;text-align:center;overflow:hidden;border-top:4px solid var(--oc,transparent);min-width:0;min-height:0}
+.tq b{font-weight:600;overflow-wrap:anywhere}
+.tq.sp{background:var(--soft)}
+.tks{display:flex;gap:1px;flex-wrap:wrap;justify-content:center;min-height:10px;width:100%}
+.tks .tk{width:9px;border-width:1px}
+.tmid{grid-area:2/2/6/6;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:8px;text-align:center;padding:6px;font-size:.88rem}
+.rules{display:flex;flex-direction:column;gap:8px;font-size:.92rem}
+.rules ol{margin:0;padding-inline-start:1.4em;display:flex;flex-direction:column;gap:6px}
+.sheet h3{font-size:.85rem;font-weight:500;color:var(--muted)}
+[hidden]{display:none!important}
+</style>
+</head>
+<body>
+<div class="app">
+  <header>
+    <div class="top">
+      <div class="brand">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21V11"/><path d="M12 11C10 7 6 6 3 8"/><path d="M12 11c2-4 6-5 9-3"/><path d="M12 11C11 7 8 4 5 4"/><path d="M12 11c1-4 4-7 7-7"/></svg>
+        <b id="brand">لمّة</b>
+      </div>
+      <button class="iconbtn" id="hr" data-a="tab" data-v="rooms"></button><button class="iconbtn" id="hs" data-a="tab" data-v="disc"></button><button class="iconbtn" id="hb" data-a="tab" data-v="notifs"></button>
+    </div>
+    <div class="band"></div>
+  </header>
+  <main id="main"></main>
+  <nav id="nav"></nav>
+  <div id="layer"></div>
+  <div class="toast" id="toast" hidden role="status"></div>
+</div>
+<input type="file" id="pick" accept="image/*" hidden>
+<script>
+const T={
+dz:{app:'لمّة',home:'الدار',disc:'حوّس',msgs:'الميساجات',notifs:'الجديد',prof:'حسابي',
+demo:'نسخة تجريبية. الناس والمنشورات هنا أمثلة، وواش تكتب يتسجّل غير في هاد الجهاز.',
+think:'واش راك تخمّم؟',post:'انشر',photo:'تصويرة',feel:'كيفاش راك؟',rm:'نحّي التصويرة',
+like:'عجبني',cmt:'علّق',share:'پارتاجي',save:'خبّي',saved:'مخبّي',more:'خيارات',
+hide:'ما نحبّش نشوف هذا',del:'امسح المنشور',hidden:'تنحّى المنشور',undo:'رجّعو',
+copied:'تنسخ المنشور',nocopy:'ما قدرناش ننسخوه',wcmt:'اكتب تعليق…',send:'ابعث',
+stories:'حكايات اليوم',showimg:'كليكي باش تشوف التصويرة',
+search:'حوّس على ناس ولا منشورات',people:'ناس تقدر تعرفهم',follow:'تبّع',following:'راك تتبّع',none:'ما لقينا والو',results:'منشورات',
+wmsg:'اكتب ميساج…',back:'ارجع',n_like:'إعجاب على منشورك',n_cmt:'تعليق على منشورك',n_fol:'متابعة جديدة ليك',
+myposts:'منشوراتي',mysaved:'المخبّيين',edit:'بدّل البروفيل',name:'الاسم',bio:'كلمة عليك',ok:'سجّل',cancel:'بطّل',empty:'مازال ما كاين والو هنا',guest:'ضيف جديد',biodef:'مرحبا بيك في لمّة',
+set:'الريڨلاج',lang:'اللغة',theme:'المظهر',auto:'كيما الجهاز',light:'نهار',dark:'ليل',size:'حجم الكتيبة',order:'ترتيب المنشورات',onew:'الجديد اللول',otop:'لي عاجب الناس',
+saver:'اقتصد الكونيكسيون',saverd:'التصاور ما يتحلّوش حتى تكليكي عليهم',counts:'خبّي عدد الإعجابات',countsd:'بلا أرقام، بلا مقارنة',rest:'ذكّرني نرتاح',restd:'تنبيه خفيف بعد 20 دقيقة',restmsg:'راك هنا 20 دقيقة. ارتاح شوية واشرب كاس تاي.',close:'بلّع',
+now:'دروك',um:'د',uh:'س',ud:'ي',posts:'منشور',flw:'نتبّع',
+f_happy:'فرحان',f_tired:'عيّان',f_excited:'متحمّس',f_calm:'رايق',f_proud:'فخور'},
+ar:{app:'لمّة',home:'الرئيسية',disc:'استكشف',msgs:'الرسائل',notifs:'الإشعارات',prof:'حسابي',
+demo:'نسخة تجريبية. الأشخاص والمنشورات هنا أمثلة، وما تكتبه يُحفظ على هذا الجهاز فقط.',
+think:'بماذا تفكّر؟',post:'انشر',photo:'صورة',feel:'كيف حالك؟',rm:'احذف الصورة',
+like:'أعجبني',cmt:'تعليق',share:'مشاركة',save:'حفظ',saved:'محفوظ',more:'خيارات',
+hide:'لا أريد رؤية هذا',del:'احذف المنشور',hidden:'أُخفي المنشور',undo:'تراجع',
+copied:'نُسخ المنشور',nocopy:'تعذّر النسخ',wcmt:'اكتب تعليقاً…',send:'إرسال',
+stories:'قصص اليوم',showimg:'اضغط لعرض الصورة',
+search:'ابحث عن أشخاص أو منشورات',people:'أشخاص قد تعرفهم',follow:'تابِع',following:'تتابعه',none:'لا توجد نتائج',results:'منشورات',
+wmsg:'اكتب رسالة…',back:'رجوع',n_like:'إعجاب بمنشورك',n_cmt:'تعليق على منشورك',n_fol:'متابعة جديدة لك',
+myposts:'منشوراتي',mysaved:'المحفوظات',edit:'تعديل الملف',name:'الاسم',bio:'نبذة عنك',ok:'حفظ',cancel:'إلغاء',empty:'لا شيء هنا بعد',guest:'ضيف جديد',biodef:'مرحباً بك في لمّة',
+set:'الإعدادات',lang:'اللغة',theme:'المظهر',auto:'حسب الجهاز',light:'فاتح',dark:'داكن',size:'حجم الخط',order:'ترتيب المنشورات',onew:'الأحدث أولاً',otop:'الأكثر إعجاباً',
+saver:'توفير البيانات',saverd:'لا تُحمَّل الصور حتى تضغط عليها',counts:'إخفاء عدد الإعجابات',countsd:'بلا أرقام، بلا مقارنة',rest:'ذكّرني بالاستراحة',restd:'تنبيه لطيف بعد 20 دقيقة',restmsg:'مرّت 20 دقيقة. خذ استراحة قصيرة.',close:'إغلاق',
+now:'الآن',um:'د',uh:'س',ud:'ي',posts:'منشور',flw:'أتابع',
+f_happy:'سعيد',f_tired:'متعب',f_excited:'متحمّس',f_calm:'هادئ',f_proud:'فخور'},
+fr:{app:'Lamma',home:'Accueil',disc:'Explorer',msgs:'Messages',notifs:'Activité',prof:'Profil',
+demo:'Version d’essai. Les personnes et publications sont des exemples ; ce que vous écrivez reste sur cet appareil.',
+think:'À quoi pensez-vous ?',post:'Publier',photo:'Photo',feel:'Humeur',rm:'Retirer la photo',
+like:'J’aime',cmt:'Commenter',share:'Partager',save:'Garder',saved:'Gardé',more:'Options',
+hide:'Ne plus voir ceci',del:'Supprimer la publication',hidden:'Publication masquée',undo:'Annuler',
+copied:'Publication copiée',nocopy:'Copie impossible',wcmt:'Écrire un commentaire…',send:'Envoyer',
+stories:'Histoires du jour',showimg:'Appuyez pour afficher la photo',
+search:'Chercher des personnes ou des publications',people:'Personnes à découvrir',follow:'Suivre',following:'Suivi',none:'Aucun résultat',results:'Publications',
+wmsg:'Écrire un message…',back:'Retour',n_like:'a aimé votre publication',n_cmt:'a commenté votre publication',n_fol:'vous suit maintenant',
+myposts:'Mes publications',mysaved:'Gardées',edit:'Modifier le profil',name:'Nom',bio:'Quelques mots sur vous',ok:'Enregistrer',cancel:'Annuler',empty:'Rien ici pour le moment',guest:'Nouvel invité',biodef:'Bienvenue sur Lamma',
+set:'Réglages',lang:'Langue',theme:'Apparence',auto:'Comme l’appareil',light:'Jour',dark:'Nuit',size:'Taille du texte',order:'Ordre des publications',onew:'Les plus récentes',otop:'Les plus aimées',
+saver:'Économie de données',saverd:'Les photos ne s’ouvrent que si vous appuyez dessus',counts:'Masquer le nombre de j’aime',countsd:'Sans chiffres, sans comparaison',rest:'Rappel de pause',restd:'Un rappel discret après 20 minutes',restmsg:'Vous êtes là depuis 20 minutes. Faites une petite pause.',close:'Fermer',
+now:'à l’instant',um:' min',uh:' h',ud:' j',posts:'publications',flw:'abonnements',
+f_happy:'content',f_tired:'fatigué',f_excited:'motivé',f_calm:'tranquille',f_proud:'fier'},
+en:{app:'Lamma',home:'Home',disc:'Explore',msgs:'Messages',notifs:'Activity',prof:'Profile',
+demo:'Trial version. The people and posts here are examples, and what you write stays on this device.',
+think:'What’s on your mind?',post:'Post',photo:'Photo',feel:'Mood',rm:'Remove photo',
+like:'Like',cmt:'Comment',share:'Share',save:'Keep',saved:'Kept',more:'Options',
+hide:'Don’t show me this',del:'Delete post',hidden:'Post hidden',undo:'Undo',
+copied:'Post copied',nocopy:'Couldn’t copy',wcmt:'Write a comment…',send:'Send',
+stories:'Today’s stories',showimg:'Tap to show the photo',
+search:'Search people or posts',people:'People you may know',follow:'Follow',following:'Following',none:'Nothing found',results:'Posts',
+wmsg:'Write a message…',back:'Back',n_like:'liked your post',n_cmt:'commented on your post',n_fol:'started following you',
+myposts:'My posts',mysaved:'Kept',edit:'Edit profile',name:'Name',bio:'A few words about you',ok:'Save',cancel:'Cancel',empty:'Nothing here yet',guest:'New guest',biodef:'Welcome to Lamma',
+set:'Settings',lang:'Language',theme:'Appearance',auto:'Match device',light:'Day',dark:'Night',size:'Text size',order:'Post order',onew:'Newest first',otop:'Most liked',
+saver:'Data saver',saverd:'Photos stay closed until you tap them',counts:'Hide like counts',countsd:'No numbers, no comparing',rest:'Remind me to rest',restd:'A gentle nudge after 20 minutes',restmsg:'You’ve been here 20 minutes. Take a short break.',close:'Close',
+now:'now',um:'m',uh:'h',ud:'d',posts:'posts',flw:'following',
+f_happy:'happy',f_tired:'tired',f_excited:'excited',f_calm:'calm',f_proud:'proud'}
+};
+Object.assign(T.dz,{reels:'ريلز',souk:'السوق',r_end:'كمّلت كلش. ما كاين ما زيادة دروك.',r_add:'زيد ريل',r_ex:'مثال متحرّك',all:'كلش',c_food:'ماكلة وتمر',c_craft:'حرفة يد',c_wear:'لبسة',c_tech:'تيليفونات',c_home:'الدار',haggle:'ساوم',s_add:'حطّ سلعتك',s_name:'واش تبيع؟',s_price:'السومة بالدينار',s_cat:'النوع',s_photo:'تصويرة السلعة',s_offer:'السومة لي تعرضها',s_send:'ابعث العرض للبايع',s_msg:'سلام، نحب نشري «{p}». نعطيك {o} دج، واش قلت؟',s_asked:'السومة المطلوبة',s_intro:'كل بايع عندو طابلتو. اختار، ساوم، وتفاهم مع البايع في الميساجات.',s_mine:'طابلتي',s_del:'نحّيها',da:'دج'});
+Object.assign(T.ar,{reels:'ريلز',souk:'السوق',r_end:'شاهدت كل شيء. لا مزيد الآن.',r_add:'أضف ريل',r_ex:'مثال متحرّك',all:'الكل',c_food:'أطعمة وتمور',c_craft:'صناعة يدوية',c_wear:'ملابس',c_tech:'هواتف',c_home:'المنزل',haggle:'فاوِض',s_add:'اعرض سلعتك',s_name:'ماذا تبيع؟',s_price:'السعر بالدينار',s_cat:'الفئة',s_photo:'صورة السلعة',s_offer:'السعر الذي تعرضه',s_send:'أرسل العرض للبائع',s_msg:'سلام، أريد شراء «{p}». أعرض {o} دج، ما رأيك؟',s_asked:'السعر المطلوب',s_intro:'لكل بائع طاولته. اختر، فاوض، واتفق مع البائع في الرسائل.',s_mine:'طاولتي',s_del:'إزالة',da:'دج'});
+Object.assign(T.fr,{reels:'Reels',souk:'Souk',r_end:'Vous avez tout vu. Rien de plus pour l’instant.',r_add:'Ajouter un reel',r_ex:'Exemple animé',all:'Tout',c_food:'Dattes et saveurs',c_craft:'Artisanat',c_wear:'Vêtements',c_tech:'Téléphones',c_home:'Maison',haggle:'Marchander',s_add:'Vendre un article',s_name:'Que vendez-vous ?',s_price:'Prix en dinars',s_cat:'Catégorie',s_photo:'Photo de l’article',s_offer:'Votre offre',s_send:'Envoyer l’offre au vendeur',s_msg:'Salam, je voudrais acheter « {p} ». Je propose {o} DA, ça vous va ?',s_asked:'Prix demandé',s_intro:'Chaque vendeur a son étal. Choisissez, marchandez, puis mettez-vous d’accord par message.',s_mine:'Mon étal',s_del:'Retirer',da:'DA'});
+Object.assign(T.en,{reels:'Reels',souk:'Souk',r_end:'You’ve seen everything. Nothing more for now.',r_add:'Add a reel',r_ex:'Animated example',all:'All',c_food:'Dates & food',c_craft:'Handmade',c_wear:'Clothing',c_tech:'Phones',c_home:'Home',haggle:'Haggle',s_add:'Sell something',s_name:'What are you selling?',s_price:'Price in dinars',s_cat:'Category',s_photo:'Item photo',s_offer:'Your offer',s_send:'Send offer to seller',s_msg:'Salam, I’d like to buy “{p}”. I can offer {o} DA, does that work?',s_asked:'Asking price',s_intro:'Every seller has a stall. Pick, haggle, then agree with the seller in messages.',s_mine:'My stall',s_del:'Remove',da:'DA'});
+Object.assign(T.dz,{grp:'المجموعات',join:'ادخل للمجموعة',joined:'راك عضو',members:'عضو',g_write:'اكتب حاجة للمجموعة…',msgto:'ميساج',block:'بلوكي',blocked:'تبلوكى',unblock:'نحّي البلوك',blk_list:'ناس مبلوكيين',editp:'بدّل المنشور',edited:'معدّل',rp:'انشرها عندي',rp_done:'تنشرت عندك',copy:'انسخ النص',gone:'هاد المنشور ما بقاش',reqs:'طلبات الصداقة',accept:'اقبل',decline:'رفض',w_title:'مرحبا بيك في لمّة',w_sub:'بلاصة هادية تتلاقى فيها مع ناسك.',w_name:'كيفاش نعيطولك؟',w_go:'ادخل',in:'في'});
+Object.assign(T.ar,{grp:'المجموعات',join:'انضمّ',joined:'أنت عضو',members:'عضو',g_write:'اكتب شيئاً للمجموعة…',msgto:'رسالة',block:'حظر',blocked:'تم الحظر',unblock:'إلغاء الحظر',blk_list:'المحظورون',editp:'تعديل المنشور',edited:'معدّل',rp:'أعد النشر عندي',rp_done:'نُشر في صفحتك',copy:'انسخ النص',gone:'هذا المنشور لم يعد متاحاً',reqs:'طلبات الصداقة',accept:'قبول',decline:'رفض',w_title:'مرحباً بك في لمّة',w_sub:'مكان هادئ تلتقي فيه بأهلك وأصحابك.',w_name:'بماذا نناديك؟',w_go:'دخول',in:'في'});
+Object.assign(T.fr,{grp:'Groupes',join:'Rejoindre',joined:'Membre',members:'membres',g_write:'Écrire au groupe…',msgto:'Message',block:'Bloquer',blocked:'Personne bloquée',unblock:'Débloquer',blk_list:'Personnes bloquées',editp:'Modifier la publication',edited:'modifié',rp:'Republier chez moi',rp_done:'Republié sur votre profil',copy:'Copier le texte',gone:'Cette publication n’est plus disponible',reqs:'Demandes d’amitié',accept:'Accepter',decline:'Refuser',w_title:'Bienvenue sur Lamma',w_sub:'Un endroit calme pour retrouver les vôtres.',w_name:'Comment vous appeler ?',w_go:'Entrer',in:'dans'});
+Object.assign(T.en,{grp:'Groups',join:'Join',joined:'Member',members:'members',g_write:'Write to the group…',msgto:'Message',block:'Block',blocked:'Blocked',unblock:'Unblock',blk_list:'Blocked people',editp:'Edit post',edited:'edited',rp:'Repost to my profile',rp_done:'Reposted to your profile',copy:'Copy text',gone:'This post is no longer available',reqs:'Friend requests',accept:'Accept',decline:'Decline',w_title:'Welcome to Lamma',w_sub:'A calm place to meet your people.',w_name:'What should we call you?',w_go:'Enter',in:'in'});
+const GROUPS=[{id:'g_tim',n:'ناس تيميمون',d:'أخبار الواحة والقصور',m:1240},{id:'g_cook',n:'طياب الدار',d:'وصفات جزائرية من كل ولاية',m:8650},{id:'g_dev',n:'مبرمجين دزاير',d:'خدمة، نصايح ومشاريع',m:3120},{id:'g_foot',n:'هدرة الكورة',d:'تحليل الماتشات بلا تعصّب',m:15400}];
+Object.assign(T.dz,{emoji:'إيموجي',stickers:'ستيكرز',gifup:'ابعث GIF ولا تصويرة من الجهاز',p_photo:'بدّل تصويرة البروفيل',p_cover:'تصويرة الغلاف',rmph:'نحّي التصاور'});
+Object.assign(T.ar,{emoji:'رموز',stickers:'ملصقات',gifup:'أرسل GIF أو صورة من جهازك',p_photo:'تغيير صورة الملف الشخصي',p_cover:'صورة الغلاف',rmph:'إزالة الصور'});
+Object.assign(T.fr,{emoji:'Émojis',stickers:'Stickers',gifup:'Envoyer un GIF ou une photo de l’appareil',p_photo:'Changer la photo de profil',p_cover:'Photo de couverture',rmph:'Retirer les photos'});
+Object.assign(T.en,{emoji:'Emoji',stickers:'Stickers',gifup:'Send a GIF or photo from your device',p_photo:'Change profile photo',p_cover:'Cover photo',rmph:'Remove photos'});
+const EMOJI=['😀','😂','🥰','😍','😎','😢','😡','🤔','😴','🙏','👍','👏','💪','🤲','🤝','👋','❤️','🔥','🎉','✅','⭐','🌙','🌴','🌹','☕','🍵','🍉','🐪','⚽','🇩🇿'];
+const STICKERS=[{id:'s1',e:'☕',x:'صحّة'},{id:'s2',e:'🌴',x:'يا سلام'},{id:'s3',e:'😂',x:'قتلتني بالضحك'},{id:'s4',e:'🎉',x:'مبروك'},{id:'s5',e:'🤲',x:'ربي يحفظك'},{id:'s6',e:'👋',x:'واش راك؟'},{id:'s7',e:'🌙',x:'صحّا عيدك'},{id:'s8',e:'💪',x:'يعطيك الصحة'}];
+const ANIMS=[{id:'a1',e:'👏',c:'bounce'},{id:'a2',e:'❤️',c:'pulse'},{id:'a3',e:'🐪',c:'walk'},{id:'a4',e:'😂',c:'shake'},{id:'a5',e:'⭐',c:'spin'},{id:'a6',e:'👋',c:'wave'}];
+Object.assign(T.dz,{media:'تصويرة ولا فيديو',video:'فيديو',attach:'ابعث تصويرة ولا فيديو',pages:'الصفحات',pfollow:'تبّع الصفحة',pfollowing:'راك تتبّعها',followers:'متابع',pg_write:'انشر باسم الصفحة…',mk_group:'دير مجموعة',mk_page:'دير صفحة',mk_desc:'كلمة عليها',mypage:'هذي صفحتك'});
+Object.assign(T.ar,{media:'صورة أو فيديو',video:'فيديو',attach:'أرسل صورة أو فيديو',pages:'الصفحات',pfollow:'تابِع الصفحة',pfollowing:'تتابعها',followers:'متابع',pg_write:'انشر باسم الصفحة…',mk_group:'أنشئ مجموعة',mk_page:'أنشئ صفحة',mk_desc:'وصف قصير',mypage:'هذه صفحتك'});
+Object.assign(T.fr,{media:'Photo ou vidéo',video:'Vidéo',attach:'Envoyer une photo ou une vidéo',pages:'Pages',pfollow:'Suivre la page',pfollowing:'Page suivie',followers:'abonnés',pg_write:'Publier au nom de la page…',mk_group:'Créer un groupe',mk_page:'Créer une page',mk_desc:'Courte description',mypage:'Votre page'});
+Object.assign(T.en,{media:'Photo or video',video:'Video',attach:'Send a photo or video',pages:'Pages',pfollow:'Follow page',pfollowing:'Following',followers:'followers',pg_write:'Post as the page…',mk_group:'Create a group',mk_page:'Create a page',mk_desc:'Short description',mypage:'Your page'});
+const PAGES=[{id:'pg_news',n:'أخبار الواحة',d:'جريدة محلية من تيميمون',f:5400},{id:'pg_club',n:'نادي الرمال للسياحة',d:'خرجات للصحراء كل شهر',f:9800},{id:'pg_cafe',n:'قهوة الساحة',d:'قهوة وحلويات في وهران',f:2100}];
+Object.assign(T.dz,{rooms:'الغرف',r_intro:'هنا تتلاقى مع صحابك وتلعبو. في هاد النسخة التجريبية، اللاعبين الآخرين يلعب بلاصتهم الكمبيوتر.',r_new:'حلّ غرفة',r_name:'اسم الغرفة',r_game:'اللعبة',r_open:'غرف محلولة',g_domino:'دومينو',g_ludo:'لودو',g_cards:'كارطة',g_wolf:'الذياب وسكان الدشرة',g_trade:'لعبة العقارات',soon:'قريب',r_join:'ادخل',bot:'كمبيوتر',you:'أنت',yourturn:'دورك',turnof:'الدور على',dpass:'ما عنديش، نفوّت',passed:'فوّت',left:'يسار',right:'يمين',where:'وين تحطّها؟',won:'ربح',youwon:'ربحت! صحّة ليك',dblocked:'اللعبة تبلوكات، لي عندو أقل نقاط يربح',again:'عاود اللعب',roll:'ارمي الزهر',rolled:'جاب',pickt:'اختار الحجرة لي تحرّكها',nomove:'ما كاين حتى حركة',r_chat:'اكتب في الغرفة…',r_mine:'غرفتي',r_nobots:'ما كاين حتى لاعب متوفّر'});
+Object.assign(T.ar,{rooms:'الغرف',r_intro:'هنا تلتقي بأصدقائك وتلعبون. في هذه النسخة التجريبية يلعب الكمبيوتر مكان اللاعبين الآخرين.',r_new:'افتح غرفة',r_name:'اسم الغرفة',r_game:'اللعبة',r_open:'غرف مفتوحة',g_domino:'دومينو',g_ludo:'لودو',g_cards:'ورق اللعب',g_wolf:'الذئاب وسكان القرية',g_trade:'لعبة العقارات',soon:'قريباً',r_join:'ادخل',bot:'كمبيوتر',you:'أنت',yourturn:'دورك',turnof:'الدور على',dpass:'لا أملك حجراً، أمرّر',passed:'مرّر',left:'يسار',right:'يمين',where:'أين تضعها؟',won:'فاز',youwon:'فزت! مبروك',dblocked:'أُغلقت اللعبة، يفوز صاحب أقل النقاط',again:'العب مجدداً',roll:'ارمِ النرد',rolled:'حصل على',pickt:'اختر القطعة التي تحرّكها',nomove:'لا توجد حركة ممكنة',r_chat:'اكتب في الغرفة…',r_mine:'غرفتي',r_nobots:'لا يوجد لاعبون متاحون'});
+Object.assign(T.fr,{rooms:'Salons',r_intro:'Retrouvez vos amis ici pour jouer. Dans cette version d’essai, les autres joueurs sont joués par l’ordinateur.',r_new:'Ouvrir un salon',r_name:'Nom du salon',r_game:'Jeu',r_open:'Salons ouverts',g_domino:'Dominos',g_ludo:'Ludo',g_cards:'Cartes',g_wolf:'Loups et villageois',g_trade:'Jeu immobilier',soon:'Bientôt',r_join:'Entrer',bot:'Ordinateur',you:'Vous',yourturn:'À vous de jouer',turnof:'Au tour de',dpass:'Je n’ai rien, je passe',passed:'passe',left:'Gauche',right:'Droite',where:'De quel côté ?',won:'a gagné',youwon:'Vous avez gagné !',dblocked:'Jeu bloqué : le plus petit total gagne',again:'Rejouer',roll:'Lancer le dé',rolled:'a fait',pickt:'Choisissez le pion à déplacer',nomove:'aucun coup possible',r_chat:'Écrire dans le salon…',r_mine:'Mon salon',r_nobots:'Aucun joueur disponible'});
+Object.assign(T.en,{rooms:'Rooms',r_intro:'Meet your friends here and play. In this trial version the other players are played by the computer.',r_new:'Open a room',r_name:'Room name',r_game:'Game',r_open:'Open rooms',g_domino:'Dominoes',g_ludo:'Ludo',g_cards:'Cards',g_wolf:'Wolves & villagers',g_trade:'Property game',soon:'Soon',r_join:'Join',bot:'Computer',you:'You',yourturn:'Your turn',turnof:'Turn:',dpass:'Nothing to play, pass',passed:'passed',left:'Left',right:'Right',where:'Which side?',won:'won',youwon:'You won!',dblocked:'Game blocked: lowest total wins',again:'Play again',roll:'Roll the die',rolled:'rolled',pickt:'Pick the piece to move',nomove:'no possible move',r_chat:'Write in the room…',r_mine:'My room',r_nobots:'No players available'});
+Object.assign(T.dz,{g_cards:'كارطة الثمانية',g_trade:'تاجر المدن',r_resume:'ارجع للغرفة',r_leave:'اخرج من الغرفة',r_in:'راك في غرفة',r_restart:'عاود من الأول',r_players:'لاعبين',c_draw:'اسحب كارطة',c_pass:'فوّت',c_suit:'اختار اللون',cblocked:'اللعبة تبلوكات، لي عندو أقل كوارط يربح',tr_q:'تشري {c} بـ {p} دج؟',buy:'اشري',skip:'خلّيها',bought:'شرا',paid:'خلّص',to:'لـ',bankrupt:'فلّس',tr_end:'كملو الدورات، الأغنى يربح',tq_start:'البداية',tq_chance:'حظ',tq_rest:'واحة',tq_bonus:'سوق',tq_tax:'ضريبة',w_role:'دورك',w_wolf:'ذيب',w_seer:'شوّاف',w_vill:'ساكن',w_night:'الليل',w_day:'النهار',w_kill:'اختار شكون ياكلوه الذياب الليلة',w_see:'اختار شكون تشوف حقيقتو',w_sleep:'الدشرة راقدة…',w_cont:'كمّل',w_vote:'صوّت: شكون الذيب؟',w_died:'مات في الليل',w_out:'خرّجوه بالتصويت',w_tie:'تعادل في التصويت، ما خرج حتى واحد',w_vwin:'ربحو السكان',w_wwin:'ربحو الذياب',w_dead:'راك ميّت، تتفرّج برك',w_deadtag:'ميّت',w_note:'مع ناس حقيقيين تولّي فيها الهدرة والإقناع.',mic:'تكلّم ويتكتب',mic_no:'المكروفون ما هوش متوفّر هنا',mic_note:'الهدرة بالصوت بين اللاعبين تجي مع التطبيق الحقيقي. هنا المكروفون يكتب كلامك في الدردشة برك.'});
+Object.assign(T.ar,{g_cards:'لعبة الثمانية',g_trade:'تاجر المدن',r_resume:'عُد إلى الغرفة',r_leave:'غادر الغرفة',r_in:'أنت في غرفة',r_restart:'ابدأ من جديد',r_players:'لاعبين',c_draw:'اسحب ورقة',c_pass:'مرّر',c_suit:'اختر النوع',cblocked:'أُغلقت اللعبة، يفوز صاحب أقل الأوراق',tr_q:'هل تشتري {c} بـ {p} دج؟',buy:'اشترِ',skip:'اتركها',bought:'اشترى',paid:'دفع',to:'لـ',bankrupt:'أفلس',tr_end:'انتهت الجولات، يفوز الأغنى',tq_start:'البداية',tq_chance:'حظ',tq_rest:'واحة',tq_bonus:'سوق',tq_tax:'ضريبة',w_role:'دورك',w_wolf:'ذئب',w_seer:'عرّاف',w_vill:'قروي',w_night:'الليل',w_day:'النهار',w_kill:'اختر من تفترسه الذئاب الليلة',w_see:'اختر من تكشف حقيقته',w_sleep:'القرية نائمة…',w_cont:'تابع',w_vote:'صوّت: من الذئب؟',w_died:'مات في الليل',w_out:'أُخرج بالتصويت',w_tie:'تعادل في التصويت، لم يخرج أحد',w_vwin:'فاز القرويون',w_wwin:'فازت الذئاب',w_dead:'أنت ميت، تتفرّج فقط',w_deadtag:'ميت',w_note:'مع أشخاص حقيقيين تصبح اللعبة نقاشاً وإقناعاً.',mic:'تكلّم ليُكتب',mic_no:'الميكروفون غير متاح هنا',mic_note:'المحادثة الصوتية بين اللاعبين تأتي مع التطبيق الحقيقي. هنا الميكروفون يكتب كلامك في الدردشة فقط.'});
+Object.assign(T.fr,{g_cards:'Huit américain',g_trade:'Marchand des villes',r_resume:'Revenir au salon',r_leave:'Quitter le salon',r_in:'Vous êtes dans le salon',r_restart:'Recommencer',r_players:'joueurs',c_draw:'Piocher',c_pass:'Passer',c_suit:'Choisissez la couleur',cblocked:'Jeu bloqué : la plus petite main gagne',tr_q:'Acheter {c} pour {p} DA ?',buy:'Acheter',skip:'Laisser',bought:'achète',paid:'paie',to:'à',bankrupt:'ruiné',tr_end:'Tours terminés : le plus riche gagne',tq_start:'Départ',tq_chance:'Chance',tq_rest:'Oasis',tq_bonus:'Marché',tq_tax:'Taxe',w_role:'Votre rôle',w_wolf:'loup',w_seer:'voyante',w_vill:'villageois',w_night:'Nuit',w_day:'Jour',w_kill:'Choisissez la victime des loups',w_see:'Choisissez qui démasquer',w_sleep:'Le village dort…',w_cont:'Continuer',w_vote:'Votez : qui est le loup ?',w_died:'mort cette nuit',w_out:'éliminé par le vote',w_tie:'Égalité au vote, personne ne sort',w_vwin:'Les villageois gagnent',w_wwin:'Les loups gagnent',w_dead:'Vous êtes mort, vous regardez',w_deadtag:'mort',w_note:'Avec de vraies personnes, tout se joue dans la discussion.',mic:'Dicter',mic_no:'Micro indisponible ici',mic_note:'La voix entre joueurs viendra avec la vraie application. Ici, le micro écrit seulement vos paroles dans le chat.'});
+Object.assign(T.en,{g_cards:'Crazy eights',g_trade:'City trader',r_resume:'Back to the room',r_leave:'Leave room',r_in:'You are in room',r_restart:'Restart',r_players:'players',c_draw:'Draw a card',c_pass:'Pass',c_suit:'Pick a suit',cblocked:'Game blocked: smallest hand wins',tr_q:'Buy {c} for {p} DA?',buy:'Buy',skip:'Skip',bought:'bought it',paid:'paid',to:'to',bankrupt:'bankrupt',tr_end:'Rounds over: richest wins',tq_start:'Start',tq_chance:'Chance',tq_rest:'Oasis',tq_bonus:'Market',tq_tax:'Tax',w_role:'Your role',w_wolf:'wolf',w_seer:'seer',w_vill:'villager',w_night:'Night',w_day:'Day',w_kill:'Pick the wolves’ victim',w_see:'Pick someone to reveal',w_sleep:'The village sleeps…',w_cont:'Continue',w_vote:'Vote: who is the wolf?',w_died:'died in the night',w_out:'voted out',w_tie:'Tied vote, nobody leaves',w_vwin:'Villagers win',w_wwin:'Wolves win',w_dead:'You are dead, just watching',w_deadtag:'dead',w_note:'With real people this becomes talk and persuasion.',mic:'Dictate',mic_no:'Microphone not available here',mic_note:'Voice between players comes with the real app. Here the mic only writes your words into the chat.'});
+Object.assign(T.dz,{r_how:'كيفاش تتلعب',r_goal:'الهدف',r_enter:'ادخل للغرفة'});
+Object.assign(T.ar,{r_how:'طريقة اللعب',r_goal:'الهدف',r_enter:'ادخل الغرفة'});
+Object.assign(T.fr,{r_how:'Comment jouer',r_goal:'But',r_enter:'Entrer dans le salon'});
+Object.assign(T.en,{r_how:'How to play',r_goal:'Goal',r_enter:'Enter the room'});
+const RULES={
+domino:{dz:['كمّل حجراتك قبل الآخرين.','كل لاعب يدّي 7 حجرات، ولي عندو أكبر دوبل يبدا بيه.','في دورك حطّ حجرة فيها نفس الرقم تاع واحد من طرفي السلسلة.','ما عندكش حجرة تصلح؟ تفوّت دورك، ما كاينش سحب.','إذا تبلوكات اللعبة، لي عندو أقل نقاط في يدّو يربح.'],
+ar:['أنهِ أحجارك قبل الآخرين.','يأخذ كل لاعب 7 أحجار، ويبدأ صاحب أكبر حجر مزدوج.','في دورك ضع حجراً يحمل نفس رقم أحد طرفي السلسلة.','إن لم يكن لديك حجر مناسب تمرّر دورك، فلا يوجد سحب.','إذا أُغلقت اللعبة يفوز صاحب أقل مجموع نقاط في يده.'],
+fr:['Posez tous vos dominos avant les autres.','Chacun reçoit 7 dominos ; le plus gros double commence.','À votre tour, posez un domino qui porte le même chiffre qu’un des deux bouts de la chaîne.','Rien à poser ? Vous passez : il n’y a pas de pioche.','Si le jeu est bloqué, le plus petit total de points en main gagne.'],
+en:['Play all your tiles before the others.','Everyone gets 7 tiles; the highest double starts.','On your turn, place a tile that matches the number at either end of the chain.','Nothing fits? You pass: there is no drawing.','If the game is blocked, the lowest total of points in hand wins.']},
+ludo:{dz:['وصّل زوج حجراتك للدار في الوسط قبل الآخرين.','لازم يجيك 6 باش تخرّج حجرة من القاعدة، والـ6 تعطيك رمية زايدة.','إذا طحت على حجرة خصم ترجع لقاعدتها، إلا في خانات البداية الملوّنة فهي آمنة.','لازم الرقم بالضبط باش تدخّل الحجرة للدار.'],
+ar:['أوصل قطعتيك إلى البيت في الوسط قبل الآخرين.','تحتاج إلى 6 لإخراج قطعة من القاعدة، والـ6 تمنحك رمية إضافية.','إذا نزلت على قطعة خصم عادت إلى قاعدتها، إلا في خانات البداية الملوّنة فهي آمنة.','تحتاج إلى الرقم المضبوط لإدخال القطعة إلى البيت.'],
+fr:['Amenez vos deux pions à la maison, au centre, avant les autres.','Il faut un 6 pour sortir un pion de la base, et un 6 donne un lancer de plus.','Tomber sur un pion adverse le renvoie à sa base, sauf sur les cases de départ colorées, qui sont sûres.','Il faut le chiffre exact pour entrer à la maison.'],
+en:['Bring both your pieces home to the centre before the others.','You need a 6 to leave the base, and a 6 gives you another roll.','Landing on an opponent sends it back to its base, except on the coloured start squares, which are safe.','You need the exact number to enter home.']},
+cards:{dz:['كمّل كوارطك قبل الآخرين.','كل لاعب يدّي 5 كوارط.','العب كارطة بنفس اللون (♠ ♥ ♦ ♣) ولا بنفس الرقم تاع الكارطة لي في الوسط.','الثمانية تتلعب على أي كارطة، وتختار بيها اللون الجديد.','ما عندكش؟ اسحب كارطة: إذا تصلح العبها، وإذا لا يفوت دورك.'],
+ar:['أنهِ أوراقك قبل الآخرين.','يأخذ كل لاعب 5 أوراق.','العب ورقة من نفس النوع (♠ ♥ ♦ ♣) أو بنفس رقم الورقة التي في الوسط.','الثمانية تُلعب على أي ورقة، وتختار بها النوع الجديد.','إن لم تجد ورقة فاسحب واحدة: إن صلحت فالعبها، وإلا انتقل الدور.'],
+fr:['Videz votre main avant les autres.','Chacun reçoit 5 cartes.','Jouez une carte de la même couleur (♠ ♥ ♦ ♣) ou du même rang que la carte du milieu.','Un 8 se joue sur n’importe quelle carte et vous choisissez la nouvelle couleur.','Rien à jouer ? Piochez une carte : jouez-la si elle convient, sinon le tour passe.'],
+en:['Empty your hand before the others.','Everyone gets 5 cards.','Play a card of the same suit (♠ ♥ ♦ ♣) or the same rank as the card in the middle.','An 8 can be played on anything, and you pick the new suit.','Nothing to play? Draw a card: play it if it fits, otherwise the turn passes.']},
+trade:{dz:['كون الأغنى (دراهم ومدن) كي تكمل الدورات، ولا خلّي الآخرين يفلّسو.','تبدا بـ 1000 دج. ارمي الزهر وتقدّم، وكل ما تفوت على البداية تدّي 150 دج.','مدينة ما عندها مولى: تقدر تشريها. مدينة تاع لاعب آخر: تخلّصلو الكراء، ربع سومتها.','حظ: تربح ولا تخسر. ضريبة: تخلّص 100. سوق: تدّي 100. واحة: ترتاح.','لي دراهمو يهبطو تحت الصفر يفلّس ويخرج. اللعبة تكمل بعد 15 دور لكل لاعب.'],
+ar:['كن الأغنى (نقوداً ومدناً) عند انتهاء الجولات، أو أفلِس الآخرين.','تبدأ بـ 1000 دج. ارمِ النرد وتقدّم، وكلما مررت بالبداية أخذت 150 دج.','مدينة بلا مالك: يمكنك شراؤها. مدينة يملكها لاعب آخر: تدفع له الإيجار، ربع سعرها.','حظ: تربح أو تخسر. ضريبة: تدفع 100. سوق: تأخذ 100. واحة: استراحة.','من ينزل رصيده تحت الصفر يفلس ويخرج. تنتهي اللعبة بعد 15 دوراً لكل لاعب.'],
+fr:['Soyez le plus riche (argent et villes) à la fin des tours, ou ruinez les autres.','Vous commencez avec 1000 DA. Lancez le dé et avancez ; chaque passage au départ rapporte 150 DA.','Ville sans propriétaire : vous pouvez l’acheter. Ville d’un autre joueur : vous lui payez un loyer, le quart du prix.','Chance : gain ou perte. Taxe : vous payez 100. Marché : vous recevez 100. Oasis : repos.','Un joueur sous zéro est ruiné et sort. La partie s’arrête après 15 tours par joueur.'],
+en:['Be the richest (cash and cities) when the rounds end, or bankrupt the others.','You start with 1000 DA. Roll the die and move; each time you pass Start you get 150 DA.','A city with no owner: you may buy it. A city owned by another player: you pay rent, a quarter of its price.','Chance: win or lose money. Tax: pay 100. Market: get 100. Oasis: rest.','A player below zero is bankrupt and out. The game ends after 15 turns per player.']},
+wolf:{dz:['السكان يربحو إذا خرّجو كل الذياب. الذياب يربحو كي يولّو قد الباقيين في العدد.','الأدوار تتوزّع بالسرّ: زوج ذياب (واحد إذا اللاعبين قلال)، شوّاف واحد، والباقي سكان.','في الليل: الذياب ياكلو لاعب، والشوّاف يشوف حقيقة لاعب واحد.','في النهار: كل واحد يصوّت، ولي يدّي أكثر أصوات يخرج. التعادل ما يخرّج حتى واحد.','إذا متّ تبقى تتفرّج حتى تكمل اللعبة.'],
+ar:['يفوز القرويون إذا أخرجوا كل الذئاب. تفوز الذئاب حين يساوي عددها عدد الباقين.','توزَّع الأدوار سراً: ذئبان (واحد إذا قلّ اللاعبون)، عرّاف واحد، والبقية قرويون.','في الليل: تفترس الذئاب لاعباً، ويكشف العرّاف حقيقة لاعب واحد.','في النهار: يصوّت الجميع، ويخرج صاحب أكثر الأصوات. التعادل لا يُخرج أحداً.','إذا متّ تبقى متفرّجاً حتى نهاية اللعبة.'],
+fr:['Les villageois gagnent s’ils éliminent tous les loups. Les loups gagnent quand ils sont aussi nombreux que les autres.','Les rôles sont secrets : deux loups (un seul si les joueurs sont peu nombreux), une voyante, et des villageois.','La nuit : les loups dévorent un joueur, et la voyante découvre le rôle d’un joueur.','Le jour : tout le monde vote, et le plus désigné sort. En cas d’égalité, personne ne sort.','Si vous mourez, vous regardez la fin de la partie.'],
+en:['Villagers win by removing every wolf. Wolves win once they are as many as the others.','Roles are secret: two wolves (one if players are few), one seer, and villagers.','At night: the wolves eat a player, and the seer learns one player’s role.','By day: everyone votes and the most voted player leaves. A tie removes nobody.','If you die, you watch until the game ends.']}};
+const rulesHTML=g=>{const l=RULES[g][S.lang]||RULES[g].dz;return `<div class="rules"><p><b>${t('r_goal')}:</b> ${esc(l[0])}</p><ol>${l.slice(1).map(x=>`<li>${esc(x)}</li>`).join('')}</ol></div>`};
+const ROOMS=[{id:'rm1',n:'قهوة الحومة',g:'domino',p:['amine','karim','sofiane']},{id:'rm2',n:'سهرة لودو',g:'ludo',p:['yasmine','lynda','nesrine']},{id:'rm3',n:'دومينو بعد العشا',g:'domino',p:['lynda','nesrine','yasmine']},{id:'rm4',n:'كارطة الحومة',g:'cards',p:['karim','amine','lynda']},{id:'rm5',n:'ليلة الذياب',g:'wolf',p:['sofiane','yasmine','karim','lynda','amine']},{id:'rm6',n:'تجّار المدن',g:'trade',p:['nesrine','sofiane','amine']}];
+const CATS=['food','craft','wear','tech','home'];
+const REELS=[{id:'r1',u:'sofiane',pic:'dunes',x:'المغرب في تيميمون، بلا هدرة.'},{id:'r2',u:'karim',steps:['سخّن الما','زيد التاي والنعناع','صبّ من الفوق باش تجي الرغوة'],x:'أتاي صحراوي في ثلاث خطوات'},{id:'r3',u:'lynda',pic:'sea',x:'صباح العاصمة من السطح'}];
+const LANGS={dz:'الدارجة',ar:'العربية',fr:'Français',en:'English'};
+const FEEL={happy:'😊',tired:'😮‍💨',excited:'🔥',calm:'🍵',proud:'💪'};
+const I={
+home:'<path d="M3 11l9-7 9 7v9a1 1 0 0 1-1 1h-5v-6H9v6H4a1 1 0 0 1-1-1z"/>',
+search:'<circle cx="11" cy="11" r="7"/><path d="M20 20l-4-4"/>',
+msg:'<path d="M4 5h16v11H9l-5 4z"/>',
+bell:'<path d="M6 16v-5a6 6 0 0 1 12 0v5l2 2H4z"/><path d="M10 21h4"/>',
+user:'<path d="M6 21v-9a6 6 0 0 1 12 0v9z"/><circle cx="12" cy="13" r="2"/>',
+gear:'<circle cx="12" cy="12" r="3"/><path d="M12 3v3M12 18v3M3 12h3M18 12h3M5.6 5.6l2.1 2.1M16.3 16.3l2.1 2.1M5.6 18.4l2.1-2.1M16.3 7.7l2.1-2.1"/>',
+star:'<path d="M12 21V11"/><path d="M12 11C10 7 6 6 3 8"/><path d="M12 11c2-4 6-5 9-3"/><path d="M12 11C11 7 8 4 5 4"/><path d="M12 11c1-4 4-7 7-7"/>',
+share:'<path d="M4 12v7h16v-7"/><path d="M12 15V4"/><path d="M8 8l4-4 4 4"/>',
+save:'<path d="M6 4h12v17l-6-4-6 4z"/>',
+more:'<circle cx="5" cy="12" r="1.3"/><circle cx="12" cy="12" r="1.3"/><circle cx="19" cy="12" r="1.3"/>',
+image:'<rect x="3" y="5" width="18" height="14" rx="2"/><circle cx="9" cy="10" r="1.6"/><path d="M4 18l5-5 4 4 3-3 4 4"/>',
+send:'<path d="M4 12l16-8-6 16-3-6z"/>',
+back:'<path d="M15 5l-7 7 7 7"/>',
+x:'<path d="M6 6l12 12M18 6L6 18"/>',
+play:'<path d="M7 4l13 8-13 8z"/>',
+bag:'<path d="M5 8h14l-1 13H6z"/><path d="M9 8V6a3 3 0 0 1 6 0v2"/>',
+plus:'<path d="M12 5v14M5 12h14"/>',
+mic:'<rect x="9" y="3" width="6" height="11" rx="3"/><path d="M5 11a7 7 0 0 0 14 0M12 18v3"/>',
+dice:'<rect x="4" y="4" width="16" height="16" rx="3"/><path d="M9 9h.01M15 15h.01M15 9h.01M9 15h.01M12 12h.01"/>',
+smile:'<circle cx="12" cy="12" r="9"/><path d="M8.5 14a4 4 0 0 0 7 0"/><path d="M9 10h.01M15 10h.01"/>'
+};
+const ic=(n,c='')=>`<svg class="ic ${c}" viewBox="0 0 24 24" aria-hidden="true">${I[n]}</svg>`;
+const PIC={
+dunes:'<svg viewBox="0 0 400 230" role="img" aria-label="Red ksar and palms of Timimoun at sunset"><defs><linearGradient id="g1" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#3A2A5E"/><stop offset=".55" stop-color="#E8703A"/><stop offset="1" stop-color="#F7C25A"/></linearGradient></defs><rect width="400" height="230" fill="url(#g1)"/><circle cx="285" cy="128" r="30" fill="#FFE39A"/><path d="M0 160Q90 110 190 150T400 130V230H0z" fill="#C8642A"/><path d="M0 190Q120 140 240 185T400 170V230H0z" fill="#9E4420"/><path d="M36 196v-52l7-11 7 11h16l7-11 7 11h16l7-11 7 11h16l7-11 7 11v52z" fill="#7A2A1A"/><path d="M82 196v-22a7 7 0 0 1 14 0v22z" fill="#3A1209"/><g stroke="#2C3B1C" stroke-width="4" fill="none" stroke-linecap="round"><path d="M196 205v-52"/><path d="M196 153c-8-12-22-14-32-8M196 153c8-12 22-14 32-8M196 153c-3-14-14-22-24-22M196 153c3-14 14-22 24-22"/><path d="M236 208v-36"/><path d="M236 172c-6-9-16-10-23-6M236 172c6-9 16-10 23-6M236 172c-2-10-10-16-17-16M236 172c2-10 10-16 17-16"/></g><path d="M0 215Q150 180 400 208V230H0z" fill="#6E2B17"/></svg>',
+sea:'<svg viewBox="0 0 400 230" role="img" aria-label="White rooftops above the bay"><rect width="400" height="230" fill="#8FD0EE"/><rect y="95" width="400" height="60" fill="#1F7FB5"/><rect y="118" width="400" height="37" fill="#196A9A"/><g fill="#F7F7F2"><rect x="0" y="150" width="70" height="80"/><rect x="60" y="132" width="62" height="98"/><rect x="118" y="160" width="74" height="70"/><rect x="186" y="140" width="56" height="90"/><rect x="238" y="166" width="80" height="64"/><rect x="312" y="146" width="88" height="84"/></g><g fill="#18203A"><path d="M76 168a8 8 0 0 1 16 0v14H76z"/><path d="M202 172a8 8 0 0 1 16 0v14h-16z"/><path d="M336 176a8 8 0 0 1 16 0v14h-16z"/><rect x="20" y="180" width="12" height="14"/><rect x="140" y="186" width="12" height="14"/><rect x="262" y="190" width="12" height="14"/></g><circle cx="340" cy="46" r="20" fill="#FFF3B8"/></svg>'
+};
+const U={
+amine:{n:'أمين بوزيد',city:'وهران',c:'#1F6FA8'},
+yasmine:{n:'ياسمين حداد',city:'قسنطينة',c:'#B8437A'},
+karim:{n:'كريم آيت علي',city:'تيزي وزو',c:'#C7751A'},
+lynda:{n:'ليندة مرابط',city:'الجزائر العاصمة',c:'#6B4FB3'},
+sofiane:{n:'سفيان بن عمر',city:'تيميمون',c:'#B5482C'},
+nesrine:{n:'نسرين خليفي',city:'عنابة',c:'#2B8C8C'}
+};
+const now=Date.now(),M=60000;
+let S={lang:'dz',theme:'auto',size:1,saver:false,order:'new',counts:false,rest:false,
+tab:'home',ptab:'mine',me:{name:'',bio:''},liked:{},saved:{},hid:{},follows:{yasmine:1,sofiane:1},reqs:['nesrine','amine'],joined:{g_tim:1},blocked:{},onb:false,pfollow:{pg_news:1},mypages:[],mygroups:[],seenStory:{},read:{},seenN:false,
+posts:[
+{id:'p1',u:'yasmine',t:now-12*M,x:'صباح الخير يا لحباب ☕ قهوة ومطلوع سخون، ما كاين ما خير.',likes:48,cm:[{u:'karim',x:'صحّة ليك! خلّيلنا شوية 😄'}]},
+{id:'p2',u:'sofiane',t:now-55*M,x:'غروب الشمس في تيميمون. الواحة الحمراء كنز ما يتقدّرش.',pic:'dunes',likes:213,cm:[{u:'lynda',x:'يا سلام، لازم نروح هاد العام'},{u:'amine',x:'تصويرة تهبّل'}]},
+{id:'p3',u:'amine',t:now-180*M,x:'شكون يعرف بلاصة مليحة للتخييم في جيجل؟ رايحين مع الصحاب السمانة الجاية.',likes:17,cm:[]},
+{id:'p4',u:'lynda',t:now-360*M,x:'من سطح الدار في القصبة. العاصمة كي تكون السما صافية حاجة أخرى.',pic:'sea',likes:156,cm:[{u:'nesrine',x:'البهجة ديما زينة'}]},
+{id:'p5',u:'karim',t:now-1560*M,x:'اليوم كمّلت المشروع الأول تاعي في البرمجة. تعبت بصح الحمد لله.',feel:'proud',likes:92,cm:[{u:'yasmine',x:'مبروك! ربي يوفقك'}]},
+{id:'p6',u:'nesrine',t:now-1800*M,x:'الخضرة غلات بزاف هاد السمانة ولا غير أنا لي راني نشوف؟ 😅',likes:64,cm:[]},
+{id:'q1',u:'sofiane',g:'g_tim',t:now-40*M,x:'السوق تاع الخميس عامر اليوم. لي يحب التمر الجديد يجي بكري.',likes:31,cm:[]},
+{id:'q2',u:'yasmine',g:'g_cook',t:now-200*M,x:'شكون عندو السرّ تاع الرشتة العاصمية؟ المرقة ما تجينيش كيما تاع يمّا.',likes:77,cm:[{u:'lynda',x:'القرفة والحمص، وما تزرّبيش عليها'}]},
+{id:'q3',u:'karim',g:'g_dev',t:now-500*M,x:'نحوّس على واحد يخدم معايا على تطبيق للفلاحين. لي مهتم يبعثلي.',likes:22,cm:[]},
+{id:'q4',u:'amine',g:'g_foot',t:now-90*M,x:'واش رايكم في التشكيلة تاع الماتش الجاي؟',likes:140,cm:[]},
+{id:'k1',u:'',pg:'pg_news',t:now-25*M,x:'سوق التمور يتحلّ السمانة الجاية في ساحة القصر.',likes:310,cm:[]},
+{id:'k2',u:'',pg:'pg_club',t:now-400*M,x:'خرجة لعرق تيميمون نهار الجمعة. البلايص محدودة.',pic:'dunes',likes:180,cm:[]},
+{id:'k3',u:'',pg:'pg_cafe',t:now-700*M,x:'قلب اللوز جديد كل صباح ☕',likes:95,cm:[]}
+],
+prods:[
+{id:'g1',u:'sofiane',n:'قلّة فخار تيميمون',price:1500,cat:'craft',e:'🏺'},
+{id:'g2',u:'sofiane',n:'تمر حميرة، 1 كغ',price:700,cat:'food',e:'🌴'},
+{id:'g3',u:'karim',n:'زيت زيتون القبايل، 1 ل',price:1200,cat:'food',e:'🫒'},
+{id:'g4',u:'karim',n:'خلخال فضة بني يني',price:6500,cat:'craft',e:'💍'},
+{id:'g5',u:'yasmine',n:'قندورة قسنطينية',price:28000,cat:'wear',e:'👗'},
+{id:'g6',u:'amine',n:'تيليفون مستعمل، حالة مليحة',price:32000,cat:'tech',e:'📱'},
+{id:'g7',u:'nesrine',n:'سلّة حلفاء',price:800,cat:'home',e:'🧺'},
+{id:'g8',u:'lynda',n:'صينية نحاس منقوشة',price:4500,cat:'home',e:'🍽️'}],
+chats:{amine:[{m:0,x:'سلام خويا، واش راك؟'},{m:1,x:'لاباس الحمد لله، وانت؟'},{m:0,x:'نتلاقاو غدوة في القهوة؟'}],lynda:[{m:0,x:'شفت التصاور تاع العرس؟ يهبّلو'}]}
+};
+const STORIES=[{u:'sofiane',x:'الطريق لتمنراست. 1900 كيلومتر وما عيّيناش.',c:'#B5482C'},{u:'yasmine',x:'الجسور المعلّقة في الصباح بكري',c:'#B8437A'},{u:'karim',x:'زيت الزيتون الجديد وصل من الدشرة',c:'#5C7A1F'},{u:'nesrine',x:'البحر اليوم هادي في سرايدي',c:'#2B8C8C'}];
+const NOTIFS=[{u:'yasmine',k:'n_like',t:now-8*M},{u:'karim',k:'n_cmt',t:now-70*M},{u:'lynda',k:'n_fol',t:now-300*M}];
+let DICT=null;
+let V={listening:false,room:null,spd:850,dvid:null,page:null,panel:null,cdraft:'',cemo:false,user:null,group:null,prev:'home',wname:'',myReels:[],cat:'all',simg:null,pickFor:'post',draft:'',dimg:null,dfeel:null,feelOpen:false,open:{},menu:null,q:'',chat:null,sheet:null,undo:null};
+
+const KEY='lamma-v2';
+function load(){const seed=S.posts.slice();try{const d=JSON.parse(localStorage.getItem(KEY)||'null');if(d&&typeof d==='object')S=Object.assign(S,d)}catch(e){}
+  if(!Array.isArray(S.posts))S.posts=[];['mygroups','mypages'].forEach(k=>{if(!Array.isArray(S[k]))S[k]=[]});
+  seed.forEach(s=>{if(!S.posts.some(p=>p.id===s.id))S.posts.push(s)});
+  S.posts=S.posts.filter(p=>p&&(p.x||p.pic||p.rp));
+  S.posts=S.posts.filter(p=>!p.pg||PAGES.concat(S.mypages).some(g=>g.id===p.pg));
+  if(!['home','reels','souk','msgs','prof','disc','notifs','rooms'].includes(S.tab))S.tab='home';}
+function save(){try{const c=JSON.parse(JSON.stringify(S));c.posts.forEach(p=>{if(p.img)delete p.img;if(p.vid)delete p.vid});c.prods.forEach(p=>{if(p.img)delete p.img});Object.keys(c.chats).forEach(k=>{c.chats[k]=c.chats[k].filter(m=>m.k!=='img'&&m.k!=='vid')});localStorage.setItem(KEY,JSON.stringify(c))}catch(e){}}
+const $=s=>document.querySelector(s);
+const esc=s=>String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+const t=k=>(T[S.lang]||T.dz)[k]||k;
+const usr=id=>id==='me'?{n:S.me.name||t('guest'),city:'',c:'var(--accent)'}:U[id]||{n:'…',city:'',c:'var(--muted)'};
+const av=(id,s)=>{const u=usr(id),ph=id==='me'&&S.me.photo;return `<span class="av${ph?' ph':''}" style="--c:${u.c}${s?';--s:'+s+'px':''}" aria-hidden="true">${ph?`<img src="${S.me.photo}" alt="">`:esc([...u.n.trim()][0]||'·')}</span>`};
+const egrid=()=>`<div class="egrid">${EMOJI.map(e=>`<button type="button" data-a="emo" data-v="${e}" aria-label="${e}">${e}</button>`).join('')}</div>`;
+function ago(ts){const m=Math.floor((Date.now()-ts)/M);if(m<1)return t('now');if(m<60)return m+t('um');const h=Math.floor(m/60);if(h<24)return h+t('uh');return Math.floor(h/24)+t('ud')}
+
+function applyPrefs(){
+  const r=document.documentElement,rtl=S.lang==='dz'||S.lang==='ar';
+  r.lang={dz:'ar-DZ',ar:'ar',fr:'fr',en:'en'}[S.lang];r.dir=rtl?'rtl':'ltr';
+  r.classList.toggle('t-light',S.theme==='light');r.classList.toggle('t-dark',S.theme==='dark');
+  r.style.fontSize=[14.5,16,18][S.size]+'px';
+  $('#brand').textContent=t('app');
+  $('#hr').innerHTML=ic('dice');$('#hr').setAttribute('aria-label',t('rooms'));$('#hr').title=t('rooms');$('#hs').innerHTML=ic('search');$('#hs').setAttribute('aria-label',t('disc'));$('#hb').innerHTML=ic('bell')+(S.seenN?'':'<i class="dot"></i>');$('#hb').setAttribute('aria-label',t('notifs'));
+}
+function renderNav(){
+  const unread=Object.keys(S.chats).some(k=>!S.read[k]&&S.chats[k].length&&!S.chats[k][S.chats[k].length-1].m);
+  const tabs=[['home','home','home'],['reels','play','reels'],['souk','bag','souk'],['msgs','msg','msgs'],['prof','user','prof']];
+  $('#nav').innerHTML=tabs.map(([id,i,k])=>`<button data-a="tab" data-v="${id}" ${S.tab===id?'aria-current="page"':''}>${ic(i)}<span>${t(k)}</span>${(id==='msgs'&&unread)||(id==='notifs'&&!S.seenN)?'<i class="dot"></i>':''}</button>`).join('');
+}
+function postHTML(p){
+  const pgo=p.pg?allP().find(x=>x.id===p.pg):null,u=pgo?{n:pgo.n,city:''}:usr(p.u),mine=pgo?!!pgo.mine:p.u==='me',lk=!!S.liked[p.id],sv=!!S.saved[p.id],n=p.likes+(lk?1:0),g=p.g&&S.tab!=='group'?allG().find(x=>x.id===p.g):null;
+  let media='';
+  const src=p.vid?`<video src="${p.vid}" controls playsinline preload="metadata"></video>`:p.img?`<img src="${p.img}" alt="">`:p.pic?PIC[p.pic]:'';
+  if(src)media=(S.saver&&!V.open['i'+p.id])?`<button class="veil" data-a="img" data-v="${p.id}">${ic('image')}${t('showimg')}</button>`:`<div class="media">${src}</div>`;
+  let quote='';
+  if(p.rp){const o=P(p.rp);quote=o&&ok(o)?`<div class="quote"><b>${esc(who(o))}</b>${o.x?`<span dir="auto">${esc(o.x)}</span>`:''}${o.pic&&!S.saver?`<div class="media">${PIC[o.pic]}</div>`:''}</div>`:`<div class="quote muted">${t('gone')}</div>`}
+  const cm=V.open[p.id]?`<div class="cmts">${p.cm.filter(c=>!S.blocked[c.u]).map(c=>`<div class="cm">${av(c.u)}<div><b>${esc(usr(c.u).n)}</b><span dir="auto">${esc(c.x)}</span></div></div>`).join('')}
+    <form class="inline" data-f="cmt" data-v="${p.id}"><input type="text" id="c-${p.id}" placeholder="${t('wcmt')}" aria-label="${t('wcmt')}" autocomplete="off"><button class="sendbtn" aria-label="${t('send')}">${ic('send','flip')}</button></form></div>`:'';
+  const items=mine?`${p.rp?'':`<button data-a="editp" data-v="${p.id}">${t('editp')}</button>`}<button data-a="del" data-v="${p.id}">${t('del')}</button>`:`<button data-a="hide" data-v="${p.id}">${t('hide')}</button>${pgo?'':`<button data-a="block" data-v="${p.u}">${t('block')} · ${esc(u.n)}</button>`}`;
+  return `<article class="card post">
+    <div class="head"><button class="ulink" data-a="${pgo?'page':'user'}" data-v="${pgo?pgo.id:p.u}">${pgo?gav(pgo):av(p.u)}<span class="who"><b>${esc(u.n)}${p.feel?` <small>· ${FEEL[p.feel]} ${t('f_'+p.feel)}</small>`:''}</b><small>${g?t('in')+' <bdi>'+esc(g.n)+'</bdi> · ':u.city?'<bdi>'+esc(u.city)+'</bdi> · ':''}<bdi>${ago(p.t)}</bdi>${p.ed?' · '+t('edited'):''}</small></span></button>
+      <div class="menu"><button class="iconbtn" data-a="menu" data-v="${p.id}" aria-label="${t('more')}" aria-expanded="${V.menu===p.id}">${ic('more')}</button>
+      ${V.menu===p.id?`<div class="pop">${items}</div>`:''}</div></div>
+    ${p.x?`<p dir="auto">${esc(p.x)}</p>`:''}${quote}${media}
+    <div class="acts">
+      <button data-a="like" data-v="${p.id}" class="${lk?'on':''}" aria-pressed="${lk}" aria-label="${t('like')}">${ic('star')}${S.counts?'':`<span class="num">${n}</span>`}</button>
+      <button data-a="cm" data-v="${p.id}" aria-label="${t('cmt')}" aria-expanded="${!!V.open[p.id]}">${ic('msg')}<span class="num">${p.cm.length||''}</span></button>
+      <button data-a="share" data-v="${p.id}" aria-label="${t('share')}">${ic('share')}</button>
+      <button data-a="save" data-v="${p.id}" class="${sv?'on sv':''}" aria-pressed="${sv}" aria-label="${t('save')}">${ic('save')}</button>
+    </div>${cm}</article>`;
+}
+const allG=()=>[...GROUPS,...S.mygroups],allP=()=>[...PAGES,...S.mypages];
+const who=p=>{const g=p.pg&&allP().find(x=>x.id===p.pg);return g?g.n:usr(p.u).n};
+const ok=p=>!S.hid[p.id]&&!S.blocked[p.u];
+const srt=l=>l.sort((a,b)=>S.order==='top'?(b.likes+(S.liked[b.id]?1:0))-(a.likes+(S.liked[a.id]?1:0)):b.t-a.t);
+const visible=()=>srt(S.posts.filter(p=>ok(p)&&(!p.g||S.joined[p.g])&&(!p.pg||S.pfollow[p.pg]||S.mypages.some(x=>x.id===p.pg))));
+const gav=(g,s)=>`<span class="gav" ${s?`style="--s:${s}px"`:''} aria-hidden="true">${esc([...g.n][0])}</span>`;
+const feed=l=>l.map(postHTML).join('')||`<p class="empty">${t('empty')}</p>`;
+const backbar=n=>`<div class="chathead"><button class="iconbtn" data-a="back" aria-label="${t('back')}">${ic('back','flip')}</button><b>${esc(n)}</b></div>`;
+function composer(g){
+  const ph=t(g==='pg'?'pg_write':g?'g_write':'think');
+  return `<section class="card composer"><div class="row">${av('me')}<textarea id="draft" rows="2" placeholder="${ph}" aria-label="${ph}" dir="auto">${esc(V.draft)}</textarea></div>
+    ${V.dimg||V.dvid?`<div class="preview">${V.dvid?`<video src="${V.dvid}" controls playsinline preload="metadata"></video>`:`<img src="${V.dimg}" alt="">`}<button class="chip" data-a="rmimg" style="margin-top:6px">${ic('x')}${t('rm')}</button></div>`:''}
+    ${V.feelOpen?`<div class="tools">${Object.keys(FEEL).map(f=>`<button class="chip" data-a="feel" data-v="${f}" aria-pressed="${V.dfeel===f}">${FEEL[f]} ${t('f_'+f)}</button>`).join('')}</div>`:''}
+    ${V.cemo?egrid():''}<div class="tools"><button class="chip" data-a="pick">${ic('image')}${t('media')}</button><button class="chip" data-a="cemo" aria-pressed="${!!V.cemo}">${t('emoji')}</button><button class="chip" data-a="feelopen" aria-pressed="${!!V.dfeel}">${ic('smile')}${V.dfeel?FEEL[V.dfeel]+' '+t('f_'+V.dfeel):t('feel')}</button>
+    <button class="btn push" id="postbtn" data-a="post" ${V.draft.trim()||V.dimg||V.dvid?'':'disabled'}>${t('post')}</button></div></section>`;
+}
+function home(){
+  return `<p class="note">${t('demo')}</p>
+  <section aria-label="${t('stories')}"><div class="stories">${STORIES.map((s,i)=>S.blocked[s.u]?'':`<button class="story ${S.seenStory[i]?'seen':''}" data-a="story" data-v="${i}"><span class="ring">${av(s.u)}</span><span>${esc(usr(s.u).n.split(' ')[0])}</span></button>`).join('')}</div></section>
+  ${composer()}${feed(visible())}`;
+}
+function userView(){
+  const k=V.user,u=U[k],f=!!S.follows[k];
+  return `${backbar(u.n)}<section class="card profile">${av(k)}<h1>${esc(u.n)}</h1><p>${esc(u.city)}</p>
+    <div class="tools" style="justify-content:center"><button class="btn sm ${f?'ghost':''}" data-a="follow" data-v="${k}" aria-pressed="${f}">${t(f?'following':'follow')}</button><button class="btn sm ghost" data-a="chatto" data-v="${k}">${t('msgto')}</button><button class="btn sm ghost" data-a="block" data-v="${k}">${t('block')}</button></div></section>
+  ${feed(srt(S.posts.filter(p=>p.u===k&&ok(p)&&!p.g&&!p.pg)))}`;
+}
+function groupView(){
+  const g=allG().find(x=>x.id===V.group),j=!!S.joined[g.id];
+  return `${backbar(g.n)}<section class="card profile">${gav(g,84)}<h1>${esc(g.n)}</h1><p>${esc(g.d)}</p>
+    <div class="stats"><span><b>${fmt(g.m+(j?1:0))}</b>${t('members')}</span></div>
+    <button class="btn sm ${j?'ghost':''}" data-a="join" data-v="${g.id}" aria-pressed="${j}">${t(j?'joined':'join')}</button></section>
+  ${j?composer(1):''}${feed(srt(S.posts.filter(p=>p.g===g.id&&ok(p))))}`;
+}
+function pageView(){
+  const g=allP().find(x=>x.id===V.page),f=!!S.pfollow[g.id];
+  return `${backbar(g.n)}<section class="card profile">${gav(g,84)}<h1>${esc(g.n)}</h1><p>${esc(g.d)}</p>
+    <div class="stats"><span><b>${fmt(g.f+(f?1:0))}</b>${t('followers')}</span></div>
+    ${g.mine?`<span class="chip">${t('mypage')}</span>`:`<button class="btn sm ${f?'ghost':''}" data-a="pfollow" data-v="${g.id}" aria-pressed="${f}">${t(f?'pfollowing':'pfollow')}</button>`}</section>
+  ${g.mine?composer('pg'):''}${feed(srt(S.posts.filter(p=>p.pg===g.id&&ok(p))))}`;
+}
+function results(){
+  const q=V.q.trim().toLowerCase(),m=g=>!q||g.n.toLowerCase().includes(q)||(g.d||'').toLowerCase().includes(q);
+  const ppl=Object.keys(U).filter(k=>!S.blocked[k]&&(!q||U[k].n.toLowerCase().includes(q)||U[k].city.toLowerCase().includes(q)));
+  const grs=allG().filter(m),pgs=allP().filter(m),ps=q?visible().filter(p=>(p.x||'').toLowerCase().includes(q)):[];
+  const hd=(k,mk)=>`<div class="hrow"><h2>${t(k)}</h2><button class="chip" data-a="mk" data-v="${mk}">${ic('plus')}${t('mk_'+mk)}</button></div>`;
+  let h=ppl.length||grs.length||pgs.length||ps.length?'':`<p class="empty">${t('none')}</p>`;
+  if(ppl.length)h+=`<h2>${t('people')}</h2><div class="card list">${ppl.map(k=>`<div class="rowi"><button class="ulink" data-a="user" data-v="${k}">${av(k)}<span class="who"><b>${esc(U[k].n)}</b><small>${esc(U[k].city)}</small></span></button><button class="btn sm ${S.follows[k]?'ghost':''}" data-a="follow" data-v="${k}" aria-pressed="${!!S.follows[k]}">${t(S.follows[k]?'following':'follow')}</button></div>`).join('')}</div>`;
+  h+=hd('grp','group')+(grs.length?`<div class="card list">${grs.map(g=>`<button class="rowi" data-a="group" data-v="${g.id}">${gav(g)}<span class="who"><b>${esc(g.n)}</b><small><bdi>${esc(g.d)}</bdi> · <bdi>${fmt(g.m+(S.joined[g.id]?1:0))} ${t('members')}</bdi></small></span></button>`).join('')}</div>`:'');
+  h+=hd('pages','page')+(pgs.length?`<div class="card list">${pgs.map(g=>`<button class="rowi" data-a="page" data-v="${g.id}">${gav(g)}<span class="who"><b>${esc(g.n)}</b><small><bdi>${esc(g.d)}</bdi> · <bdi>${fmt(g.f+(S.pfollow[g.id]?1:0))} ${t('followers')}</bdi></small></span></button>`).join('')}</div>`:'');
+  if(ps.length)h+=`<h2>${t('results')}</h2>`+ps.map(postHTML).join('');
+  return h;
+}
+const disc=()=>`<input type="search" id="q" placeholder="${t('search')}" aria-label="${t('search')}" value="${esc(V.q)}" autocomplete="off"><div id="res" style="display:flex;flex-direction:column;gap:12px">${results()}</div>`;
+const stk=id=>STICKERS.find(s=>s.id===id),anm=id=>ANIMS.find(s=>s.id===id);
+function msgHTML(m){
+  const me=m.m?'me':'';
+  if(m.k==='st'){const s=stk(m.v);return s?`<div class="stk ${me}"><span>${s.e}</span><b>${esc(s.x)}</b></div>`:''}
+  if(m.k==='an'){const a=anm(m.v);return a?`<div class="anim ${me}"><span class="an-${a.c}">${a.e}</span></div>`:''}
+  if(m.k==='vid')return m.src?`<video class="cimg ${me}" src="${m.src}" controls playsinline preload="metadata"></video>`:'';
+  if(m.k==='img')return m.src?`<img class="cimg ${me}" src="${m.src}" alt="${t('photo')}">`:'';
+  return `<div class="bub ${me}" dir="auto">${esc(m.x)}</div>`;
+}
+const preview=m=>m.k==='st'?(stk(m.v)||{x:''}).x:m.k==='an'?(anm(m.v)||{e:''}).e:m.k==='img'?t('photo'):m.k==='vid'?t('video'):m.x;
+function panel(){
+  if(!V.panel)return '';
+  const tabs=`<div class="seg">${[['emo',t('emoji')],['st',t('stickers')],['gif','GIF']].map(([k,l])=>`<button type="button" data-a="panel" data-v="${k}" aria-pressed="${V.panel===k}">${l}</button>`).join('')}</div>`;
+  const body=V.panel==='emo'?egrid():V.panel==='st'?`<div class="sgrid">${STICKERS.map(s=>`<button type="button" class="stk" data-a="sendst" data-v="${s.id}"><span>${s.e}</span><b>${esc(s.x)}</b></button>`).join('')}</div>`
+    :`<div class="sgrid">${ANIMS.map(a=>`<button type="button" class="anim" data-a="sendan" data-v="${a.id}" aria-label="GIF ${a.e}"><span class="an-${a.c}">${a.e}</span></button>`).join('')}</div><button type="button" class="chip" data-a="pickgif" style="align-self:flex-start">${ic('image')}${t('gifup')}</button>`;
+  return `<div class="panel">${tabs}${body}</div>`;
+}
+function msgs(){
+  if(V.chat&&U[V.chat]){const u=U[V.chat],c=S.chats[V.chat]||[];
+    return `<div class="chat"><div class="chathead"><button class="iconbtn" data-a="chat" data-v="" aria-label="${t('back')}">${ic('back','flip')}</button><button class="ulink" data-a="user" data-v="${V.chat}">${av(V.chat,34)}<b>${esc(u.n)}</b></button></div>
+    ${c.map(msgHTML).join('')}
+    <form class="chatform" data-f="msg">${panel()}<div class="inline"><button type="button" class="iconbtn" data-a="panel" data-v="${V.panel?'':'emo'}" aria-label="${t('emoji')}" aria-expanded="${!!V.panel}">${ic('smile')}</button><button type="button" class="iconbtn" data-a="pickgif" aria-label="${t('attach')}" title="${t('attach')}">${ic('image')}</button><input type="text" id="chat-in" placeholder="${t('wmsg')}" aria-label="${t('wmsg')}" autocomplete="off" value="${esc(V.cdraft)}" dir="auto"><button class="sendbtn" aria-label="${t('send')}">${ic('send','flip')}</button></div></form></div>`}
+  const ids=[...new Set([...Object.keys(S.chats),...Object.keys(S.follows)])].filter(k=>U[k]&&!S.blocked[k]);
+  return ids.length?`<div class="card list">${ids.map(k=>{const c=S.chats[k]||[],l=c[c.length-1],un=l&&!l.m&&!S.read[k];
+    return `<button class="rowi" data-a="chat" data-v="${k}">${av(k)}<span class="who"><b>${esc(U[k].n)}</b><small dir="auto">${l?esc(preview(l)):esc(U[k].city)}</small></span>${un?'<i class="unread"></i>':''}</button>`}).join('')}</div>`:`<p class="empty">${t('empty')}</p>`;
+}
+function notifs(){
+  const rq=S.reqs.filter(k=>U[k]&&!S.follows[k]&&!S.blocked[k]),ns=NOTIFS.filter(n=>!S.blocked[n.u]);
+  return (rq.length?`<h2>${t('reqs')}</h2><div class="card list">${rq.map(k=>`<div class="rowi"><button class="ulink" data-a="user" data-v="${k}">${av(k)}<span class="who"><b>${esc(U[k].n)}</b><small>${esc(U[k].city)}</small></span></button><button class="btn sm" data-a="acc" data-v="${k}">${t('accept')}</button><button class="btn sm ghost" data-a="dec" data-v="${k}">${t('decline')}</button></div>`).join('')}</div>`:'')
+  +(ns.length?`<h2>${t('notifs')}</h2><div class="card list">${ns.map(n=>`<div class="rowi">${av(n.u)}<div class="who"><b>${esc(U[n.u].n)}</b><small><bdi>${t(n.k)}</bdi> · <bdi>${ago(n.t)}</bdi></small></div>${ic(n.k==='n_like'?'star':n.k==='n_cmt'?'msg':'user')}</div>`).join('')}</div>`:'')
+  ||`<p class="empty">${t('empty')}</p>`;
+}
+function prof(){
+  const mine=S.posts.filter(p=>p.u==='me'&&!p.pg).sort((a,b)=>b.t-a.t),kept=S.posts.filter(p=>S.saved[p.id]&&!S.hid[p.id]);
+  const list=S.ptab==='mine'?mine:kept;
+  return `<section class="card profile mine"><button class="cover" data-a="pickcover" aria-label="${t('p_cover')}">${S.me.cover?`<img src="${S.me.cover}" alt="">`:''}<span class="chip">${ic('image')}${t('p_cover')}</span></button>
+    <button class="avbtn" data-a="pickav" aria-label="${t('p_photo')}" title="${t('p_photo')}">${av('me')}</button><h1>${esc(S.me.name||t('guest'))}</h1><p dir="auto">${esc(S.me.bio||t('biodef'))}</p>
+    <div class="stats"><span><b>${mine.length}</b>${t('posts')}</span><span><b>${Object.keys(S.follows).length}</b>${t('flw')}</span></div>
+    <div class="tools" style="justify-content:center"><button class="btn sm" data-a="sheet" data-v="edit">${t('edit')}</button><button class="btn sm ghost" data-a="sheet" data-v="set">${t('set')}</button>${S.me.photo||S.me.cover?`<button class="btn sm ghost" data-a="rmphotos">${t('rmph')}</button>`:''}</div></section>
+  <div class="seg"><button data-a="ptab" data-v="mine" aria-pressed="${S.ptab==='mine'}">${t('myposts')}</button><button data-a="ptab" data-v="kept" aria-pressed="${S.ptab==='kept'}">${t('mysaved')}</button></div>
+  ${list.map(postHTML).join('')||`<p class="empty">${t('empty')}</p>`}`;
+}
+const fmt=n=>Number(n).toLocaleString('en').replace(/,/g,'\u00A0');
+const ptile=(p,sm)=>`<span class="pimg ${sm?'sm':''}">${p.img?`<img src="${p.img}" alt="">`:esc(p.e||'📦')}</span>`;
+function reels(){
+  const add=`<button class="chip reeladd" data-a="pickreel">${ic('plus')}${t('r_add')}</button>`;
+  return [...V.myReels,...REELS.filter(r=>!S.blocked[r.u])].map((r,i)=>{const lk=!!S.liked[r.id];
+    if(r.v)return `<section class="reel"><video src="${r.v}" controls loop playsinline></video>${i===0?add:''}</section>`;
+    const scene=r.pic?PIC[r.pic].replace('<svg ','<svg preserveAspectRatio="xMidYMid slice" '):`<ol class="steps">${r.steps.map(s=>`<li>${esc(s)}</li>`).join('')}</ol>`;
+    return `<section class="reel"><div class="scene">${scene}</div><span class="tag">${t('r_ex')}</span>${i===0?add:''}
+      <div class="cap">${av(r.u,34)}<p dir="auto"><b>${esc(usr(r.u).n)}</b>${esc(r.x)}</p><button class="rl ${lk?'on':''}" data-a="like" data-v="${r.id}" aria-pressed="${lk}" aria-label="${t('like')}">${ic('star')}</button></div></section>`}).join('')
+    +`<section class="reel end"><p>${t('r_end')}</p>${add.replace(' reeladd','')}</section>`;
+}
+function souk(){
+  const list=S.prods.filter(p=>!S.blocked[p.u]&&(V.cat==='all'||p.cat===V.cat)),sellers=[...new Set(list.map(p=>p.u))].sort((a,b)=>(b==='me')-(a==='me'));
+  const tile=p=>`<div class="prod">${ptile(p)}<b dir="auto">${esc(p.n)}</b><span class="num price">${fmt(p.price)} ${t('da')}</span>${p.u==='me'?`<button class="chip" data-a="pdel" data-v="${p.id}">${t('s_del')}</button>`:`<button class="chip" data-a="hag" data-v="${p.id}">${t('haggle')}</button>`}</div>`;
+  return `<p class="note">${t('s_intro')}</p>
+  <div class="tools">${['all',...CATS].map(k=>`<button class="chip" data-a="cat" data-v="${k}" aria-pressed="${V.cat===k}">${t(k==='all'?'all':'c_'+k)}</button>`).join('')}</div>
+  <button class="btn ghost" data-a="sell" style="align-self:flex-start">${ic('plus')}${t('s_add')}</button>
+  ${sellers.map(u=>`<section class="stall"><div class="awn"></div><div class="shead">${av(u,30)}<div class="who"><b>${u==='me'?t('s_mine'):esc(usr(u).n)}</b><small>${esc(usr(u).city)}</small></div></div><div class="shelf">${list.filter(p=>p.u===u).map(tile).join('')}</div></section>`).join('')||`<p class="empty">${t('none')}</p>`}`;
+}
+/* ---------- rooms & games ---------- */
+const LCOL=['#B5482C','#2B8C8C','#C7921A','#6B4FB3'];
+const rtl=()=>S.lang==='dz'||S.lang==='ar';
+function seatBots(pref){const okU=k=>U[k]&&!S.blocked[k],l=[];pref.concat(Object.keys(S.follows),Object.keys(U)).forEach(k=>{if(l.length<5&&okU(k)&&!l.includes(k))l.push(k)});return l}
+function openRoom(name,g,pref){const pool=seatBots(pref||[]);if(pool.length<(g==='wolf'?3:1)){toast(t('r_nobots'));return}V.sheet=null;clearTimeout(gameT);V.room={n:name,g,pool,cnt:4,players:[],chat:[]};newGame();V.prev='rooms';S.tab='room';render();$('#main').scrollTop=0}
+function newGame(){const r=V.room;r.players=['me',...(r.g==='wolf'?r.pool:r.pool.slice(0,Math.max(1,r.cnt-1)))];r.st=INIT[r.g](r.players.length)}
+let gameT;
+function tick(){clearTimeout(gameT);const r=V.room;if(!r||S.tab!=='room'||!BOTS[r.g]||r.st.over||r.st.turn===0)return;const st=r.st;gameT=setTimeout(()=>{if(V.room!==r||r.st!==st||S.tab!=='room'||st.over||st.turn===0)return;BOTS[r.g](st);renderRoom();tick()},V.spd||850)}
+function renderRoom(){const g=$('#game');if(g&&V.room)g.innerHTML=gameHTML()}
+/* domino: block game, 7 tiles each */
+function domInit(n){const d=[];for(let a=0;a<=6;a++)for(let b=a;b<=6;b++)d.push([a,b]);for(let i=d.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[d[i],d[j]]=[d[j],d[i]]}
+  const hands=[];for(let i=0;i<n;i++)hands.push(d.splice(0,7));
+  let best=-1,who=0,idx=0;hands.forEach((hd,pl)=>hd.forEach((x,i)=>{const sc=(x[0]===x[1]?100:0)+x[0]+x[1];if(sc>best){best=sc;who=pl;idx=i}}));
+  const st={hands,chain:[hands[who].splice(idx,1)[0]],turn:(who+1)%n,passes:0,over:false,winner:null,blocked:false,ask:null,last:{p:who,pass:false}};return st}
+const domEnds=st=>[st.chain[0][0],st.chain[st.chain.length-1][1]];
+function domFits(st,x){const e=domEnds(st);return {l:x[0]===e[0]||x[1]===e[0],r:x[0]===e[1]||x[1]===e[1]}}
+function domPlay(st,pl,i,side){const x=st.hands[pl].splice(i,1)[0],e=domEnds(st);
+  if(side==='l')st.chain.unshift(x[1]===e[0]?x:[x[1],x[0]]);else st.chain.push(x[0]===e[1]?x:[x[1],x[0]]);
+  st.passes=0;st.last={p:pl,pass:false};if(!st.hands[pl].length){st.over=true;st.winner=pl}else st.turn=(pl+1)%st.hands.length}
+function domPass(st,pl){st.passes++;st.last={p:pl,pass:true};if(st.passes>=st.hands.length){const sums=st.hands.map(hd=>hd.reduce((s,x)=>s+x[0]+x[1],0));st.over=true;st.blocked=true;st.winner=sums.indexOf(Math.min(...sums))}else st.turn=(pl+1)%st.hands.length}
+function domBot(st){const pl=st.turn;let bi=-1,bs=-1,side='r';st.hands[pl].forEach((x,i)=>{const f=domFits(st,x);if((f.l||f.r)&&x[0]+x[1]>bs){bs=x[0]+x[1];bi=i;side=f.r?'r':'l'}});if(bi<0)domPass(st,pl);else domPlay(st,pl,bi,side)}
+const PIPS=[[],[4],[0,8],[0,4,8],[0,2,6,8],[0,2,4,6,8],[0,2,3,5,6,8]];
+const half=n=>`<i>${[0,1,2,3,4,5,6,7,8].map(k=>`<b${PIPS[n].includes(k)?' class="on"':''}></b>`).join('')}</i>`;
+const dtile=x=>`<span class="dt${x[0]===x[1]?' dbl':''}">${half(x[0])}${half(x[1])}</span>`;
+/* ludo: 2 pieces each, 6 to leave base, exact roll to finish */
+const LPATH=[[6,1],[6,2],[6,3],[6,4],[6,5],[5,6],[4,6],[3,6],[2,6],[1,6],[0,6],[0,7],[0,8],[1,8],[2,8],[3,8],[4,8],[5,8],[6,9],[6,10],[6,11],[6,12],[6,13],[6,14],[7,14],[8,14],[8,13],[8,12],[8,11],[8,10],[8,9],[9,8],[10,8],[11,8],[12,8],[13,8],[14,8],[14,7],[14,6],[13,6],[12,6],[11,6],[10,6],[9,6],[8,5],[8,4],[8,3],[8,2],[8,1],[8,0],[7,0],[6,0]];
+const LSTART=[0,13,26,39];
+const LHOME=[[[7,1],[7,2],[7,3],[7,4],[7,5],[7,6]],[[1,7],[2,7],[3,7],[4,7],[5,7],[6,7]],[[7,13],[7,12],[7,11],[7,10],[7,9],[7,8]],[[13,7],[12,7],[11,7],[10,7],[9,7],[8,7]]];
+const LBASE=[[[2,2],[3,3]],[[2,11],[3,12]],[[11,11],[12,12]],[[11,2],[12,3]]];
+const LMAP={};
+for(let y=0;y<15;y++)for(let x=0;x<15;x++){let m={t:'mid'};if(y<6&&x<6)m={t:'bs',s:0};else if(y<6&&x>8)m={t:'bs',s:1};else if(y>8&&x>8)m={t:'bs',s:2};else if(y>8&&x<6)m={t:'bs',s:3};LMAP[y+','+x]=m}
+LPATH.forEach((c,i)=>{const s=LSTART.indexOf(i);LMAP[c.join(',')]=s>=0?{t:'st',s}:{t:'tr'}});
+LHOME.forEach((l,s)=>l.forEach((c,i)=>{LMAP[c.join(',')]={t:i===5?'hm':'hc',s}}));
+LBASE.forEach((l,s)=>l.forEach(c=>{LMAP[c.join(',')]={t:'tr'}}));
+function ludoInit(n){return {seats:[[3,1],[3,0,1],[3,0,1,2]][n-2],tok:Array.from({length:n},()=>[-1,-1]),turn:0,die:null,phase:'roll',moves:[],over:false,winner:null,log:null}}
+const ludoIdx=(st,pl,pos)=>(LSTART[st.seats[pl]]+pos)%52;
+function ludoCell(st,pl,pos,k){const s=st.seats[pl];return pos<0?LBASE[s][k]:pos<=50?LPATH[ludoIdx(st,pl,pos)]:LHOME[s][pos-51]}
+function ludoMoves(st,pl,d){const o=[];st.tok[pl].forEach((pos,k)=>{if(pos<0?d===6:pos+d<=56)o.push(k)});return o}
+function ludoRoll(st){const pl=st.turn,d=1+Math.floor(Math.random()*6),ms=ludoMoves(st,pl,d);st.die=d;st.log={p:pl,d,none:!ms.length};if(ms.length){st.phase='move';st.moves=ms}else{st.phase='roll';st.moves=[];if(d!==6)st.turn=(pl+1)%st.tok.length}}
+function ludoMove(st,pl,k,d){const pos=st.tok[pl][k]<0?0:st.tok[pl][k]+d;st.tok[pl][k]=pos;
+  if(pos<=50){const idx=ludoIdx(st,pl,pos);if(!LSTART.includes(idx))st.tok.forEach((ts,q)=>{if(q!==pl)ts.forEach((op,j)=>{if(op>=0&&op<=50&&ludoIdx(st,q,op)===idx)ts[j]=-1})})}
+  st.phase='roll';st.moves=[];if(st.tok[pl].every(x=>x===56)){st.over=true;st.winner=pl;return}if(d!==6)st.turn=(pl+1)%st.tok.length}
+function ludoBot(st){const pl=st.turn;if(st.phase==='roll'){ludoRoll(st);return}
+  const d=st.die;let best=st.moves[0],bs=-1;st.moves.forEach(k=>{const pos=st.tok[pl][k],np=pos<0?0:pos+d;let sc=np;if(pos<0)sc+=40;if(np===56)sc+=100;if(np<=50){const idx=ludoIdx(st,pl,np);if(!LSTART.includes(idx)&&st.tok.some((ts,q)=>q!==pl&&ts.some(op=>op>=0&&op<=50&&ludoIdx(st,q,op)===idx)))sc+=80}if(sc>bs){bs=sc;best=k}});ludoMove(st,pl,best,d)}
+/* cards: crazy eights */
+const SUITS=['♠︎','♥︎','♦︎','♣︎'],RANKS=['','A','2','3','4','5','6','7','8','9','10','J','Q','K'];
+function shuffle(a){for(let i=a.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[a[i],a[j]]=[a[j],a[i]]}return a}
+function cInit(n){const d=[];for(let s=0;s<4;s++)for(let k=1;k<=13;k++)d.push({r:k,s});shuffle(d);const hands=[];for(let i=0;i<n;i++)hands.push(d.splice(0,5));const top=d.pop();return {hands,stock:d,pile:[top],suit:top.s,turn:0,drew:false,passes:0,ask:null,over:false,winner:null,blocked:false,last:null}}
+const cTop=st=>st.pile[st.pile.length-1];
+const cOk=(st,c)=>c.r===8||c.s===st.suit||c.r===cTop(st).r;
+function cNext(st){st.drew=false;st.turn=(st.turn+1)%st.hands.length}
+function cPlay(st,pl,i,suit){const c=st.hands[pl].splice(i,1)[0];st.pile.push(c);st.suit=c.r===8?suit:c.s;st.passes=0;st.last={p:pl,k:'play'};if(!st.hands[pl].length){st.over=true;st.winner=pl;return}cNext(st)}
+function cPassTurn(st,pl){st.last={p:pl,k:'pass'};cNext(st)}
+function cDraw(st,pl){if(!st.stock.length&&st.pile.length>1){const top=st.pile.pop();st.stock=shuffle(st.pile);st.pile=[top]}
+  if(!st.stock.length){st.last={p:pl,k:'pass'};st.passes++;if(st.passes>=st.hands.length){const l=st.hands.map(hd=>hd.length);st.over=true;st.blocked=true;st.winner=l.indexOf(Math.min(...l))}else cNext(st);return}
+  const c=st.stock.pop();st.hands[pl].push(c);st.last={p:pl,k:'draw'};if(cOk(st,c))st.drew=true;else cNext(st)}
+function cBot(st){const pl=st.turn,hd=st.hands[pl];let bi=-1;hd.forEach((c,i)=>{if(c.r!==8&&cOk(st,c)&&(bi<0||c.r>hd[bi].r))bi=i});if(bi<0)bi=hd.findIndex(c=>c.r===8);
+  if(bi>=0){let suit=hd[bi].s;if(hd[bi].r===8){const cnt=[0,0,0,0];hd.forEach((c,i)=>{if(i!==bi)cnt[c.s]++});suit=cnt.indexOf(Math.max(...cnt))}cPlay(st,pl,bi,suit)}else if(!st.drew)cDraw(st,pl);else cPassTurn(st,pl)}
+const cface=c=>`<span class="cd${c.s===1||c.s===2?' red':''}"><b>${RANKS[c.r]}</b><i>${SUITS[c.s]}</i></span>`;
+function cHTML(r){const st=r.st,my=!st.over&&st.turn===0,hd=st.hands[0],can=hd.map(c=>cOk(st,c));
+  return `<div class="ctable" dir="ltr"><span class="cd back"><b>${st.stock.length}</b></span><span class="big">${cface(cTop(st))}</span><span class="csuit${st.suit===1||st.suit===2?' red':''}">${SUITS[st.suit]}</span></div>
+  ${gstatus(r,st.last&&st.last.k!=='play'?`<small>${esc(pname(r,st.last.p))}: ${t(st.last.k==='draw'?'c_draw':'c_pass')}</small>`:'')}
+  ${my&&st.ask!=null?`<div class="tools ctr"><span>${t('c_suit')}</span>${SUITS.map((s,i)=>`<button class="btn sm ghost csb${i===1||i===2?' red':''}" data-a="csuit" data-v="${i}" aria-label="${s}">${s}</button>`).join('')}</div>`:''}
+  <div class="chand" dir="ltr">${hd.map((c,i)=>`<button class="cbtn${st.ask===i?' sel':''}" data-a="ccard" data-v="${i}" ${my&&can[i]?'':'disabled'} aria-label="${RANKS[c.r]} ${SUITS[c.s]}">${cface(c)}</button>`).join('')}</div>
+  ${my&&!st.drew&&!can.some(Boolean)?`<button class="btn" data-a="cdraw">${t('c_draw')}</button>`:''}${my&&st.drew?`<button class="btn ghost" data-a="cpass">${t('c_pass')}</button>`:''}`}
+/* city trader: an original buy-and-rent board game */
+const TR=[{k:'start'},{c:'تيميمون',p:60},{c:'أدرار',p:60},{k:'chance'},{c:'غرداية',p:80},{k:'rest'},{c:'بسكرة',p:100},{c:'باتنة',p:100},{c:'تلمسان',p:120},{c:'بجاية',p:140},{k:'bonus'},{c:'سطيف',p:160},{c:'تيزي وزو',p:160},{k:'chance'},{c:'عنابة',p:180},{k:'tax'},{c:'قسنطينة',p:200},{c:'البليدة',p:200},{c:'وهران',p:240},{c:'الجزائر',p:280}];
+const trRent=pr=>Math.round(pr*.25/5)*5;
+const trXY=i=>i<=5?[0,i]:i<=9?[i-5,5]:i<=15?[5,15-i]:[20-i,0];
+function trInit(n){return {pos:Array(n).fill(0),money:Array(n).fill(1000),own:{},out:Array(n).fill(false),turn:0,phase:'roll',die:null,turns:0,max:n*15,over:false,winner:null,timeup:false,log:null}}
+const trWorth=(st,pl)=>st.money[pl]+Object.keys(st.own).reduce((s,q)=>s+(st.own[q]===pl?TR[q].p:0),0);
+function trEnd(st){const pl=st.turn;if(st.money[pl]<0){st.out[pl]=true;Object.keys(st.own).forEach(q=>{if(st.own[q]===pl)delete st.own[q]});if(st.log)st.log.bust=true}
+  st.turns++;st.phase='roll';const alive=[];st.out.forEach((o,i)=>{if(!o)alive.push(i)});
+  if(alive.length<=1){st.over=true;st.winner=alive.length?alive[0]:pl;return}
+  if(st.turns>=st.max){st.over=true;st.timeup=true;st.winner=alive.reduce((b,i)=>trWorth(st,i)>trWorth(st,b)?i:b,alive[0]);return}
+  do{st.turn=(st.turn+1)%st.pos.length}while(st.out[st.turn])}
+function trRoll(st){const pl=st.turn,d=1+Math.floor(Math.random()*6),np=(st.pos[pl]+d)%20;st.die=d;st.log={p:pl,d,sq:np,k:'none',amt:0};
+  if(np<st.pos[pl]){st.money[pl]+=150;st.log.lap=true}st.pos[pl]=np;const q=TR[np];
+  if(q.c){const o=st.own[np];if(o==null){if(st.money[pl]>=q.p){st.phase='buy';st.log.k='offer';return}}else if(o!==pl){const a=trRent(q.p);st.money[pl]-=a;st.money[o]+=a;st.log.k='rent';st.log.amt=a;st.log.to=o}}
+  else if(q.k==='chance'){const a=[100,50,150,-50,-80,-100][Math.floor(Math.random()*6)];st.money[pl]+=a;st.log.k='chance';st.log.amt=a}
+  else if(q.k==='tax'){st.money[pl]-=100;st.log.k='tax';st.log.amt=-100}
+  else if(q.k==='bonus'){st.money[pl]+=100;st.log.k='bonus';st.log.amt=100}
+  trEnd(st)}
+function trBuy(st,yes){const pl=st.turn,np=st.pos[pl];if(yes&&st.money[pl]>=TR[np].p){st.money[pl]-=TR[np].p;st.own[np]=pl;st.log.k='buy'}else st.log.k='none';trEnd(st)}
+function trBot(st){if(st.phase==='roll')trRoll(st);else trBuy(st,st.money[st.turn]-TR[st.pos[st.turn]].p>=150)}
+function trHTML(r){const st=r.st,my=!st.over&&st.turn===0,l=st.log,sqn=i=>TR[i].c||t('tq_'+TR[i].k);
+  const sq=TR.map((q,i)=>{const xy=trXY(i),o=st.own[i],tk=st.pos.map((ps,pl)=>ps===i&&!st.out[pl]?`<span class="tk" style="--c:${LCOL[pl]}"></span>`:'').join('');
+    return `<div class="tq${q.c?'':' sp'}" style="grid-area:${xy[0]+1}/${xy[1]+1}${o!=null?';--oc:'+LCOL[o]:''}"><b>${esc(sqn(i))}</b>${q.c?`<span>${q.p}</span>`:''}<span class="tks">${tk}</span></div>`}).join('');
+  const log=l?`<small><bdi>${esc(pname(r,l.p))}</bdi>: ${t('rolled')} ${l.d} → <bdi>${esc(sqn(l.sq))}</bdi>${l.lap?' · +150':''}${l.k==='buy'?' · '+t('bought'):l.k==='rent'?` · ${t('paid')} ${l.amt} ${t('to')} <bdi>${esc(pname(r,l.to))}</bdi>`:l.amt?` · <bdi>${l.amt>0?'+':''}${l.amt}</bdi>`:''}${l.bust?' · '+t('bankrupt'):''}</small>`:'';
+  const mid=st.over?'':my&&st.phase==='roll'?`<button class="btn" data-a="trroll">${t('roll')}</button>`:my&&st.phase==='buy'?`<span>${esc(t('tr_q').replace('{c}',TR[st.pos[0]].c).replace('{p}',TR[st.pos[0]].p))}</span><div class="tools ctr"><button class="btn sm" data-a="trbuy" data-v="1">${t('buy')}</button><button class="btn sm ghost" data-a="trbuy" data-v="0">${t('skip')}</button></div>`:st.die?`<span class="die">${'⚀⚁⚂⚃⚄⚅'[st.die-1]}</span>`:'';
+  return `<div class="tboard" dir="ltr">${sq}<div class="tmid" dir="${rtl()?'rtl':'ltr'}">${mid}</div></div>${gstatus(r,log)}`}
+/* wolves and villagers, solo version */
+const WROLE={wolf:'w_wolf',seer:'w_seer',vill:'w_vill'};
+const pick=a=>a[Math.floor(Math.random()*a.length)];
+function wInit(n){const w=n>=6?2:1;return {roles:shuffle(Array.from({length:n},(_,i)=>i<w?'wolf':i===w?'seer':'vill')),alive:Array(n).fill(true),phase:'night',day:1,turn:0,over:false,win:null,seen:{},botKnown:{},log:[]}}
+function wAlive(st,f){const o=[];st.alive.forEach((a,i)=>{if(a&&(!f||f(i)))o.push(i)});return o}
+function wCheck(st){const w=wAlive(st,i=>st.roles[i]==='wolf').length,o=wAlive(st,i=>st.roles[i]!=='wolf').length;if(!w){st.over=true;st.win='vill'}else if(w>=o){st.over=true;st.win='wolf'}if(st.over)st.phase='over';return st.over}
+function wNight(st,choice){const me=st.alive[0]?st.roles[0]:null,targets=wAlive(st,i=>st.roles[i]!=='wolf'),victim=me==='wolf'&&targets.includes(choice)?choice:pick(targets);
+  st.alive.forEach((a,i)=>{if(!a||st.roles[i]!=='seer')return;if(i===0){if(choice!=null&&choice!==0&&st.alive[choice]){st.seen[choice]=st.roles[choice];st.log.push({k:'see',p:choice})}}else{const c=wAlive(st,j=>j!==i&&!(j in st.botKnown));if(c.length){const j=pick(c);st.botKnown[j]=st.roles[j]}}});
+  st.alive[victim]=false;st.log.push({k:'died',p:victim});if(!wCheck(st))st.phase='day'}
+function wDay(st,vote){const al=wAlive(st),tally={};
+  al.forEach(i=>{let v=null;if(i===0){if(vote!==0&&al.includes(vote))v=vote}else if(st.roles[i]==='wolf')v=pick(al.filter(j=>st.roles[j]!=='wolf'));else{const known=st.roles[i]==='seer'?al.find(j=>st.botKnown[j]==='wolf'):undefined;v=known!==undefined?known:pick(al.filter(j=>j!==i))}if(v!=null)tally[v]=(tally[v]||0)+1});
+  const vals=Object.values(tally),mx=vals.length?Math.max(...vals):0,top=Object.keys(tally).filter(k=>tally[k]===mx);
+  if(top.length===1){st.alive[+top[0]]=false;st.log.push({k:'out',p:+top[0]})}else st.log.push({k:'tie'});
+  if(!wCheck(st)){st.phase='night';st.day++}}
+function wHTML(r){const st=r.st,me=st.roles[0],alive=st.alive[0],nm=i=>esc(pname(r,i)),cont=a=>`<button class="btn" data-a="${a}" data-v="">${t('w_cont')}</button>`;
+  const logs=st.log.slice(-4).map(l=>`<small>${l.k==='tie'?t('w_tie'):nm(l.p)+' · '+(l.k==='died'?t('w_died'):l.k==='out'?t('w_out')+' · '+t(WROLE[st.roles[l.p]]):t(WROLE[st.roles[l.p]]))}</small>`).join('');
+  const choose=(list,act,label)=>list.length?`<p class="gst">${t(label)}</p><div class="tools ctr">${list.map(i=>`<button class="chip" data-a="${act}" data-v="${i}">${nm(i)}</button>`).join('')}</div>`:cont(act);
+  let body;
+  if(st.over)body=`<p class="gst"><b>${t(st.win==='wolf'?'w_wwin':'w_vwin')}</b>${(st.win==='wolf')===(me==='wolf')?`<small>${t('youwon')}</small>`:''}</p><button class="btn" data-a="again">${t('again')}</button>`;
+  else if(st.phase==='night')body=`<p class="gst"><b>${t('w_night')} ${st.day}</b></p>`+(alive&&me==='wolf'?choose(wAlive(st,i=>st.roles[i]!=='wolf'),'wnight','w_kill'):alive&&me==='seer'?choose(wAlive(st,i=>i!==0&&!(i in st.seen)),'wnight','w_see'):`<p class="gst"><small>${t(alive?'w_sleep':'w_dead')}</small></p>`+cont('wnight'));
+  else body=`<p class="gst"><b>${t('w_day')} ${st.day}</b></p>`+(alive?choose(wAlive(st,i=>i!==0),'wday','w_vote'):`<p class="gst"><small>${t('w_dead')}</small></p>`+cont('wday'));
+  return `<p class="gst"><span class="chip">${t('w_role')}: ${t(WROLE[me])}</span></p><div class="gst">${logs}</div>${body}<p class="gst"><small>${t('w_note')}</small></p>`}
+const GAMES=['domino','ludo','cards','trade','wolf'],INIT={domino:domInit,ludo:ludoInit,cards:cInit,trade:trInit,wolf:wInit},BOTS={domino:domBot,ludo:ludoBot,cards:cBot,trade:trBot};
+/* room views */
+const pname=(r,pl)=>r.players[pl]==='me'?t('you'):usr(r.players[pl]).n.split(' ')[0];
+function gstatus(r,extra){const st=r.st;if(st.over){const w=st.winner,nm=esc(pname(r,w));return `<p class="gst"><b>${w===0?t('youwon'):rtl()?t('won')+' '+nm:nm+' '+t('won')}</b>${st.blocked?`<small>${t(r.g==='cards'?'cblocked':'dblocked')}</small>`:st.timeup?`<small>${t('tr_end')}</small>`:''}</p><button class="btn" data-a="again">${t('again')}</button>`}
+  return `<p class="gst"><b>${st.turn===0?t('yourturn'):t('turnof')+' '+esc(pname(r,st.turn))}</b>${extra||''}</p>`}
+function domHTML(r){const st=r.st,my=!st.over&&st.turn===0,hd=st.hands[0],can=hd.map(x=>{const f=domFits(st,x);return f.l||f.r});
+  return `<div class="dchain" dir="ltr">${st.chain.map(dtile).join('')}</div>
+  ${gstatus(r,st.last&&st.last.pass?`<small>${esc(pname(r,st.last.p))}: ${t('passed')}</small>`:'')}
+  ${my&&st.ask!=null?`<div class="tools ctr"><span>${t('where')}</span><button class="btn sm" data-a="dside" data-v="l">${t('left')}</button><button class="btn sm" data-a="dside" data-v="r">${t('right')}</button></div>`:''}
+  <div class="dhand" dir="ltr">${hd.map((x,i)=>`<button class="dbtn${st.ask===i?' sel':''}" data-a="dtile" data-v="${i}" ${my&&can[i]?'':'disabled'} aria-label="${x[0]}-${x[1]}">${dtile(x)}</button>`).join('')}</div>
+  ${my&&!can.some(Boolean)?`<button class="btn ghost" data-a="dpass">${t('dpass')}</button>`:''}`}
+function ludoHTML(r){const st=r.st,my=!st.over&&st.turn===0,at={};
+  st.tok.forEach((ts,pl)=>ts.forEach((pos,k)=>{const c=ludoCell(st,pl,pos,k).join(',');(at[c]=at[c]||[]).push({p:pl,k})}));
+  let cells='';for(let y=0;y<15;y++)for(let x=0;x<15;x++){const key=y+','+x,m=LMAP[key],tk=at[key]||[],mv=my&&st.phase==='move'?tk.find(o=>o.p===0&&st.moves.includes(o.k)):null;
+    const inner=tk.map(o=>`<span class="tk" style="--c:${LCOL[st.seats[o.p]]}"></span>`).join(''),cls=`lc ${m.t}${tk.length>1?' multi':''}`,sty=m.s!=null?` style="--lc:${LCOL[m.s]}"`:'';
+    cells+=mv?`<button class="${cls} mv" data-a="ltok" data-v="${mv.k}"${sty} aria-label="${t('pickt')}">${inner}</button>`:`<div class="${cls}"${sty}>${inner}</div>`}
+  const face=st.die?`<span class="die">${'⚀⚁⚂⚃⚄⚅'[st.die-1]}</span>`:'';
+  return `<div class="lboard" dir="ltr">${cells}</div>${gstatus(r,st.log?`<small>${face} ${esc(pname(r,st.log.p))}: ${t('rolled')} ${st.log.d}${st.log.none?' · '+t('nomove'):''}</small>`:'')}
+  ${my&&st.phase==='roll'?`<button class="btn" data-a="lroll">${t('roll')}</button>`:''}${my&&st.phase==='move'?`<p class="gst">${t('pickt')}</p>`:''}`}
+function gameHTML(){const r=V.room,st=r.st,g=r.g,H={domino:domHTML,ludo:ludoHTML,cards:cHTML,trade:trHTML,wolf:wHTML};
+  const seat=(id,pl)=>{let on=!st.over&&st.turn===pl,info='',sty='',dead=false;
+    if(g==='domino'||g==='cards')info=st.hands[pl].length;
+    else if(g==='ludo'){info=st.tok[pl].filter(x=>x===56).length+'/2';sty=LCOL[st.seats[pl]]}
+    else if(g==='trade'){info=st.out[pl]?t('bankrupt'):fmt(st.money[pl]);sty=LCOL[pl];dead=st.out[pl]}
+    else{on=st.alive[pl];dead=!st.alive[pl];const show=pl===0||st.over||(st.roles[0]==='wolf'&&st.roles[pl]==='wolf')||pl in st.seen;info=(dead?t('w_deadtag'):'')+(dead&&show?' · ':'')+(show?t(WROLE[st.roles[pl]]):'')}
+    return `<div class="seat${on?' on':''}${dead?' dead':''}"${sty?` style="--lc:${sty}"`:''}>${av(id,38)}<b>${esc(pname(r,pl))}</b><small>${id==='me'||g==='wolf'?'':t('bot')+' · '}${info}</small></div>`};
+  return `<div class="seats">${r.players.map(seat).join('')}</div>${H[g](r)}`}
+const rchatHTML=()=>V.room.chat.map(x=>`<div class="bub me" dir="auto">${esc(x)}</div>`).join('');
+function roomView(){const r=V.room,max=Math.min(4,r.pool.length+1);
+  return `${backbar(r.n)}
+  <div class="tools rctl"><select id="rg" aria-label="${t('r_game')}">${GAMES.map(g=>`<option value="${g}"${g===r.g?' selected':''}>${t('g_'+g)}</option>`).join('')}</select>
+  ${r.g==='wolf'?'':`<select id="rn" aria-label="${t('r_players')}">${[2,3,4].filter(n=>n<=max).map(n=>`<option value="${n}"${n===r.players.length?' selected':''}>${n} ${t('r_players')}</option>`).join('')}</select>`}
+  <button class="chip" data-a="rhelp">${t('r_how')}</button><button class="chip" data-a="again">${t('r_restart')}</button><button class="chip" data-a="rleave">${t('r_leave')}</button></div>
+  <section class="card game" id="game">${gameHTML()}</section>
+  <section class="card game"><div class="rchat" id="rchat">${rchatHTML()}</div><form class="inline" data-f="rmsg"><button type="button" class="iconbtn${V.listening?' rec':''}" id="micbtn" data-a="mic" aria-label="${t('mic')}" title="${t('mic')}" aria-pressed="${!!V.listening}" ${DICT?'':'hidden'}>${ic('mic')}</button><input type="text" id="room-in" placeholder="${t('r_chat')}" aria-label="${t('r_chat')}" autocomplete="off" dir="auto"><button class="sendbtn" aria-label="${t('send')}">${ic('send','flip')}</button></form><small class="muted">${t('mic_note')}</small></section>`}
+function roomsView(){const cur=V.room;return `<p class="note">${t('r_intro')}</p>
+  ${cur?`<section class="card game"><div><b>${t('r_in')} «${esc(cur.n)}»</b><br><small class="muted">${t('g_'+cur.g)}</small></div><div class="tools"><button class="btn sm" data-a="rresume">${t('r_resume')}</button><button class="btn sm ghost" data-a="rleave">${t('r_leave')}</button></div></section>`:''}
+  <button class="btn" data-a="sheet" data-v="room" style="align-self:flex-start">${ic('plus')}${t('r_new')}</button>
+  <h2>${t('r_open')}</h2><div class="card list">${ROOMS.map(r=>{const n=seatBots(r.p).length,w=r.g==='wolf';return `<div class="rowi">${gav({n:t('g_'+r.g)})}<span class="who"><b>${esc(r.n)}</b><small><bdi>${t('g_'+r.g)}</bdi> · <bdi>${w?n:Math.min(3,n)}/${w?6:4}</bdi></small></span><button class="btn sm" data-a="rjoin" data-v="${r.id}">${t('r_join')}</button></div>`}).join('')}</div>`}
+const seg=(k,o)=>`<div class="seg">${o.map(([v,l])=>`<button data-a="set" data-k="${k}" data-v="${v}" aria-pressed="${String(S[k])===String(v)}">${l}</button>`).join('')}</div>`;
+const sw=(k,l,d)=>`<button class="sw" role="switch" aria-checked="${!!S[k]}" data-a="tog" data-k="${k}"><div>${l}<small>${d}</small></div><i></i></button>`;
+function renderLayer(){
+  const L=$('#layer');
+  if(!V.sheet){L.innerHTML='';return}
+  if(V.sheet==='set')L.innerHTML=`<div class="overlay" data-a="closebg"><div class="sheet" role="dialog" aria-label="${t('set')}">
+    <div class="bar"><h2>${t('set')}</h2><button class="iconbtn" data-a="close" aria-label="${t('close')}">${ic('x')}</button></div>
+    <div class="field"><span>${t('lang')}</span>${seg('lang',Object.entries(LANGS))}</div>
+    <div class="field"><span>${t('theme')}</span>${seg('theme',[['auto',t('auto')],['light',t('light')],['dark',t('dark')]])}</div>
+    <div class="field"><span>${t('size')}</span>${seg('size',[[0,'A−'],[1,'A'],[2,'A+']])}</div>
+    <div class="field"><span>${t('order')}</span>${seg('order',[['new',t('onew')],['top',t('otop')]])}</div>
+    ${sw('saver',t('saver'),t('saverd'))}${sw('counts',t('counts'),t('countsd'))}${sw('rest',t('rest'),t('restd'))}${Object.keys(S.blocked).length?`<div class="field"><span>${t('blk_list')}</span>${Object.keys(S.blocked).map(k=>`<div class="rowi">${av(k,30)}<div class="who"><b>${esc(U[k].n)}</b></div><button class="btn sm ghost" data-a="unblock" data-v="${k}">${t('unblock')}</button></div>`).join('')}</div>`:''}</div></div>`;
+  else if(V.sheet==='edit')L.innerHTML=`<div class="overlay" data-a="closebg"><form class="sheet" role="dialog" aria-label="${t('edit')}" data-f="edit">
+    <div class="bar"><h2>${t('edit')}</h2><button type="button" class="iconbtn" data-a="close" aria-label="${t('close')}">${ic('x')}</button></div>
+    <div class="field"><label for="ed-name">${t('name')}</label><input type="text" id="ed-name" maxlength="40" value="${esc(S.me.name)}" dir="auto"></div>
+    <div class="field"><label for="ed-bio">${t('bio')}</label><textarea id="ed-bio" rows="3" maxlength="160" dir="auto">${esc(S.me.bio)}</textarea></div>
+    <div class="tools"><button class="btn">${t('ok')}</button><button type="button" class="btn ghost" data-a="close">${t('cancel')}</button></div></form></div>`;
+  else if(V.sheet==='welcome')L.innerHTML=`<div class="overlay welcome"><form class="sheet" role="dialog" aria-label="${t('w_title')}" data-f="welcome">
+    <div class="brand"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21V11"/><path d="M12 11C10 7 6 6 3 8"/><path d="M12 11c2-4 6-5 9-3"/><path d="M12 11C11 7 8 4 5 4"/><path d="M12 11c1-4 4-7 7-7"/></svg><b>${t('app')}</b></div>
+    <div><h2>${t('w_title')}</h2><p class="muted">${t('w_sub')}</p></div>
+    <div class="field"><span>${t('lang')}</span>${seg('lang',Object.entries(LANGS))}</div>
+    <div class="field"><label for="w-name">${t('w_name')}</label><input type="text" id="w-name" maxlength="40" value="${esc(V.wname)}" dir="auto" autocomplete="off"></div>
+    <div class="col"><button class="btn">${t('w_go')}</button></div></form></div>`;
+  else if(V.sheet.help){const g=V.sheet.help,rm=V.sheet.room;L.innerHTML=`<div class="overlay" data-a="closebg"><div class="sheet" role="dialog" aria-label="${t('r_how')}">
+    <div class="bar"><h2>${t('g_'+g)}</h2><button class="iconbtn" data-a="close" aria-label="${t('close')}">${ic('x')}</button></div>
+    <h3>${t('r_how')}</h3>${rulesHTML(g)}
+    <div class="tools">${rm?`<button class="btn" data-a="rgo" data-v="${rm}">${t('r_enter')}</button><button class="btn ghost" data-a="close">${t('cancel')}</button>`:`<button class="btn" data-a="close">${t('close')}</button>`}</div></div></div>`}
+  else if(V.sheet.mk){const ti=t(V.sheet.mk==='page'?'mk_page':'mk_group');L.innerHTML=`<div class="overlay" data-a="closebg"><form class="sheet" role="dialog" aria-label="${ti}" data-f="mk">
+    <div class="bar"><h2>${ti}</h2><button type="button" class="iconbtn" data-a="close" aria-label="${t('close')}">${ic('x')}</button></div>
+    <div class="field"><label for="mk-name">${t('name')}</label><input type="text" id="mk-name" maxlength="40" required dir="auto" autocomplete="off"></div>
+    <div class="field"><label for="mk-desc">${t('mk_desc')}</label><input type="text" id="mk-desc" maxlength="80" dir="auto" autocomplete="off"></div>
+    <div class="tools"><button class="btn">${t('ok')}</button><button type="button" class="btn ghost" data-a="close">${t('cancel')}</button></div></form></div>`}
+  else if(V.sheet.share)L.innerHTML=`<div class="overlay" data-a="closebg"><div class="sheet" role="dialog" aria-label="${t('share')}">
+    <div class="bar"><h2>${t('share')}</h2><button class="iconbtn" data-a="close" aria-label="${t('close')}">${ic('x')}</button></div>
+    <div class="col"><button class="btn" data-a="rp">${t('rp')}</button><button class="btn ghost" data-a="copy">${t('copy')}</button></div></div></div>`;
+  else if(V.sheet.edit){const p=P(V.sheet.edit);L.innerHTML=`<div class="overlay" data-a="closebg"><form class="sheet" role="dialog" aria-label="${t('editp')}" data-f="editp">
+    <div class="bar"><h2>${t('editp')}</h2><button type="button" class="iconbtn" data-a="close" aria-label="${t('close')}">${ic('x')}</button></div>
+    <textarea id="ep" rows="5" dir="auto" aria-label="${t('editp')}">${esc(p.x)}</textarea>
+    <div class="tools"><button class="btn">${t('ok')}</button><button type="button" class="btn ghost" data-a="close">${t('cancel')}</button></div></form></div>`}
+  else if(V.sheet==='room')L.innerHTML=`<div class="overlay" data-a="closebg"><form class="sheet" role="dialog" aria-label="${t('r_new')}" data-f="room">
+    <div class="bar"><h2>${t('r_new')}</h2><button type="button" class="iconbtn" data-a="close" aria-label="${t('close')}">${ic('x')}</button></div>
+    <div class="field"><label for="rm-name">${t('r_name')}</label><input type="text" id="rm-name" maxlength="30" placeholder="${t('r_mine')}" dir="auto" autocomplete="off"></div>
+    <div class="field"><label for="rm-game">${t('r_game')}</label><select id="rm-game">${GAMES.map(g=>`<option value="${g}">${t('g_'+g)}</option>`).join('')}</select></div>
+    <h3>${t('r_how')}</h3><div id="rm-rules">${rulesHTML(GAMES[0])}</div>
+    <div class="tools"><button class="btn">${t('r_new')}</button><button type="button" class="btn ghost" data-a="close">${t('cancel')}</button></div></form></div>`;
+  else if(V.sheet==='sell')L.innerHTML=`<div class="overlay" data-a="closebg"><form class="sheet" role="dialog" aria-label="${t('s_add')}" data-f="sell">
+    <div class="bar"><h2>${t('s_add')}</h2><button type="button" class="iconbtn" data-a="close" aria-label="${t('close')}">${ic('x')}</button></div>
+    <div class="field"><label for="sl-name">${t('s_name')}</label><input type="text" id="sl-name" maxlength="50" required dir="auto"></div>
+    <div class="field"><label for="sl-price">${t('s_price')}</label><input type="number" id="sl-price" min="1" inputmode="numeric" required></div>
+    <div class="field"><label for="sl-cat">${t('s_cat')}</label><select id="sl-cat">${CATS.map(c=>`<option value="${c}">${t('c_'+c)}</option>`).join('')}</select></div>
+    <div class="tools"><button type="button" class="chip" data-a="picksell">${ic('image')}${t('s_photo')}</button><span id="sl-prev"></span></div>
+    <div class="tools"><button class="btn">${t('ok')}</button><button type="button" class="btn ghost" data-a="close">${t('cancel')}</button></div></form></div>`;
+  else if(V.sheet.hag){const p=S.prods.find(x=>x.id===V.sheet.hag),st=p.price>=1000?50:10,lo=p.price-Math.round(p.price*.4/st)*st;
+    L.innerHTML=`<div class="overlay" data-a="closebg"><form class="sheet" role="dialog" aria-label="${t('haggle')}" data-f="hag">
+    <div class="bar"><h2>${t('haggle')}</h2><button type="button" class="iconbtn" data-a="close" aria-label="${t('close')}">${ic('x')}</button></div>
+    <div class="rowi">${ptile(p,1)}<div class="who"><b dir="auto">${esc(p.n)}</b><small><bdi>${esc(usr(p.u).n)}</bdi> · <bdi>${t('s_asked')} ${fmt(p.price)} ${t('da')}</bdi></small></div></div>
+    <div class="field"><label for="hr">${t('s_offer')}</label><output id="hv" class="big num">${fmt(p.price)} ${t('da')}</output><input type="range" id="hr" min="${lo}" max="${p.price}" step="${st}" value="${p.price}"></div>
+    <div class="tools"><button class="btn">${t('s_send')}</button></div></form></div>`}
+  else{const s=STORIES[V.sheet.i];L.innerHTML=`<div class="storyview" style="--c:${s.c}" role="dialog" aria-label="${esc(usr(s.u).n)}">
+    <div class="prog"><i></i></div><div class="head">${av(s.u,34)}<b>${esc(usr(s.u).n)}</b><button class="iconbtn" data-a="close" aria-label="${t('close')}">${ic('x')}</button></div>
+    <div class="txt" dir="auto" data-a="nextstory">${esc(s.x)}</div></div>`}
+}
+function render(){
+  applyPrefs();renderNav();
+  $('#main').classList.toggle('full',S.tab==='reels');if(S.tab==='user'&&(!U[V.user]||S.blocked[V.user]))S.tab='home';if(S.tab==='group'&&!allG().some(g=>g.id===V.group))S.tab='home';if(S.tab==='page'&&!allP().some(g=>g.id===V.page))S.tab='home';if(S.tab==='room'&&!V.room)S.tab='rooms';$('#main').innerHTML=({home,disc,msgs,notifs,prof,reels,souk,user:userView,group:groupView,page:pageView,rooms:roomsView,room:roomView}[S.tab]||home)();
+  renderLayer();
+  if(S.tab==='room')tick();
+}
+let toastT;
+function toast(msg,undo){const el=$('#toast');V.undo=undo||null;el.innerHTML=esc(msg)+(undo?`<button data-a="undo">${t('undo')}</button>`:'');el.hidden=false;clearTimeout(toastT);toastT=setTimeout(()=>{el.hidden=true},undo?6000:2600)}
+let restT;function armRest(){clearTimeout(restT);if(S.rest)restT=setTimeout(()=>toast(t('restmsg')),20*M)}
+let storyT;function openStory(i){clearTimeout(storyT);while(i<STORIES.length&&S.blocked[STORIES[i].u])i++;if(i>=STORIES.length){V.sheet=null;render();return}S.seenStory[i]=1;V.sheet={i};save();render();storyT=setTimeout(()=>{if(V.sheet&&V.sheet.i===i)openStory(i+1)},6000)}
+const P=id=>S.posts.find(p=>p.id===id);
+function pushMsg(m){if(!V.chat||!U[V.chat])return;(S.chats[V.chat]=S.chats[V.chat]||[]).push(m);save();render();const el=$('#main');el.scrollTop=el.scrollHeight}
+function shrink(src,max,sq,cb){const im=new Image();im.onload=()=>{let w=im.naturalWidth,hh=im.naturalHeight,sx=0,sy=0,sw=w,sh=hh;if(sq){sw=sh=Math.min(w,hh);sx=(w-sw)/2;sy=(hh-sh)/2}const k=Math.min(1,max/Math.max(sw,sh)),c=document.createElement('canvas');c.width=Math.max(1,Math.round(sw*k));c.height=Math.max(1,Math.round(sh*k));const x=c.getContext('2d');x.fillStyle='#fff';x.fillRect(0,0,c.width,c.height);x.drawImage(im,sx,sy,sw,sh,0,0,c.width,c.height);let d=src;try{d=c.toDataURL('image/jpeg',.82)}catch(e){}cb(d)};im.src=src}
+
+const A={
+tab(v){S.tab=v;V.menu=null;V.chat=null;V.panel=null;V.cemo=false;if(v==='notifs')S.seenN=true;save();render();$('#main').scrollTop=0},
+sheet(v){V.sheet=v;render()},
+close(){clearTimeout(storyT);if(V.sheet==='welcome'){S.onb=true;save()}V.sheet=null;render()},
+closebg(v,e){if(e.target.classList.contains('overlay')&&V.sheet!=='welcome')A.close()},
+set(v,e,el){const k=el.dataset.k;S[k]=k==='size'?+v:v;save();render()},
+tog(v,e,el){const k=el.dataset.k;S[k]=!S[k];save();if(k==='rest')armRest();render()},
+like(v){S.liked[v]?delete S.liked[v]:S.liked[v]=1;save();render()},
+save(v){S.saved[v]?delete S.saved[v]:S.saved[v]=1;save();render()},
+cm(v){V.open[v]=!V.open[v];render();if(V.open[v]){const i=$('#c-'+v);i&&i.focus()}},
+img(v){V.open['i'+v]=1;render()},
+menu(v){V.menu=V.menu===v?null:v;render()},
+hide(v){S.hid[v]=1;V.menu=null;save();render();toast(t('hidden'),()=>{delete S.hid[v];save();render()})},
+del(v){const i=S.posts.findIndex(p=>p.id===v),p=S.posts[i];S.posts.splice(i,1);V.menu=null;save();render();toast(t('hidden'),()=>{S.posts.push(p);save();render()})},
+undo(){const f=V.undo;$('#toast').hidden=true;f&&f()},
+share(v){V.sheet={share:v};V.menu=null;render()},
+rp(){const o=P(V.sheet.share);V.sheet=null;if(!o){render();return}S.posts.push({id:'u'+Date.now(),u:'me',t:Date.now(),x:'',rp:o.rp||o.id,likes:0,cm:[]});save();render();toast(t('rp_done'))},
+copy(){const p=P(V.sheet.share);V.sheet=null;render();if(!p)return;const o=p.rp?P(p.rp):null,txt=who(p)+': '+(p.x||(o?o.x:''));try{navigator.clipboard.writeText(txt).then(()=>toast(t('copied')),()=>toast(t('nocopy')))}catch(e){toast(t('nocopy'))}},
+editp(v){V.sheet={edit:v};V.menu=null;render();const e=$('#ep');e&&e.focus()},
+user(v){if(v==='me'){A.tab('prof');return}if(!U[v])return;if(!['user','group','page'].includes(S.tab))V.prev=S.tab;V.user=v;S.tab='user';V.menu=null;render();$('#main').scrollTop=0},
+group(v){if(!['user','group','page'].includes(S.tab))V.prev=S.tab;V.group=v;S.tab='group';V.menu=null;V.draft='';render();$('#main').scrollTop=0},
+page(v){if(!['user','group','page'].includes(S.tab))V.prev=S.tab;V.page=v;S.tab='page';V.menu=null;V.draft='';render();$('#main').scrollTop=0},
+pfollow(v){S.pfollow[v]?delete S.pfollow[v]:S.pfollow[v]=1;save();render()},
+mk(v){V.sheet={mk:v};render();$('#mk-name').focus()},
+rresume(){if(!V.room)return;V.prev='rooms';S.tab='room';render()},
+rleave(){clearTimeout(gameT);V.room=null;S.tab='rooms';render()},
+rgame(v){const r=V.room;if(!r||!GAMES.includes(v))return;if(v==='wolf'&&r.pool.length<3){toast(t('r_nobots'));render();return}r.g=v;newGame();render()},
+rcnt(v){const r=V.room,n=+v;if(!r||!(n>=2&&n<=4))return;r.cnt=n;newGame();render()},
+mic(){if(!DICT)return;try{const pr=V.listening?DICT.stop():DICT.start();if(pr&&pr.catch)pr.catch(()=>{if(!V.listening)toast(t('mic_no'))})}catch(e){toast(t('mic_no'))}},
+ccard(v){const r=V.room,st=r&&r.st,i=+v;if(!st||r.g!=='cards'||st.over||st.turn!==0)return;const c=st.hands[0][i];if(!c||!cOk(st,c))return;if(c.r===8){st.ask=i;renderRoom();return}st.ask=null;cPlay(st,0,i,c.s);renderRoom();tick()},
+csuit(v){const r=V.room,st=r&&r.st,s=+v;if(!st||r.g!=='cards'||st.over||st.turn!==0||st.ask==null||!(s>=0&&s<=3))return;const i=st.ask;st.ask=null;if(!st.hands[0][i]||st.hands[0][i].r!==8)return;cPlay(st,0,i,s);renderRoom();tick()},
+cdraw(){const r=V.room,st=r&&r.st;if(!st||r.g!=='cards'||st.over||st.turn!==0||st.drew||st.hands[0].some(c=>cOk(st,c)))return;cDraw(st,0);renderRoom();tick()},
+cpass(){const r=V.room,st=r&&r.st;if(!st||r.g!=='cards'||st.over||st.turn!==0||!st.drew)return;st.ask=null;cPassTurn(st,0);renderRoom();tick()},
+trroll(){const r=V.room,st=r&&r.st;if(!st||r.g!=='trade'||st.over||st.turn!==0||st.phase!=='roll')return;trRoll(st);renderRoom();tick()},
+trbuy(v){const r=V.room,st=r&&r.st;if(!st||r.g!=='trade'||st.over||st.turn!==0||st.phase!=='buy')return;trBuy(st,v==='1');renderRoom();tick()},
+wnight(v){const r=V.room,st=r&&r.st;if(!st||r.g!=='wolf'||st.phase!=='night')return;wNight(st,v===''||v==null?null:+v);renderRoom()},
+wday(v){const r=V.room,st=r&&r.st;if(!st||r.g!=='wolf'||st.phase!=='day')return;wDay(st,v===''||v==null?null:+v);renderRoom()},
+rjoin(v){const r=ROOMS.find(x=>x.id===v);if(r){V.sheet={help:r.g,room:r.id};renderLayer()}},
+rgo(v){const r=ROOMS.find(x=>x.id===v);if(r)openRoom(r.n,r.g,r.p)},
+rhelp(){if(V.room){V.sheet={help:V.room.g,room:null};renderLayer()}},
+dtile(v){const r=V.room,st=r&&r.st,i=+v;if(!st||r.g!=='domino'||st.over||st.turn!==0)return;const x=st.hands[0][i];if(!x)return;const f=domFits(st,x),e=domEnds(st);if(!f.l&&!f.r)return;if(f.l&&f.r&&e[0]!==e[1]){st.ask=i;renderRoom();return}st.ask=null;domPlay(st,0,i,f.r?'r':'l');renderRoom();tick()},
+dside(v){const r=V.room,st=r&&r.st;if(!st||r.g!=='domino'||st.ask==null||st.over||st.turn!==0)return;const i=st.ask;st.ask=null;domPlay(st,0,i,v==='l'?'l':'r');renderRoom();tick()},
+dpass(){const r=V.room,st=r&&r.st;if(!st||r.g!=='domino'||st.over||st.turn!==0)return;if(st.hands[0].some(x=>{const f=domFits(st,x);return f.l||f.r}))return;st.ask=null;domPass(st,0);renderRoom();tick()},
+lroll(){const r=V.room,st=r&&r.st;if(!st||r.g!=='ludo'||st.over||st.turn!==0||st.phase!=='roll')return;ludoRoll(st);renderRoom();tick()},
+ltok(v){const r=V.room,st=r&&r.st;if(!st||r.g!=='ludo'||st.over||st.turn!==0||st.phase!=='move'||!st.moves.includes(+v))return;ludoMove(st,0,+v,st.die);renderRoom();tick()},
+again(){if(!V.room)return;newGame();renderRoom();tick()},
+back(){S.tab=V.prev||'home';V.menu=null;render()},
+join(v){S.joined[v]?delete S.joined[v]:S.joined[v]=1;save();render()},
+chatto(v){S.tab='msgs';A.chat(v)},
+block(v){const was=!!S.follows[v];S.blocked[v]=1;delete S.follows[v];V.menu=null;if(V.chat===v)V.chat=null;save();render();toast(t('blocked'),()=>{delete S.blocked[v];if(was)S.follows[v]=1;save();render()})},
+unblock(v){delete S.blocked[v];save();render()},
+acc(v){S.follows[v]=1;S.reqs=S.reqs.filter(x=>x!==v);save();render()},
+dec(v){S.reqs=S.reqs.filter(x=>x!==v);save();render()},
+follow(v){S.follows[v]?delete S.follows[v]:S.follows[v]=1;save();const r=$('#res');if(r&&S.tab==='disc')r.innerHTML=results();else render()},
+story(v){openStory(+v)},
+nextstory(){if(V.sheet)openStory(V.sheet.i+1)},
+chat(v){V.cdraft='';V.panel=null;V.chat=v||null;if(v){S.read[v]=1;save()}render();if(v){const m=$('#main');m.scrollTop=m.scrollHeight}},
+ptab(v){S.ptab=v;save();render()},
+pickav(){V.pickFor='avatar';$('#pick').accept='image/*';$('#pick').click()},
+pickcover(){V.pickFor='cover';$('#pick').accept='image/*';$('#pick').click()},
+pickgif(){V.pickFor='gif';$('#pick').accept='image/*,video/*';$('#pick').click()},
+rmphotos(){delete S.me.photo;delete S.me.cover;save();render()},
+panel(v){V.panel=v||null;render();const m=$('#main');m.scrollTop=m.scrollHeight},
+cemo(){V.cemo=!V.cemo;render()},
+emo(v){if(S.tab==='msgs'&&V.chat){V.cdraft+=v;const i=$('#chat-in');if(i){i.value=V.cdraft;i.focus()}}else{V.draft+=v;const d=$('#draft');if(d){d.value=V.draft;d.focus()}const b=$('#postbtn');if(b)b.disabled=false}},
+sendst(v){pushMsg({m:1,k:'st',v})},
+sendan(v){pushMsg({m:1,k:'an',v})},
+pick(){V.pickFor='post';$('#pick').accept='image/*,video/*';$('#pick').click()},
+picksell(){V.pickFor='sell';$('#pick').accept='image/*';$('#pick').click()},
+pickreel(){V.pickFor='reel';$('#pick').accept='video/*';$('#pick').click()},
+cat(v){V.cat=v;render()},
+sell(){V.simg=null;V.sheet='sell';render();$('#sl-name').focus()},
+hag(v){V.sheet={hag:v};render()},
+pdel(v){S.prods=S.prods.filter(p=>p.id!==v);save();render()},
+rmimg(){V.dimg=null;V.dvid=null;render()},
+feelopen(){V.feelOpen=!V.feelOpen;render()},
+feel(v){V.dfeel=V.dfeel===v?null:v;V.feelOpen=false;render()},
+post(){const x=V.draft.trim();if(!x&&!V.dimg&&!V.dvid)return;const np={id:'u'+Date.now(),u:'me',t:Date.now(),x,img:V.dimg,vid:V.dvid,feel:V.dfeel,likes:0,cm:[]};if(S.tab==='group')np.g=V.group;if(S.tab==='page')np.pg=V.page;S.posts.push(np);V.draft='';V.dimg=null;V.dvid=null;V.dfeel=null;V.feelOpen=false;save();render();$('#main').scrollTop=0}
+};
+document.addEventListener('click',e=>{
+  const el=e.target.closest('[data-a]');
+  if(!el){if(V.menu){V.menu=null;render()}return}
+  A[el.dataset.a](el.dataset.v,e,el);
+});
+document.addEventListener('input',e=>{
+  if(e.target.id==='draft'){V.draft=e.target.value;$('#postbtn').disabled=!(V.draft.trim()||V.dimg||V.dvid)}
+  if(e.target.id==='chat-in')V.cdraft=e.target.value;
+  if(e.target.id==='w-name')V.wname=e.target.value;
+  if(e.target.id==='hr')$('#hv').textContent=fmt(e.target.value)+' '+t('da');
+  if(e.target.id==='q'){V.q=e.target.value;$('#res').innerHTML=results()}
+});
+document.addEventListener('submit',e=>{
+  e.preventDefault();const f=e.target.dataset.f;
+  if(f==='cmt'){const id=e.target.dataset.v,i=$('#c-'+id),x=i.value.trim();if(!x)return;P(id).cm.push({u:'me',x});save();render();const n=$('#c-'+id);n&&n.focus()}
+  if(f==='msg'){const i=$('#chat-in'),x=i.value.trim();if(!x)return;V.cdraft='';(S.chats[V.chat]=S.chats[V.chat]||[]).push({m:1,x});save();render();const m=$('#main');m.scrollTop=m.scrollHeight;$('#chat-in').focus()}
+  if(f==='welcome'){S.me.name=V.wname.trim().slice(0,40);S.onb=true;V.sheet=null;save();render()}
+  if(f==='editp'){const p=P(V.sheet.edit),x=$('#ep').value.trim();if(p&&(x||p.img||p.pic)){if(x!==p.x){p.x=x;p.ed=1}V.sheet=null;save();render()}}
+  if(f==='mk'){const k=V.sheet.mk,n=$('#mk-name').value.trim(),d=$('#mk-desc').value.trim();if(!n)return;const id=(k==='page'?'mp':'mg')+Date.now();V.sheet=null;if(k==='page'){S.mypages.push({id,n,d,f:0,mine:1});save();A.page(id)}else{S.mygroups.push({id,n,d,m:0,mine:1});S.joined[id]=1;save();A.group(id)}}
+  if(f==='room'){openRoom($('#rm-name').value.trim()||t('r_mine'),GAMES.includes($('#rm-game').value)?$('#rm-game').value:'domino',Object.keys(S.follows))}
+  if(f==='rmsg'){const i=$('#room-in'),x=i.value.trim();if(!x||!V.room)return;V.room.chat.push(x);i.value='';const c=$('#rchat');c.innerHTML=rchatHTML();c.scrollTop=c.scrollHeight}
+  if(f==='sell'){const n=$('#sl-name').value.trim(),pr=+$('#sl-price').value;if(!n||!(pr>0))return;S.prods.push({id:'s'+Date.now(),u:'me',n,price:Math.round(pr),cat:$('#sl-cat').value,img:V.simg,e:'📦'});V.sheet=null;V.cat='all';save();render()}
+  if(f==='hag'){const p=S.prods.find(x=>x.id===V.sheet.hag),x=t('s_msg').replace('{p}',p.n).replace('{o}',fmt($('#hr').value));(S.chats[p.u]=S.chats[p.u]||[]).push({m:1,x});S.read[p.u]=1;V.sheet=null;S.tab='msgs';V.chat=p.u;save();render();const m=$('#main');m.scrollTop=m.scrollHeight}
+  if(f==='edit'){S.me.name=$('#ed-name').value.trim();S.me.bio=$('#ed-bio').value.trim();V.sheet=null;save();render()}
+});
+document.addEventListener('change',e=>{if(e.target.id==='rm-game'){const el=$('#rm-rules');if(el&&GAMES.includes(e.target.value))el.innerHTML=rulesHTML(e.target.value)}if(e.target.id==='rg')A.rgame(e.target.value);if(e.target.id==='rn')A.rcnt(e.target.value)});
+document.addEventListener('keydown',e=>{if(e.key==='Escape'&&V.sheet)A.close()});
+$('#pick').addEventListener('change',e=>{const f=e.target.files[0],m=V.pickFor;e.target.value='';if(!f)return;const isV=f.type.startsWith('video/'),isI=f.type.startsWith('image/');
+  if(!(m==='reel'?isV:(m==='post'||m==='gif')?(isV||isI):isI))return;
+  if(isV&&m==='post'){V.dvid=URL.createObjectURL(f);V.dimg=null;render();return}
+  if(isV&&m==='gif'){pushMsg({m:1,k:'vid',src:URL.createObjectURL(f)});return}
+  if(m==='reel'){V.myReels.unshift({id:'m'+Date.now(),v:URL.createObjectURL(f)});render();$('#main').scrollTop=0;return}
+  const r=new FileReader();r.onload=()=>{if(m==='sell'){V.simg=r.result;const el=$('#sl-prev');if(el)el.innerHTML=`<span class="pimg sm"><img src="${r.result}" alt=""></span>`}else if(m==='gif')pushMsg({m:1,k:'img',src:r.result});else if(m==='avatar'||m==='cover')shrink(r.result,m==='avatar'?240:900,m==='avatar',d=>{S.me[m==='avatar'?'photo':'cover']=d;save();render()});else{V.dimg=r.result;V.dvid=null;render()}};r.readAsDataURL(f)});
+load();if(!S.onb&&!S.me.name)V.sheet='welcome';armRest();render();
+/* phone back button: the Android wrapper calls this; true means the page handled it */
+window.lammaBack=()=>{if(V.sheet){A.close();return true}if(['user','group','page','room'].includes(S.tab)){A.back();return true}if(S.tab==='msgs'&&V.chat){A.chat('');return true}if(S.tab!=='home'){A.tab('home');return true}return false};
+try{if(window.claude&&typeof window.claude.use==='function')window.claude.use('dictation').then(d=>{if(!d)return;DICT=d;
+  try{d.onFinal(o=>{const i=$('#room-in'),x=o&&o.text;if(i&&x)i.value=(i.value?i.value+' ':'')+x});
+  d.onState(o=>{V.listening=!!o&&o.state==='listening';const b=$('#micbtn');if(b){b.classList.toggle('rec',V.listening);b.setAttribute('aria-pressed',String(V.listening))}})}catch(e){}
+  const b=$('#micbtn');if(b)b.hidden=false}).catch(()=>{})}catch(e){}
+</script>
+</body>
+</html>
