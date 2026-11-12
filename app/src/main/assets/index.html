@@ -313,6 +313,11 @@ video.cimg{width:70%;background:#000}
 .rules{display:flex;flex-direction:column;gap:8px;font-size:.92rem}
 .rules ol{margin:0;padding-inline-start:1.4em;display:flex;flex-direction:column;gap:6px}
 .sheet h3{font-size:.85rem;font-weight:500;color:var(--muted)}
+.iconbtn.sm{width:28px;height:28px;color:var(--muted);flex:none}
+.iconbtn.sm .ic{width:1rem;height:1rem}
+.lnk{color:var(--accent);text-decoration:underline;font-size:inherit}
+.legal{display:flex;flex-direction:column;gap:10px;font-size:.92rem}
+.legal ol{margin:0;padding-inline-start:1.4em;display:flex;flex-direction:column;gap:8px}
 [hidden]{display:none!important}
 </style>
 </head>
@@ -448,6 +453,20 @@ ar:['يفوز القرويون إذا أخرجوا كل الذئاب. تفوز �
 fr:['Les villageois gagnent s’ils éliminent tous les loups. Les loups gagnent quand ils sont aussi nombreux que les autres.','Les rôles sont secrets : deux loups (un seul si les joueurs sont peu nombreux), une voyante, et des villageois.','La nuit : les loups dévorent un joueur, et la voyante découvre le rôle d’un joueur.','Le jour : tout le monde vote, et le plus désigné sort. En cas d’égalité, personne ne sort.','Si vous mourez, vous regardez la fin de la partie.'],
 en:['Villagers win by removing every wolf. Wolves win once they are as many as the others.','Roles are secret: two wolves (one if players are few), one seer, and villagers.','At night: the wolves eat a player, and the seer learns one player’s role.','By day: everyone votes and the most voted player leaves. A tie removes nobody.','If you die, you watch until the game ends.']}};
 const rulesHTML=g=>{const l=RULES[g][S.lang]||RULES[g].dz;return `<div class="rules"><p><b>${t('r_goal')}:</b> ${esc(l[0])}</p><ol>${l.slice(1).map(x=>`<li>${esc(x)}</li>`).join('')}</ol></div>`};
+Object.assign(T.dz,{rep:'تبليغ',rep_post:'بلّغ على المنشور',rep_user:'بلّغ عليه',rep_why:'علاش تبلّغ؟',rep_send:'ابعث التبليغ',rep_done:'تسجّل التبليغ',rep_note:'في هاد النسخة التجريبية التبليغ يتسجّل في الجهاز برك. في التطبيق الرسمي يوصل لفريق المراجعة.',why_spam:'سبام ولا إشهار',why_harass:'تحرّش ولا تهديد',why_hate:'كراهية ولا عنف',why_sexual:'محتوى جنسي',why_scam:'نصب ولا انتحال',why_other:'حاجة أخرى',terms:'شروط الاستخدام',privacy:'سياسة الخصوصية',w_agree:'بالدخول راك موافق على',and:'و',wipe:'امسح بياناتي من هاد الجهاز',wipe2:'متأكد؟ اضغط مرة أخرى باش يتمسح كلش',legal:'الشروط والخصوصية'});
+Object.assign(T.ar,{rep:'تبليغ',rep_post:'بلّغ عن المنشور',rep_user:'بلّغ عنه',rep_why:'ما سبب التبليغ؟',rep_send:'أرسل التبليغ',rep_done:'سُجّل التبليغ',rep_note:'في هذه النسخة التجريبية يُسجَّل التبليغ على الجهاز فقط. في التطبيق الرسمي يصل إلى فريق المراجعة.',why_spam:'رسائل مزعجة أو إعلان',why_harass:'تحرّش أو تهديد',why_hate:'كراهية أو عنف',why_sexual:'محتوى جنسي',why_scam:'احتيال أو انتحال',why_other:'سبب آخر',terms:'شروط الاستخدام',privacy:'سياسة الخصوصية',w_agree:'بدخولك توافق على',and:'و',wipe:'احذف بياناتي من هذا الجهاز',wipe2:'متأكد؟ اضغط مرة أخرى لحذف كل شيء',legal:'الشروط والخصوصية'});
+Object.assign(T.fr,{rep:'Signalement',rep_post:'Signaler la publication',rep_user:'Signaler',rep_why:'Pourquoi signalez-vous ?',rep_send:'Envoyer le signalement',rep_done:'Signalement enregistré',rep_note:'Dans cette version d’essai, le signalement est seulement enregistré sur l’appareil. Dans l’application officielle, il sera transmis à l’équipe de modération.',why_spam:'Spam ou publicité',why_harass:'Harcèlement ou menace',why_hate:'Haine ou violence',why_sexual:'Contenu sexuel',why_scam:'Arnaque ou usurpation',why_other:'Autre raison',terms:'Conditions d’utilisation',privacy:'Politique de confidentialité',w_agree:'En entrant, vous acceptez les',and:'et la',wipe:'Effacer mes données de cet appareil',wipe2:'Sûr ? Appuyez encore pour tout effacer',legal:'Conditions et confidentialité'});
+Object.assign(T.en,{rep:'Report',rep_post:'Report this post',rep_user:'Report',rep_why:'Why are you reporting?',rep_send:'Send report',rep_done:'Report recorded',rep_note:'In this trial version the report is only recorded on the device. In the official app it will reach the moderation team.',why_spam:'Spam or advertising',why_harass:'Harassment or threat',why_hate:'Hate or violence',why_sexual:'Sexual content',why_scam:'Scam or impersonation',why_other:'Something else',terms:'Terms of use',privacy:'Privacy policy',w_agree:'By entering you accept the',and:'and the',wipe:'Erase my data from this device',wipe2:'Sure? Tap again to erase everything',legal:'Terms and privacy'});
+const LEGAL_DATE='2026-11-12';
+const LEGAL={terms:{
+ar:['باستعمالك «لمّة» فأنت توافق على هذه الشروط.','السنّ: يجب أن يكون عمرك 13 سنة على الأقل.','أنت مسؤول عمّا تنشره. لا تنشر ما لا تملك حقّ نشره، ولا صور أشخاص دون موافقتهم.','المحتوى الممنوع: التهديد والتحرّش والتنمّر، خطاب الكراهية والتحريض على العنف، المحتوى الجنسي وكل ما يستغلّ القاصرين، الاحتيال وانتحال الشخصية والرسائل المزعجة، بيع ما يمنعه القانون، ونشر معلومات شخصية عن الغير.','التبليغ والحظر: تستطيع التبليغ عن أي منشور أو تعليق أو شخص، وحظر أي شخص. نراجع التبليغات، ونحذف المحتوى المخالف، وقد نوقف الحسابات المخالفة.','السوق: «لمّة» ليست طرفاً في البيع بين المستخدمين، ولا تضمن السلع ولا الدفع.','الألعاب للتسلية فقط، دون رهان ولا مال حقيقي.','قد نعدّل هذه الشروط، وسنعلمك داخل التطبيق قبل سريان أي تعديل.'],
+fr:['En utilisant Lamma, vous acceptez ces conditions.','Âge : vous devez avoir au moins 13 ans.','Vous êtes responsable de ce que vous publiez. Ne publiez pas ce que vous n’avez pas le droit de publier, ni la photo d’une personne sans son accord.','Contenus interdits : menaces, harcèlement et intimidation ; discours de haine et incitation à la violence ; contenu sexuel et tout ce qui exploite des mineurs ; arnaques, usurpation d’identité et spam ; vente de produits interdits par la loi ; publication d’informations personnelles sur autrui.','Signalement et blocage : vous pouvez signaler toute publication, tout commentaire ou toute personne, et bloquer n’importe qui. Nous examinons les signalements, retirons les contenus en infraction et pouvons suspendre les comptes concernés.','Souk : Lamma n’est pas partie aux ventes entre utilisateurs et ne garantit ni les articles ni le paiement.','Les jeux sont un simple divertissement, sans pari ni argent réel.','Ces conditions peuvent évoluer ; vous en serez informé dans l’application avant leur entrée en vigueur.'],
+en:['By using Lamma you accept these terms.','Age: you must be at least 13 years old.','You are responsible for what you post. Do not post what you have no right to post, or photos of people without their consent.','Not allowed: threats, harassment and bullying; hate speech and incitement to violence; sexual content and anything that exploits minors; scams, impersonation and spam; selling goods the law forbids; posting other people’s personal information.','Reporting and blocking: you can report any post, comment or person, and block anyone. We review reports, remove content that breaks these terms, and may suspend accounts.','Souk: Lamma is not a party to sales between users and guarantees neither the goods nor the payment.','Games are for fun only, with no betting and no real money.','These terms may change; you will be told in the app before a change takes effect.']},
+privacy:{
+ar:['هذه السياسة تشرح ما يحدث لبياناتك في «لمّة».','ما نجمعه الآن: هذه النسخة لا ترسل بياناتك إلى أي خادم. اسمك وصورتك ومنشوراتك ورسائلك تُحفظ على جهازك فقط.','الصور والفيديو: لا يصل التطبيق إلا إلى الملفات التي تختارها أنت، وتبقى على جهازك.','الخطوط: يحمّل التطبيق خطوطه من Google Fonts، فيصل عنوان IP لجهازك إلى Google عند التحميل.','لا إعلانات، ولا تتبّع، ولا بيع للبيانات.','حذف بياناتك: زر «احذف بياناتي» في الإعدادات يمحو كل شيء من هذا الجهاز.','عند إطلاق الحسابات على الإنترنت ستُخزَّن بياناتك على خادم. سنحدّث هذه السياسة ونطلب موافقتك قبل ذلك، وفق القانون 18-07 المتعلق بحماية المعطيات ذات الطابع الشخصي.','القاصرون: التطبيق غير موجّه لمن هم دون 13 سنة.'],
+fr:['Cette politique explique ce que deviennent vos données dans Lamma.','Ce que nous collectons aujourd’hui : cette version n’envoie vos données à aucun serveur. Votre nom, votre photo, vos publications et vos messages restent sur votre appareil.','Photos et vidéos : l’application n’accède qu’aux fichiers que vous choisissez, et ils restent sur votre appareil.','Polices : l’application charge ses polices depuis Google Fonts ; l’adresse IP de votre appareil est donc transmise à Google lors du chargement.','Pas de publicité, pas de pistage, pas de vente de données.','Suppression : le bouton « Effacer mes données » dans les réglages efface tout de cet appareil.','Quand les comptes en ligne seront lancés, vos données seront stockées sur un serveur. Cette politique sera mise à jour et votre accord demandé au préalable, conformément à la loi 18-07 sur la protection des données personnelles.','Mineurs : l’application ne s’adresse pas aux moins de 13 ans.'],
+en:['This policy explains what happens to your data in Lamma.','What we collect today: this version sends your data to no server. Your name, photo, posts and messages stay on your device.','Photos and videos: the app only reaches the files you pick, and they stay on your device.','Fonts: the app loads its fonts from Google Fonts, so your device’s IP address reaches Google when they load.','No ads, no tracking, no selling of data.','Deleting your data: the “Erase my data” button in settings wipes everything from this device.','When online accounts launch, your data will be stored on a server. This policy will be updated and your consent asked first, in line with Algerian law 18-07 on personal data protection.','Minors: the app is not meant for anyone under 13.']}};
+const legalHTML=k=>{const l=LEGAL[k][S.lang==='dz'?'ar':S.lang]||LEGAL[k].ar;return `<div class="legal"><p>${esc(l[0])}</p><ol>${l.slice(1).map(x=>`<li>${esc(x)}</li>`).join('')}</ol><small class="muted"><bdi>${LEGAL_DATE}</bdi></small></div>`};
 const ROOMS=[{id:'rm1',n:'قهوة الحومة',g:'domino',p:['amine','karim','sofiane']},{id:'rm2',n:'سهرة لودو',g:'ludo',p:['yasmine','lynda','nesrine']},{id:'rm3',n:'دومينو بعد العشا',g:'domino',p:['lynda','nesrine','yasmine']},{id:'rm4',n:'كارطة الحومة',g:'cards',p:['karim','amine','lynda']},{id:'rm5',n:'ليلة الذياب',g:'wolf',p:['sofiane','yasmine','karim','lynda','amine']},{id:'rm6',n:'تجّار المدن',g:'trade',p:['nesrine','sofiane','amine']}];
 const CATS=['food','craft','wear','tech','home'];
 const REELS=[{id:'r1',u:'sofiane',pic:'dunes',x:'المغرب في تيميمون، بلا هدرة.'},{id:'r2',u:'karim',steps:['سخّن الما','زيد التاي والنعناع','صبّ من الفوق باش تجي الرغوة'],x:'أتاي صحراوي في ثلاث خطوات'},{id:'r3',u:'lynda',pic:'sea',x:'صباح العاصمة من السطح'}];
@@ -472,6 +491,7 @@ play:'<path d="M7 4l13 8-13 8z"/>',
 bag:'<path d="M5 8h14l-1 13H6z"/><path d="M9 8V6a3 3 0 0 1 6 0v2"/>',
 plus:'<path d="M12 5v14M5 12h14"/>',
 mic:'<rect x="9" y="3" width="6" height="11" rx="3"/><path d="M5 11a7 7 0 0 0 14 0M12 18v3"/>',
+flag:'<path d="M5 21V4"/><path d="M5 4h12l-2 4 2 4H5"/>',
 dice:'<rect x="4" y="4" width="16" height="16" rx="3"/><path d="M9 9h.01M15 15h.01M15 9h.01M9 15h.01M12 12h.01"/>',
 smile:'<circle cx="12" cy="12" r="9"/><path d="M8.5 14a4 4 0 0 0 7 0"/><path d="M9 10h.01M15 10h.01"/>'
 };
@@ -490,7 +510,7 @@ nesrine:{n:'نسرين خليفي',city:'عنابة',c:'#2B8C8C'}
 };
 const now=Date.now(),M=60000;
 let S={lang:'dz',theme:'auto',size:1,saver:false,order:'new',counts:false,rest:false,
-tab:'home',ptab:'mine',me:{name:'',bio:''},liked:{},saved:{},hid:{},follows:{yasmine:1,sofiane:1},reqs:['nesrine','amine'],joined:{g_tim:1},blocked:{},onb:false,pfollow:{pg_news:1},mypages:[],mygroups:[],seenStory:{},read:{},seenN:false,
+tab:'home',ptab:'mine',me:{name:'',bio:''},liked:{},saved:{},hid:{},follows:{yasmine:1,sofiane:1},reqs:['nesrine','amine'],joined:{g_tim:1},blocked:{},onb:false,reports:[],hidc:{},pfollow:{pg_news:1},mypages:[],mygroups:[],seenStory:{},read:{},seenN:false,
 posts:[
 {id:'p1',u:'yasmine',t:now-12*M,x:'صباح الخير يا لحباب ☕ قهوة ومطلوع سخون، ما كاين ما خير.',likes:48,cm:[{u:'karim',x:'صحّة ليك! خلّيلنا شوية 😄'}]},
 {id:'p2',u:'sofiane',t:now-55*M,x:'غروب الشمس في تيميمون. الواحة الحمراء كنز ما يتقدّرش.',pic:'dunes',likes:213,cm:[{u:'lynda',x:'يا سلام، لازم نروح هاد العام'},{u:'amine',x:'تصويرة تهبّل'}]},
@@ -520,11 +540,11 @@ chats:{amine:[{m:0,x:'سلام خويا، واش راك؟'},{m:1,x:'لاباس �
 const STORIES=[{u:'sofiane',x:'الطريق لتمنراست. 1900 كيلومتر وما عيّيناش.',c:'#B5482C'},{u:'yasmine',x:'الجسور المعلّقة في الصباح بكري',c:'#B8437A'},{u:'karim',x:'زيت الزيتون الجديد وصل من الدشرة',c:'#5C7A1F'},{u:'nesrine',x:'البحر اليوم هادي في سرايدي',c:'#2B8C8C'}];
 const NOTIFS=[{u:'yasmine',k:'n_like',t:now-8*M},{u:'karim',k:'n_cmt',t:now-70*M},{u:'lynda',k:'n_fol',t:now-300*M}];
 let DICT=null;
-let V={listening:false,room:null,spd:850,dvid:null,page:null,panel:null,cdraft:'',cemo:false,user:null,group:null,prev:'home',wname:'',myReels:[],cat:'all',simg:null,pickFor:'post',draft:'',dimg:null,dfeel:null,feelOpen:false,open:{},menu:null,q:'',chat:null,sheet:null,undo:null};
+let V={wipe:false,listening:false,room:null,spd:850,dvid:null,page:null,panel:null,cdraft:'',cemo:false,user:null,group:null,prev:'home',wname:'',myReels:[],cat:'all',simg:null,pickFor:'post',draft:'',dimg:null,dfeel:null,feelOpen:false,open:{},menu:null,q:'',chat:null,sheet:null,undo:null};
 
 const KEY='lamma-v2';
 function load(){const seed=S.posts.slice();try{const d=JSON.parse(localStorage.getItem(KEY)||'null');if(d&&typeof d==='object')S=Object.assign(S,d)}catch(e){}
-  if(!Array.isArray(S.posts))S.posts=[];['mygroups','mypages'].forEach(k=>{if(!Array.isArray(S[k]))S[k]=[]});
+  if(!Array.isArray(S.posts))S.posts=[];['mygroups','mypages','reports'].forEach(k=>{if(!Array.isArray(S[k]))S[k]=[]});
   seed.forEach(s=>{if(!S.posts.some(p=>p.id===s.id))S.posts.push(s)});
   S.posts=S.posts.filter(p=>p&&(p.x||p.pic||p.rp));
   S.posts=S.posts.filter(p=>!p.pg||PAGES.concat(S.mypages).some(g=>g.id===p.pg));
@@ -558,9 +578,9 @@ function postHTML(p){
   if(src)media=(S.saver&&!V.open['i'+p.id])?`<button class="veil" data-a="img" data-v="${p.id}">${ic('image')}${t('showimg')}</button>`:`<div class="media">${src}</div>`;
   let quote='';
   if(p.rp){const o=P(p.rp);quote=o&&ok(o)?`<div class="quote"><b>${esc(who(o))}</b>${o.x?`<span dir="auto">${esc(o.x)}</span>`:''}${o.pic&&!S.saver?`<div class="media">${PIC[o.pic]}</div>`:''}</div>`:`<div class="quote muted">${t('gone')}</div>`}
-  const cm=V.open[p.id]?`<div class="cmts">${p.cm.filter(c=>!S.blocked[c.u]).map(c=>`<div class="cm">${av(c.u)}<div><b>${esc(usr(c.u).n)}</b><span dir="auto">${esc(c.x)}</span></div></div>`).join('')}
+  const cm=V.open[p.id]?`<div class="cmts">${p.cm.map((c,i)=>S.blocked[c.u]||S.hidc[p.id+':'+i]?'':`<div class="cm">${av(c.u)}<div><b>${esc(usr(c.u).n)}</b><span dir="auto">${esc(c.x)}</span></div>${c.u==='me'?'':`<button class="iconbtn sm" data-a="report" data-v="cm:${p.id}:${i}" aria-label="${t('rep')}" title="${t('rep')}">${ic('flag')}</button>`}</div>`).join('')}
     <form class="inline" data-f="cmt" data-v="${p.id}"><input type="text" id="c-${p.id}" placeholder="${t('wcmt')}" aria-label="${t('wcmt')}" autocomplete="off"><button class="sendbtn" aria-label="${t('send')}">${ic('send','flip')}</button></form></div>`:'';
-  const items=mine?`${p.rp?'':`<button data-a="editp" data-v="${p.id}">${t('editp')}</button>`}<button data-a="del" data-v="${p.id}">${t('del')}</button>`:`<button data-a="hide" data-v="${p.id}">${t('hide')}</button>${pgo?'':`<button data-a="block" data-v="${p.u}">${t('block')} · ${esc(u.n)}</button>`}`;
+  const items=mine?`${p.rp?'':`<button data-a="editp" data-v="${p.id}">${t('editp')}</button>`}<button data-a="del" data-v="${p.id}">${t('del')}</button>`:`<button data-a="hide" data-v="${p.id}">${t('hide')}</button><button data-a="report" data-v="post:${p.id}">${t('rep_post')}</button>${pgo?'':`<button data-a="block" data-v="${p.u}">${t('block')} · ${esc(u.n)}</button>`}`;
   return `<article class="card post">
     <div class="head"><button class="ulink" data-a="${pgo?'page':'user'}" data-v="${pgo?pgo.id:p.u}">${pgo?gav(pgo):av(p.u)}<span class="who"><b>${esc(u.n)}${p.feel?` <small>· ${FEEL[p.feel]} ${t('f_'+p.feel)}</small>`:''}</b><small>${g?t('in')+' <bdi>'+esc(g.n)+'</bdi> · ':u.city?'<bdi>'+esc(u.city)+'</bdi> · ':''}<bdi>${ago(p.t)}</bdi>${p.ed?' · '+t('edited'):''}</small></span></button>
       <div class="menu"><button class="iconbtn" data-a="menu" data-v="${p.id}" aria-label="${t('more')}" aria-expanded="${V.menu===p.id}">${ic('more')}</button>
@@ -597,7 +617,7 @@ function home(){
 function userView(){
   const k=V.user,u=U[k],f=!!S.follows[k];
   return `${backbar(u.n)}<section class="card profile">${av(k)}<h1>${esc(u.n)}</h1><p>${esc(u.city)}</p>
-    <div class="tools" style="justify-content:center"><button class="btn sm ${f?'ghost':''}" data-a="follow" data-v="${k}" aria-pressed="${f}">${t(f?'following':'follow')}</button><button class="btn sm ghost" data-a="chatto" data-v="${k}">${t('msgto')}</button><button class="btn sm ghost" data-a="block" data-v="${k}">${t('block')}</button></div></section>
+    <div class="tools" style="justify-content:center"><button class="btn sm ${f?'ghost':''}" data-a="follow" data-v="${k}" aria-pressed="${f}">${t(f?'following':'follow')}</button><button class="btn sm ghost" data-a="chatto" data-v="${k}">${t('msgto')}</button><button class="btn sm ghost" data-a="block" data-v="${k}">${t('block')}</button><button class="btn sm ghost" data-a="report" data-v="user:${k}">${t('rep_user')}</button></div></section>
   ${feed(srt(S.posts.filter(p=>p.u===k&&ok(p)&&!p.g&&!p.pg)))}`;
 }
 function groupView(){
@@ -851,7 +871,7 @@ function renderLayer(){
     <div class="field"><span>${t('theme')}</span>${seg('theme',[['auto',t('auto')],['light',t('light')],['dark',t('dark')]])}</div>
     <div class="field"><span>${t('size')}</span>${seg('size',[[0,'A−'],[1,'A'],[2,'A+']])}</div>
     <div class="field"><span>${t('order')}</span>${seg('order',[['new',t('onew')],['top',t('otop')]])}</div>
-    ${sw('saver',t('saver'),t('saverd'))}${sw('counts',t('counts'),t('countsd'))}${sw('rest',t('rest'),t('restd'))}${Object.keys(S.blocked).length?`<div class="field"><span>${t('blk_list')}</span>${Object.keys(S.blocked).map(k=>`<div class="rowi">${av(k,30)}<div class="who"><b>${esc(U[k].n)}</b></div><button class="btn sm ghost" data-a="unblock" data-v="${k}">${t('unblock')}</button></div>`).join('')}</div>`:''}</div></div>`;
+    ${sw('saver',t('saver'),t('saverd'))}${sw('counts',t('counts'),t('countsd'))}${sw('rest',t('rest'),t('restd'))}${Object.keys(S.blocked).length?`<div class="field"><span>${t('blk_list')}</span>${Object.keys(S.blocked).map(k=>`<div class="rowi">${av(k,30)}<div class="who"><b>${esc(U[k].n)}</b></div><button class="btn sm ghost" data-a="unblock" data-v="${k}">${t('unblock')}</button></div>`).join('')}</div>`:''}<div class="field"><span>${t('legal')}</span><div class="tools"><button class="chip" data-a="legal" data-v="terms">${t('terms')}</button><button class="chip" data-a="legal" data-v="privacy">${t('privacy')}</button><button class="chip" data-a="wipe">${t(V.wipe?'wipe2':'wipe')}</button></div></div></div></div>`;
   else if(V.sheet==='edit')L.innerHTML=`<div class="overlay" data-a="closebg"><form class="sheet" role="dialog" aria-label="${t('edit')}" data-f="edit">
     <div class="bar"><h2>${t('edit')}</h2><button type="button" class="iconbtn" data-a="close" aria-label="${t('close')}">${ic('x')}</button></div>
     <div class="field"><label for="ed-name">${t('name')}</label><input type="text" id="ed-name" maxlength="40" value="${esc(S.me.name)}" dir="auto"></div>
@@ -862,7 +882,16 @@ function renderLayer(){
     <div><h2>${t('w_title')}</h2><p class="muted">${t('w_sub')}</p></div>
     <div class="field"><span>${t('lang')}</span>${seg('lang',Object.entries(LANGS))}</div>
     <div class="field"><label for="w-name">${t('w_name')}</label><input type="text" id="w-name" maxlength="40" value="${esc(V.wname)}" dir="auto" autocomplete="off"></div>
+    <small class="muted">${t('w_agree')} <button type="button" class="lnk" data-a="legal" data-v="terms">${t('terms')}</button> ${t('and')} <button type="button" class="lnk" data-a="legal" data-v="privacy">${t('privacy')}</button>.</small>
     <div class="col"><button class="btn">${t('w_go')}</button></div></form></div>`;
+  else if(V.sheet.legal)L.innerHTML=`<div class="overlay" data-a="closebg"><div class="sheet" role="dialog" aria-label="${t(V.sheet.legal)}">
+    <div class="bar"><h2>${t(V.sheet.legal)}</h2><button class="iconbtn" data-a="close" aria-label="${t('close')}">${ic('x')}</button></div>
+    ${legalHTML(V.sheet.legal)}<div class="tools"><button class="btn" data-a="close">${t('close')}</button></div></div></div>`;
+  else if(V.sheet.report)L.innerHTML=`<div class="overlay" data-a="closebg"><form class="sheet" role="dialog" aria-label="${t('rep')}" data-f="report">
+    <div class="bar"><h2>${t('rep')}</h2><button type="button" class="iconbtn" data-a="close" aria-label="${t('close')}">${ic('x')}</button></div>
+    <h3>${t('rep_why')}</h3><div class="tools">${['spam','harass','hate','sexual','scam','other'].map(w=>`<button type="button" class="chip" data-a="why" data-v="${w}" aria-pressed="${V.sheet.why===w}">${t('why_'+w)}</button>`).join('')}</div>
+    <small class="muted">${t('rep_note')}</small>
+    <div class="tools"><button class="btn">${t('rep_send')}</button><button type="button" class="btn ghost" data-a="close">${t('cancel')}</button></div></form></div>`;
   else if(V.sheet.help){const g=V.sheet.help,rm=V.sheet.room;L.innerHTML=`<div class="overlay" data-a="closebg"><div class="sheet" role="dialog" aria-label="${t('r_how')}">
     <div class="bar"><h2>${t('g_'+g)}</h2><button class="iconbtn" data-a="close" aria-label="${t('close')}">${ic('x')}</button></div>
     <h3>${t('r_how')}</h3>${rulesHTML(g)}
@@ -919,8 +948,12 @@ function shrink(src,max,sq,cb){const im=new Image();im.onload=()=>{let w=im.natu
 const A={
 tab(v){S.tab=v;V.menu=null;V.chat=null;V.panel=null;V.cemo=false;if(v==='notifs')S.seenN=true;save();render();$('#main').scrollTop=0},
 sheet(v){V.sheet=v;render()},
-close(){clearTimeout(storyT);if(V.sheet==='welcome'){S.onb=true;save()}V.sheet=null;render()},
-closebg(v,e){if(e.target.classList.contains('overlay')&&V.sheet!=='welcome')A.close()},
+close(){clearTimeout(storyT);V.wipe=false;if(V.sheet&&V.sheet.legal&&V.sheet.from){V.sheet=V.sheet.from;render();return}if(V.sheet==='welcome'){S.onb=true;save()}V.sheet=null;render()},
+legal(v){V.sheet={legal:v==='privacy'?'privacy':'terms',from:V.sheet==='welcome'||V.sheet==='set'?V.sheet:null};renderLayer()},
+report(v){V.sheet={report:String(v),why:'spam'};V.menu=null;render()},
+why(v){if(V.sheet&&V.sheet.report){V.sheet.why=v;renderLayer()}},
+wipe(){if(!V.wipe){V.wipe=true;renderLayer();return}try{localStorage.removeItem(KEY)}catch(e){}location.reload()},
+closebg(v,e){if(e.target.classList.contains('overlay')&&V.sheet!=='welcome'&&!(V.sheet&&V.sheet.from==='welcome'))A.close()},
 set(v,e,el){const k=el.dataset.k;S[k]=k==='size'?+v:v;save();render()},
 tog(v,e,el){const k=el.dataset.k;S[k]=!S[k];save();if(k==='rest')armRest();render()},
 like(v){S.liked[v]?delete S.liked[v]:S.liked[v]=1;save();render()},
@@ -1016,6 +1049,7 @@ document.addEventListener('submit',e=>{
   if(f==='mk'){const k=V.sheet.mk,n=$('#mk-name').value.trim(),d=$('#mk-desc').value.trim();if(!n)return;const id=(k==='page'?'mp':'mg')+Date.now();V.sheet=null;if(k==='page'){S.mypages.push({id,n,d,f:0,mine:1});save();A.page(id)}else{S.mygroups.push({id,n,d,m:0,mine:1});S.joined[id]=1;save();A.group(id)}}
   if(f==='room'){openRoom($('#rm-name').value.trim()||t('r_mine'),GAMES.includes($('#rm-game').value)?$('#rm-game').value:'domino',Object.keys(S.follows))}
   if(f==='rmsg'){const i=$('#room-in'),x=i.value.trim();if(!x||!V.room)return;V.room.chat.push(x);i.value='';const c=$('#rchat');c.innerHTML=rchatHTML();c.scrollTop=c.scrollHeight}
+  if(f==='report'){const a=String(V.sheet.report).split(':');S.reports.push({k:a[0],id:a[1],i:a[2],why:V.sheet.why,t:Date.now()});if(a[0]==='post')S.hid[a[1]]=1;if(a[0]==='cm')S.hidc[a[1]+':'+a[2]]=1;V.sheet=null;save();render();toast(t('rep_done'))}
   if(f==='sell'){const n=$('#sl-name').value.trim(),pr=+$('#sl-price').value;if(!n||!(pr>0))return;S.prods.push({id:'s'+Date.now(),u:'me',n,price:Math.round(pr),cat:$('#sl-cat').value,img:V.simg,e:'📦'});V.sheet=null;V.cat='all';save();render()}
   if(f==='hag'){const p=S.prods.find(x=>x.id===V.sheet.hag),x=t('s_msg').replace('{p}',p.n).replace('{o}',fmt($('#hr').value));(S.chats[p.u]=S.chats[p.u]||[]).push({m:1,x});S.read[p.u]=1;V.sheet=null;S.tab='msgs';V.chat=p.u;save();render();const m=$('#main');m.scrollTop=m.scrollHeight}
   if(f==='edit'){S.me.name=$('#ed-name').value.trim();S.me.bio=$('#ed-bio').value.trim();V.sheet=null;save();render()}

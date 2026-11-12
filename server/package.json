@@ -1,0 +1,12 @@
+{
+  "name": "lamma-server",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Lamma server: accounts, posts, messages, groups, pages, souk, reports and moderation.",
+  "main": "server.js",
+  "engines": { "node": ">=22.5" },
+  "scripts": {
+    "start": "node --no-warnings server.js",
+    "test": "node --no-warnings --test test.js"
+  }
+}

@@ -8,8 +8,20 @@ permissions:
   contents: write
 
 jobs:
+  server-tests:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+      - name: Run the server tests
+        run: node --no-warnings --test server/test.js
+
   build:
     runs-on: ubuntu-latest
+    env:
+      HAS_RELEASE_KEY: ${{ secrets.LAMMA_KEYSTORE_BASE64 != '' }}
     steps:
       - uses: actions/checkout@v4
 
@@ -20,7 +32,7 @@ jobs:
 
       - uses: gradle/actions/setup-gradle@v4
         with:
-          gradle-version: '8.9'
+          gradle-version: '8.14.3'
 
       - name: Build debug APK
         run: gradle assembleDebug --no-daemon
@@ -35,6 +47,7 @@ jobs:
           cp app/build/outputs/apk/debug/app-debug.apk lamma.apk
           ls -l lamma.apk
           unzip -l lamma.apk | grep -E "classes.dex|AndroidManifest.xml|assets/index.html|resources.arsc"
+          "$ANDROID_HOME"/build-tools/$(ls "$ANDROID_HOME"/build-tools | sort -V | tail -1)/aapt2 dump badging lamma.apk | grep -E "^package|sdkVersion|targetSdkVersion" || true
 
       - name: Publish the APK as a direct download
         env:
@@ -42,3 +55,23 @@ jobs:
         run: |
           gh release delete apk-latest --yes --cleanup-tag || true
           gh release create apk-latest lamma.apk --title "Lamma APK (test build)" --notes "Debug build for testing on a phone. Not for the Play Store." --target "$GITHUB_SHA"
+
+      # The signed bundle for Google Play is built only once the signing key
+      # has been added to the repository secrets (see docs/SIGNING.md).
+      - name: Build signed release bundle
+        if: env.HAS_RELEASE_KEY == 'true'
+        env:
+          LAMMA_KEYSTORE_BASE64: ${{ secrets.LAMMA_KEYSTORE_BASE64 }}
+          LAMMA_KEYSTORE_PASSWORD: ${{ secrets.LAMMA_KEYSTORE_PASSWORD }}
+          LAMMA_KEY_ALIAS: ${{ secrets.LAMMA_KEY_ALIAS }}
+          LAMMA_KEY_PASSWORD: ${{ secrets.LAMMA_KEY_PASSWORD }}
+        run: |
+          echo "$LAMMA_KEYSTORE_BASE64" | base64 -d > "$RUNNER_TEMP/lamma.jks"
+          LAMMA_KEYSTORE_FILE="$RUNNER_TEMP/lamma.jks" gradle bundleRelease --no-daemon
+          rm -f "$RUNNER_TEMP/lamma.jks"
+
+      - uses: actions/upload-artifact@v4
+        if: env.HAS_RELEASE_KEY == 'true'
+        with:
+          name: lamma-play-bundle
+          path: app/build/outputs/bundle/release/app-release.aab

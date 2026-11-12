@@ -2,16 +2,40 @@ plugins {
     id 'com.android.application'
 }
 
+// The release key is never stored in the repository. The build picks it up from
+// environment variables that the GitHub workflow fills in from repository secrets.
+def keystorePath = System.getenv('LAMMA_KEYSTORE_FILE')
+
 android {
     namespace 'dz.lamma.app'
-    compileSdk 34
+    compileSdk 36
 
     defaultConfig {
         applicationId 'dz.lamma.app'
         minSdk 26
-        targetSdk 34
-        versionCode 1
-        versionName '0.1'
+        targetSdk 36
+        versionCode 2
+        versionName '0.2'
+    }
+
+    signingConfigs {
+        if (keystorePath) {
+            release {
+                storeFile file(keystorePath)
+                storePassword System.getenv('LAMMA_KEYSTORE_PASSWORD')
+                keyAlias System.getenv('LAMMA_KEY_ALIAS')
+                keyPassword System.getenv('LAMMA_KEY_PASSWORD')
+            }
+        }
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            if (keystorePath) {
+                signingConfig signingConfigs.release
+            }
+        }
     }
 
     compileOptions {
